@@ -210,6 +210,41 @@ namespace Game1
             
         }
 
+        public void setNeighboursOfBlock(int xc, int yc)
+        {
+            for (int x = xc-2; x < xc+2; x++)
+            {
+                for (int y = yc-2; y < yc+2; y++)
+                {
+                    if (blocks[x, y].Type.Name != "Air")
+                    {
+                        blocks[x, y].Neighbours["Left"] = blocks[x - 1, y].Type.Name;
+                        blocks[x, y].Neighbours["Right"] = blocks[x + 1, y].Type.Name;
+                        blocks[x, y].Neighbours["Up"] = blocks[x, y - 1].Type.Name;
+                        blocks[x, y].Neighbours["Down"] = blocks[x, y + 1].Type.Name;
+
+                        blocks[x, y].Neighbours["UpLeft"] = blocks[x - 1, y - 1].Type.Name;
+                        blocks[x, y].Neighbours["UpRight"] = blocks[x + 1, y - 1].Type.Name;
+                        blocks[x, y].Neighbours["DownLeft"] = blocks[x - 1, y + 1].Type.Name;
+                        blocks[x, y].Neighbours["DownRight"] = blocks[x + 1, y + 1].Type.Name;
+                    }
+                }
+            }
+            for (int x = xc - 2; x < xc + 2; x++)
+            {
+                for (int y = yc - 2; y < yc + 2; y++)
+                {
+                    if (blocks[x, y].Type.Name != "Air")
+                    {
+                        blocks[x, y].setTexRegions();
+
+                    }
+                }
+            }
+
+        }
+
+
         public void cleanDestroyedItems()
         {
             for (int i = 0; i < items.Count; i++)

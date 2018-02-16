@@ -172,7 +172,7 @@ namespace Game1
                             }
                             else
                                 world.fill(((int)pos.X / 32), (int)(pos.Y / 32), currentBlockType, world.get((int)(pos.X / 32), (int)(pos.Y / 32)).Type, 0);
-                            world.setNeighboursOfBlocks();
+                            world.setNeighboursOfBlock(((int)pos.X / 32), (int)(pos.Y / 32));
                         }
                     }
                     else
