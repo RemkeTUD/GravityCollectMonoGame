@@ -47,7 +47,6 @@ namespace Game1
         public void removeHull()
         {
             if(type != BlockType.AIR) {
-            Console.WriteLine("RemoveHull");
                 Game1.penumbra.Hulls.CollectionChanged += delegate { Console.WriteLine("Test"); };
             Game1.penumbra.Hulls.Remove(hull);
                 hull = null;

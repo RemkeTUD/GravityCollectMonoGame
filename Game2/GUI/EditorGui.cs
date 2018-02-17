@@ -204,7 +204,8 @@ namespace Game1
                 if (xCoord >= 0 && xCoord < world.width && yCoord >= 0 && yCoord < world.height)
                 {
                     world.blocks[((int)pos.X / 32), (int)(pos.Y / 32)].removeHull();
-                    world.blocks[((int)pos.X / 32), (int)(pos.Y / 32)] = new Block(BlockType.AIR, xCoord, yCoord);
+                    world.blocks[((int)pos.X / 32), (int)(pos.Y / 32)] = Game1.world.airDefault;
+                    if(prevState.RightButton == ButtonState.Released)
                     world.setNeighboursOfBlocks();
                 }
             }

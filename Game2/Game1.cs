@@ -64,7 +64,7 @@ namespace Game1
             // TODO: Add your initialization logic here
 
             base.Initialize();
-            world = new World(256, 256, Content);
+            world = new World(512, 512, Content);
             EditorGui.init();
             player = new Player(Content);
 
@@ -206,7 +206,7 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
 
-            spriteBatch.Begin(samplerState: SamplerState.PointWrap, transformMatrix: cam.get_transformation(GraphicsDevice));
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
             world.Draw(spriteBatch);
             player.Draw(spriteBatch);
             

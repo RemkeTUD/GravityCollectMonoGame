@@ -23,9 +23,12 @@ namespace Game1
 
         public static string[] themeNames;
 
+        public Block airDefault = new Block(BlockType.AIR, 3, 3);
+
         Texture2D background;
 
         public string currentTheme = "Normal";
+        
 
         BlockType currentBlockType = BlockType.GREEN;
 
@@ -45,7 +48,7 @@ namespace Game1
             {
                 for (int y = 0; y < height; y++)
                 {
-                    blocks[x, y] = new Block(BlockType.AIR, x, y);
+                    blocks[x, y] = airDefault;
                 }
             }
             setNeighboursOfBlocks();
@@ -90,11 +93,13 @@ namespace Game1
                 effects: SpriteEffects.None,
                 layerDepth: 1);
 
-            for (int x = 0; x < width; x++)
+            Vector2 startVec = MapTools.mapToGridCoords(Game1.getCam().Pos);
+
+            for (int x = (int)startVec.X - 100; x < (int)startVec.X + 100; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = (int)startVec.Y - 64; y < (int)startVec.Y + 64; y++)
                 {
-                    if(blocks[x,y].Type.Name != "Air")
+                    if(x > 0 && y > 0 && x < width && y < height && blocks[x,y] != airDefault)
                     {
                         
                         
@@ -141,7 +146,7 @@ namespace Game1
             {
                 return fills;
             }
-            if (fills > 100)
+            if (fills > 1000)
                 return fills;
             if (x >= 0 && x < width && y >= 0 && y < height)
                 blocks[x, y] = new Block(type, x , y);
@@ -161,7 +166,7 @@ namespace Game1
                 return blocks[x, y];
             }
             else
-                return new Block(BlockType.AIR, x , y);
+                return airDefault;
         }
 
         public void setLine(int x0, int y0, int x1, int y1, BlockType type)
@@ -383,7 +388,7 @@ namespace Game1
             {
                 for (int y = 0; y < height; y++)
                 {
-                    blocks[x, y] = new Block(BlockType.AIR,x ,y);
+                    blocks[x, y] = airDefault;
                 }
             }
 
@@ -427,7 +432,6 @@ namespace Game1
                                     param.Add(Int32.Parse(reader.Value));
                                 
                             }
-                            Console.WriteLine(param);
                             addItem((Item)Activator.CreateInstance(type, param.ToArray()));
 
                         }
