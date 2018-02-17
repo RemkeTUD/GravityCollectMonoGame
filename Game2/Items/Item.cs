@@ -278,9 +278,9 @@ namespace Game1
         public virtual void drawParamMenu(SpriteBatch batch)
         {
             if (widthUpButton == null)
-                widthUpButton = new Button(new Rectangle(1400, 700, 32, 32), delegate { size += new Vector2(32, 32); }, "saw");
+                widthUpButton = new Button(new Rectangle(1400, 700, 32, 32), delegate { size += new Vector2(16, 16); }, "saw");
             if (widthDownButton == null)
-                widthDownButton = new Button(new Rectangle(1432, 700, 32, 32), delegate { size -= new Vector2(32, 32); }, "saw");
+                widthDownButton = new Button(new Rectangle(1432, 700, 32, 32), delegate { size -= new Vector2(16, 16); }, "saw");
 
             widthUpButton.Draw(batch);
             widthDownButton.Draw(batch);

@@ -29,33 +29,33 @@ namespace Game1
                 y++;
             }
             y = 0;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Saw), Game1.cManager, 64, 64); }, "saw"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Saw), Game1.cManager, 32, 32); }, "saw"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Enemy), Game1.cManager, 64, 64); }, "enemy"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Enemy), Game1.cManager, 32, 32); }, "enemy"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(FreeGravityBox), Game1.cManager, 64, 64); }, "box"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(FreeGravityBox), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Laser), Game1.cManager, 64, 64); }, "laser"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Laser), Game1.cManager, 32, 32); }, "laser"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RocketSpawner), Game1.cManager, 64, 64); }, "rocketspawner"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RocketSpawner), Game1.cManager, 32, 32); }, "rocketspawner"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Trapdoor), Game1.cManager, 64, 64); }, "openwall"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Trapdoor), Game1.cManager, 32, 32); }, "openwall"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(OpenWall), Game1.cManager, 64, 64); }, "openwall"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(OpenWall), Game1.cManager, 32, 32); }, "openwall"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Moving_Box), Game1.cManager, 64, 64); }, "box"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Moving_Box), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(GravityBox), Game1.cManager, 64, 64); }, "box"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(GravityBox), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(TractorBeam), Game1.cManager, 64, 64); }, "TractorBeam"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(TractorBeam), Game1.cManager, 32, 32); }, "TractorBeam"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Spike), Game1.cManager, 64, 64); }, "Spike"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Spike), Game1.cManager, 32, 32); }, "Spike"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Canon), Game1.cManager, 64, 64); }, "Canon"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Canon), Game1.cManager, 32, 32); }, "Canon"));
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
-                ButtonDisapear button = (ButtonDisapear)Game1.world.createInstanceAtMouse(typeof(ButtonDisapear), Game1.cManager, 64, 64);
-                currentDragItem = Game1.world.createInstanceAtMouse(typeof(BoxDisapear), Game1.cManager, 64, 64);
+                ButtonDisapear button = (ButtonDisapear)Game1.world.createInstanceAtMouse(typeof(ButtonDisapear), Game1.cManager, 32, 32);
+                currentDragItem = Game1.world.createInstanceAtMouse(typeof(BoxDisapear), Game1.cManager, 32, 32);
                 ((BoxDisapear)currentDragItem).button = button;
             }, "Button"));
             y++;
@@ -114,6 +114,12 @@ namespace Game1
                 Game1.getCam().Zoom *= 1.01f;
             if (state.ScrollWheelValue < 0)
                 Game1.getCam().Zoom /= 1.01f;
+            if (kstate.IsKeyDown(Keys.L))
+                Game1.getCam().Zoom = 2;
+            if (kstate.IsKeyDown(Keys.K))
+                Game1.getCam().Zoom = 1.4f;
+            if (kstate.IsKeyDown(Keys.J))
+                Game1.getCam().Zoom = 1f;
 
 
             Vector2 pos = Vector2.Transform(new Vector2(state.X - 0, state.Y - 0), Matrix.Invert(Game1.getCam().get_transformation(graphicsDevice)));

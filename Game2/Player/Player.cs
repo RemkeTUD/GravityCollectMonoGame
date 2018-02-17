@@ -187,7 +187,7 @@ namespace Game1
                     fallSpeed -= fallAcceleration + 0.3f;
                 if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
                 {
-                    speed = -6;
+                    speed = -7.5f;
                     fallSpeed += -4;
                     if (fallSpeed <= 0)
                         fallSpeed = -6;
@@ -203,7 +203,7 @@ namespace Game1
                     fallSpeed -= fallAcceleration + 0.3f;
                 if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
                 {
-                    speed = +6;
+                    speed = +7.5f;
                     fallSpeed += -4;
                     if (fallSpeed <= 0)
                         fallSpeed = -6;
