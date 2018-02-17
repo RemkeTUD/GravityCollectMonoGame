@@ -15,8 +15,8 @@ namespace Game1
     {
         Texture2D textureTest;
         public float speed, fallSpeed;
-        public float acceleration = 1.8f, fallAcceleration = 0.8f;
-        float maxSpeed = 9, maxFallSpeed = 35;
+        public float acceleration = 0.9f, fallAcceleration = 0.4f;
+        float maxSpeed = 4.5f, maxFallSpeed = 17.5f;
 
         public Vector2 size = new Vector2(16, 32);
         public Rectangle rect = new Rectangle(1000, 1000, 16, 32);
@@ -108,7 +108,7 @@ namespace Game1
 
             if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space) && isGrounded().collided)
             {
-                fallSpeed += -10;
+                fallSpeed += -5;
                 framesSpacePressed++;
             }
             if (!state.IsKeyDown(Keys.Space) && isGrounded().collided)
@@ -183,33 +183,33 @@ namespace Game1
 
             if (!isGrounded().collided && collidesRight() && state.IsKeyDown(Keys.D))
             {
-                if (fallSpeed > 10)
-                    fallSpeed -= fallAcceleration + 0.6f;
+                if (fallSpeed > 5)
+                    fallSpeed -= fallAcceleration + 0.3f;
                 if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
                 {
-                    speed = -12;
-                    fallSpeed += -8;
+                    speed = -6;
+                    fallSpeed += -4;
                     if (fallSpeed <= 0)
-                        fallSpeed = -12;
+                        fallSpeed = -6;
                     if (fallSpeed > 0)
-                        fallSpeed = -10;
-                        framesSpacePressed = 20;
+                        fallSpeed = -5;
+                        framesSpacePressed = 10;
                 }
             }
 
             if (!isGrounded().collided && collidesLeft() && state.IsKeyDown(Keys.A))
             {
-                if (fallSpeed > 10)
-                    fallSpeed -= fallAcceleration + 0.6f;
+                if (fallSpeed > 5)
+                    fallSpeed -= fallAcceleration + 0.3f;
                 if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space))
                 {
-                    speed = +12;
-                    fallSpeed += -8;
+                    speed = +6;
+                    fallSpeed += -4;
                     if (fallSpeed <= 0)
-                        fallSpeed = -12;
+                        fallSpeed = -6;
                     if (fallSpeed > 0)
-                        fallSpeed = -10;
-                    framesSpacePressed = 20;
+                        fallSpeed = -5;
+                    framesSpacePressed = 10;
                 }
             }
         }
