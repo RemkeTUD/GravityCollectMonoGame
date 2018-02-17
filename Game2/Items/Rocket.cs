@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Penumbra;
 
 namespace Game1
 {
@@ -50,10 +51,40 @@ namespace Game1
             if(collidesWithMap().collided)
             {
                 destroy = true;
+
+                Light light = new PointLight
+                {
+                    Position = new Vector2(getCenter().X, getCenter().Y) - speed,
+                    Scale = new Vector2(1500), // Range of the light source (how far the light will travel)
+                    Radius = 1f,
+                    Intensity = 1f,
+
+                    Color = new Color(1f, 0.1f, 0, 1),
+                    ShadowType = ShadowType.Solid // Will not lit hulls themselves
+
+                };
+
+                ExplosionHandler.addExplosion(light);
+
             }
             if(CollidesWithPlayer())
             {
                 Game1.getPlayer().die();
+
+                Light light = new PointLight
+                {
+                    Position = new Vector2(getCenter().X, getCenter().Y) - speed,
+                    Scale = new Vector2(1500), // Range of the light source (how far the light will travel)
+                    Radius = 1f,
+                    Intensity = 1f,
+
+                    Color = new Color(5f, 0.5f, 0, 1),
+                    ShadowType = ShadowType.Solid // Will not lit hulls themselves
+
+                };
+
+                ExplosionHandler.addExplosion(light);
+
             }
 
             base.Update();

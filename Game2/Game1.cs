@@ -185,6 +185,8 @@ namespace Game1
 
             world.cleanDestroyedItems();
 
+            ExplosionHandler.update();
+
             cam.update();
             base.Update(gameTime);
 

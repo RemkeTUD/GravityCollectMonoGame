@@ -31,7 +31,7 @@ namespace Game1
         {
             this.angleSpeed = 0;
             textureTest = content.Load<Texture2D>("laser");
-           // Game1.penumbra.Lights.Add(light);
+            Game1.penumbra.Lights.Add(light);
             raycast = new Raycast(pos, new Vector2(0, 0), 3000);
         }
 
