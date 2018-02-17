@@ -128,6 +128,12 @@ namespace Game1
                         break;
                     }
                 }
+                if(kstate.IsKeyDown(Keys.LeftControl))
+                {
+                    Game1.world.playerSpawn = pos;
+                    Game1.getPlayer().pos = pos;
+                    Game1.getCam().offset = new Vector2(0, 0);
+                }
             }
             if (state.RightButton == ButtonState.Pressed && prevState.RightButton == ButtonState.Released)
             {
@@ -145,15 +151,16 @@ namespace Game1
                 if (currentDragItem != null && !Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                 {
 
-                    if (Keyboard.GetState().IsKeyDown(Keys.LeftAlt)) {
-                        pos.X = pos.X - pos.X%32;
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftAlt))
+                    {
+                        pos.X = pos.X - pos.X % 32;
                         pos.Y = pos.Y - pos.Y % 32;
                     }
 
                     currentDragItem.pos = pos;
                     currentDragItem.spawnPos = currentDragItem.pos;
                 }
-                else if(!isGuiClicked())
+                else if (!isGuiClicked() && Keyboard.GetState().IsKeyUp(Keys.LeftControl)) 
                 {
                     if (!Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                     {

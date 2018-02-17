@@ -15,7 +15,7 @@ namespace Game1
         public Matrix _transform; // Matrix Transform
         public Vector2 _pos; // Camera Position
         protected float _rotation; // Camera Rotation
-        Vector2 offset = new Vector2(0,0);
+        public Vector2 offset = new Vector2(0,0);
         public Camera2d()
         {
             _zoom = 1.0f;

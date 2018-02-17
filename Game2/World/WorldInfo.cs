@@ -32,6 +32,10 @@ namespace Game1
                     angle+=5;
                 }
             }
+            else {
+                gravity.X =(float) Math.Round(gravity.X);
+                gravity.Y = (float)Math.Round(gravity.Y);
+            }
         }
 
     }

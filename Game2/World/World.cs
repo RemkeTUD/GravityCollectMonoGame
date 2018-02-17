@@ -28,6 +28,9 @@ namespace Game1
         public string currentTheme = "Normal";
 
         BlockType currentBlockType = BlockType.GREEN;
+
+        public Vector2 playerSpawn = new Vector2(1000,1000);
+
         public World(int width, int height, ContentManager content)
         {
             this.width = width; this.height = height;

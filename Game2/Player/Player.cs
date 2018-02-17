@@ -37,7 +37,8 @@ namespace Game1
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-
+            rect.X = (int)pos.X;
+            rect.Y = (int)pos.Y;
             spriteBatch.Draw(textureTest, destinationRectangle: rect, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f));
             
         }
@@ -237,7 +238,7 @@ namespace Game1
         {
             this.speed = 0;
             this.fallSpeed = 0;
-            this.pos = new Vector2(900, 900);
+            this.pos = Game1.world.playerSpawn;
             foreach (Item item in Game1.world.items)
                 item.reset();
             WorldInfo.gravity = new Vector2(0, 1);

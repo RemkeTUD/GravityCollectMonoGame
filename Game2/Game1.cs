@@ -48,8 +48,8 @@ namespace Game1
             cManager = Content;
             penumbra = new PenumbraComponent(this);
             penumbra.Lights.Add(light);
-            penumbra.AmbientColor = new Color(0.97f,0.97f,0.97f,1);
-            penumbra.AmbientColor = new Color(0.2f, 0.2f, 0.2f, 1);
+            penumbra.AmbientColor = new Color(0.93f,0.93f,0.93f,1);
+            //penumbra.AmbientColor = new Color(0.2f, 0.2f, 0.2f, 1);
             cam = new Camera2d();
         }
 
@@ -205,6 +205,7 @@ namespace Game1
             penumbra.BeginDraw();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
+
             spriteBatch.Begin(samplerState: SamplerState.PointWrap, transformMatrix: cam.get_transformation(GraphicsDevice));
             world.Draw(spriteBatch);
             player.Draw(spriteBatch);
