@@ -18,8 +18,8 @@ namespace Game1
         public float acceleration = 1.8f, fallAcceleration = 0.8f;
         float maxSpeed = 9, maxFallSpeed = 35;
 
-        public Vector2 size = new Vector2(32, 64);
-        public Rectangle rect = new Rectangle(1000, 1000, 32, 64);
+        public Vector2 size = new Vector2(16, 32);
+        public Rectangle rect = new Rectangle(1000, 1000, 16, 32);
         public Vector2 pos = new Vector2(1000,1000);
         KeyboardState state, prevState;
         bool flipped;

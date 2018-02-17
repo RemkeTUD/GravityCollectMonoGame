@@ -29,15 +29,15 @@ namespace Game1
         {
             this.type = type;
             neighbours = new Dictionary<string, string>();
-            rect = new Rectangle(0, 0, 32, 32);
+            rect = new Rectangle(0, 0, 16, 16);
             setDefaultNeighbours();
 
             if(type != BlockType.AIR)
             {
                 hull = new Hull(new Vector2(1.0f), new Vector2(-1.0f, 1.0f), new Vector2(-1.0f), new Vector2(1.0f, -1.0f))
                 {
-                    Position = new Vector2(x * 32 + 16, y* 32 + 16),
-                    Scale = new Vector2(16)
+                    Position = new Vector2(x * 16 + 8, y* 16 + 8),
+                    Scale = new Vector2(8)
                 };
                 Game1.penumbra.Hulls.Add(hull);
             }
@@ -57,8 +57,8 @@ namespace Game1
 
         public void draw(SpriteBatch spriteBatch, int x, int y)
         {
-            rect.X = x * 32;
-            rect.Y = y * 32;
+            rect.X = x * 16;
+            rect.Y = y * 16;
             //setTexRegions();
             int texWidth = type.Texture.Width / 4; int texHeight = type.Texture.Height / 4;
             spriteBatch.Draw(type.Texture,

@@ -153,8 +153,8 @@ namespace Game1
 
                     if (Keyboard.GetState().IsKeyDown(Keys.LeftAlt))
                     {
-                        pos.X = pos.X - pos.X % 32;
-                        pos.Y = pos.Y - pos.Y % 32;
+                        pos.X = pos.X - pos.X % 16;
+                        pos.Y = pos.Y - pos.Y % 16;
                     }
 
                     currentDragItem.pos = pos;
@@ -165,27 +165,27 @@ namespace Game1
                     if (!Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                     {
                         currentSelectedItem = null;
-                        int xCoord = ((int)pos.X / 32);
-                        int yCoord = ((int)pos.Y / 32);
+                        int xCoord = ((int)pos.X / 16);
+                        int yCoord = ((int)pos.Y / 16);
                         if (xCoord >= 0 && xCoord < world.width && yCoord >= 0 && yCoord < world.height)
                         {
                             if (!Keyboard.GetState().IsKeyDown(Keys.LeftShift)) {
-                                world.blocks[((int)pos.X / 32), (int)(pos.Y / 32)] = new Block(currentBlockType, xCoord, yCoord);
+                                world.blocks[((int)pos.X / 16), (int)(pos.Y / 16)] = new Block(currentBlockType, xCoord, yCoord);
                                 if(lastIndexClicked.X != -1)
                                 {
-                                    world.setLine((int)lastIndexClicked.X, (int)lastIndexClicked.Y ,((int)pos.X / 32), (int)(pos.Y / 32), currentBlockType);
+                                    world.setLine((int)lastIndexClicked.X, (int)lastIndexClicked.Y ,((int)pos.X / 16), (int)(pos.Y / 16), currentBlockType);
                                 }
-                                lastIndexClicked = new Vector2(((int)pos.X / 32), (int)(pos.Y / 32));
+                                lastIndexClicked = new Vector2(((int)pos.X / 16), (int)(pos.Y / 16));
                             }
                             else
-                                world.fill(((int)pos.X / 32), (int)(pos.Y / 32), currentBlockType, world.get((int)(pos.X / 32), (int)(pos.Y / 32)).Type, 0);
-                            world.setNeighboursOfBlock(((int)pos.X / 32), (int)(pos.Y / 32));
+                                world.fill(((int)pos.X / 16), (int)(pos.Y / 16), currentBlockType, world.get((int)(pos.X / 16), (int)(pos.Y / 16)).Type, 0);
+                            world.setNeighboursOfBlock(((int)pos.X / 16), (int)(pos.Y / 16));
                         }
                     }
                     else
                     {
-                        pos.X = pos.X - pos.X % 32;
-                        pos.Y = pos.Y - pos.Y % 32;
+                        pos.X = pos.X - pos.X % 16;
+                        pos.Y = pos.Y - pos.Y % 16;
                         if (currentSelectedItem is isTraveling)
                             ((isTraveling)currentSelectedItem).SetEndPoint(pos);
                     }
@@ -199,12 +199,12 @@ namespace Game1
             }
             if (state.RightButton == ButtonState.Pressed)
             {
-                int xCoord = ((int)pos.X / 32);
-                int yCoord = ((int)pos.Y / 32);
+                int xCoord = ((int)pos.X / 16);
+                int yCoord = ((int)pos.Y / 16);
                 if (xCoord >= 0 && xCoord < world.width && yCoord >= 0 && yCoord < world.height)
                 {
-                    world.blocks[((int)pos.X / 32), (int)(pos.Y / 32)].removeHull();
-                    world.blocks[((int)pos.X / 32), (int)(pos.Y / 32)] = Game1.world.airDefault;
+                    world.blocks[((int)pos.X / 16), (int)(pos.Y / 16)].removeHull();
+                    world.blocks[((int)pos.X / 16), (int)(pos.Y / 16)] = Game1.world.airDefault;
                     if(prevState.RightButton == ButtonState.Released)
                     world.setNeighboursOfBlocks();
                 }

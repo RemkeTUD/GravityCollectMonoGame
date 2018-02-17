@@ -33,7 +33,7 @@ namespace Game1
         }
         public static Vector2 mapToGridCoords(Vector2 pos)
         {
-            return new Vector2((int)(pos.X / 32), (int)(pos.Y / 32));
+            return new Vector2((int)(pos.X / 16), (int)(pos.Y / 16));
         }
         public static float distanceOfVecs(Vector2 a, Vector2 b)
         {

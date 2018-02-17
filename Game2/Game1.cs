@@ -78,7 +78,7 @@ namespace Game1
 
             }
 
-            cam.Zoom = 0.5f;
+            cam.Zoom = 1f;
             rt = new RenderTarget2D(graphics.GraphicsDevice, 1600, 900);
             graphicsDevice = graphics.GraphicsDevice;
 

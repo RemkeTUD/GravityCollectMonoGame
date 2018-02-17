@@ -88,8 +88,8 @@ namespace Game1
         {
             spriteBatch.Draw(
                 background,
-                position: Game1.getPlayer().pos * 0.5f - new Vector2(1100,1000),
-                scale: new Vector2(4,4),
+                position: Game1.getPlayer().pos * 0.5f - new Vector2(600,600),
+                scale: new Vector2(2,2),
                 effects: SpriteEffects.None,
                 layerDepth: 1);
 
