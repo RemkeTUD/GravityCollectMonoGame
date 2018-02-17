@@ -22,6 +22,7 @@ namespace Game1
         public Rectangle rect = new Rectangle(1000, 1000, 32, 64);
         public Vector2 pos = new Vector2(1000,1000);
         KeyboardState state, prevState;
+        bool flipped;
 
         int framesInAir = 0, framesSpacePressed = 0;
         public Player(ContentManager content)
@@ -39,7 +40,12 @@ namespace Game1
         {
             rect.X = (int)pos.X;
             rect.Y = (int)pos.Y;
-            spriteBatch.Draw(textureTest, destinationRectangle: rect, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f));
+            SpriteEffects effect;
+            if (flipped)
+                effect = SpriteEffects.FlipHorizontally;
+            else
+                effect = SpriteEffects.None;
+            spriteBatch.Draw(textureTest, destinationRectangle: rect, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
             
         }
         public void Input(float delta)
@@ -125,6 +131,7 @@ namespace Game1
         {
             if (state.IsKeyDown(Keys.A))
             {
+                flipped = true;
                 if (speed > -maxSpeed + isGrounded().getRealSpeed())
                 {
                     if (isGrounded().collided)
@@ -135,6 +142,7 @@ namespace Game1
             }
             else if (state.IsKeyDown(Keys.D))
             {
+                flipped = false;
                 if (speed < maxSpeed + isGrounded().getRealSpeed())
                 {
                     if (isGrounded().collided)
