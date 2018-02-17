@@ -47,7 +47,7 @@ namespace Game1
         public void removeHull()
         {
             if(type != BlockType.AIR) {
-                Game1.penumbra.Hulls.CollectionChanged += delegate { Console.WriteLine("Test"); };
+                //Game1.penumbra.Hulls.CollectionChanged += delegate { Console.WriteLine("Test"); };
             Game1.penumbra.Hulls.Remove(hull);
                 hull = null;
                 
@@ -73,15 +73,16 @@ namespace Game1
 
         public void setDefaultNeighbours()
         {
-            Neighbours["Left"] = "Air";
-            Neighbours["Right"] = "Air";
-            Neighbours["Up"] = "Air";
-            Neighbours["Down"] = "Air";
+            string air = "Air";
+            Neighbours["Left"] = air;
+            Neighbours["Right"] = air;
+            Neighbours["Up"] = air;
+            Neighbours["Down"] = air;
 
-            Neighbours["UpLeft"] = "Air";
-            Neighbours["UpRight"] = "Air";
-            Neighbours["DownLeft"] = "Air";
-            Neighbours["DownRight"] = "Air";
+            Neighbours["UpLeft"] = air;
+            Neighbours["UpRight"] = air;
+            Neighbours["DownLeft"] = air;
+            Neighbours["DownRight"] = air;
         }
 
         public void setTexRegions()

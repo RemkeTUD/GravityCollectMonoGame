@@ -134,7 +134,7 @@ namespace Game1
                         break;
                     }
                 }
-                if(kstate.IsKeyDown(Keys.LeftControl))
+                if(kstate.IsKeyDown(Keys.P))
                 {
                     Game1.world.playerSpawn = pos;
                     Game1.getPlayer().pos = pos;
@@ -166,7 +166,7 @@ namespace Game1
                     currentDragItem.pos = pos;
                     currentDragItem.spawnPos = currentDragItem.pos;
                 }
-                else if (!isGuiClicked() && Keyboard.GetState().IsKeyUp(Keys.LeftControl)) 
+                else if (!isGuiClicked() && Keyboard.GetState().IsKeyUp(Keys.P)) 
                 {
                     if (!Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                     {

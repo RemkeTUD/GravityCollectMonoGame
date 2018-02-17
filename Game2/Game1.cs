@@ -170,11 +170,23 @@ namespace Game1
                         world.correctRightCollisions();
                         world.correctLeftCollisions();
 
+
+                        if(Math.Abs(player.fallSpeed) > Math.Abs(player.speed)) {
+
                         player.correctUpCollision();
                         player.correctDownCollision();
 
                         player.correctRightCollision();
                         player.correctLeftCollision();
+                        } else
+                        {
+                            player.correctRightCollision();
+                            player.correctLeftCollision();
+
+                            player.correctUpCollision();
+                            player.correctDownCollision();
+
+                        }
 
                         player.inputGravityChange();
 
@@ -186,6 +198,12 @@ namespace Game1
             world.cleanDestroyedItems();
 
             ExplosionHandler.update();
+
+
+            if (state.IsKeyDown(Keys.Z) && prevState.IsKeyUp(Keys.Z))
+            {
+                penumbra.Visible = !penumbra.Visible;
+            }
 
             cam.update();
             base.Update(gameTime);
@@ -200,7 +218,7 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-
+            
             light.Position = player.getCenter();
             //GraphicsDevice.SetRenderTarget(rt);
             penumbra.Transform = cam.get_transformation(GraphicsDevice);
