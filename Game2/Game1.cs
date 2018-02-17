@@ -171,7 +171,7 @@ namespace Game1
                         world.correctLeftCollisions();
 
 
-                        if(Math.Abs(player.fallSpeed) > Math.Abs(player.speed)) {
+                        if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
 
                         player.correctUpCollision();
                         player.correctDownCollision();
