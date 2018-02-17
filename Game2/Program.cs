@@ -16,7 +16,7 @@ namespace Game1
         {
             using (var game = new Game1()) {
                 game.IsMouseVisible = true;
-                game.IsFixedTimeStep = false;
+                game.IsFixedTimeStep = true;
                 game.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / 60.0f);
                 game.Run();
             }
