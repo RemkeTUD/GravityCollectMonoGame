@@ -68,7 +68,7 @@ namespace Game1
         }
 
 
-        Button buttonAngleSpeedPlus;
+        Button buttonAngleSpeedPlus, buttonAngleSpeedMinus;
 
         public override void drawParamMenu(SpriteBatch batch)
         {
@@ -77,12 +77,19 @@ namespace Game1
             buttonAngleSpeedPlus.Draw(batch);
             buttonAngleSpeedPlus.Update();
             batch.DrawString(font, ((int)(angleSpeed * 1000f)).ToString(), new Vector2(1300, 800), Color.Black);
+
+            if (buttonAngleSpeedMinus == null)
+                buttonAngleSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { angleSpeed -= 0.001f; }, "saw");
+            buttonAngleSpeedMinus.Draw(batch);
+            buttonAngleSpeedMinus.Update();
+
+
             base.drawParamMenu(batch);
         }
 
         public override bool isClickedParamMenu()
         {
-            return base.isClickedParamMenu() || buttonAngleSpeedPlus.isClicked();
+            return base.isClickedParamMenu() || buttonAngleSpeedPlus.isClicked() || buttonAngleSpeedMinus.isClicked();
         }
 
     }

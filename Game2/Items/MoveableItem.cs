@@ -76,7 +76,7 @@ namespace Game1
 
         }
 
-        Button buttonSpeedPlus;
+        Button buttonSpeedPlus, buttonSpeedMinus;
 
         public override void drawParamMenu(SpriteBatch batch)
         {
@@ -84,12 +84,19 @@ namespace Game1
                 buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 0.1f; }, "saw");
             buttonSpeedPlus.Draw(batch);
             buttonSpeedPlus.Update();
+
+
+            if (buttonSpeedMinus == null)
+                buttonSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { travelSpeed -= 0.1f; }, "saw");
+            buttonSpeedMinus.Draw(batch);
+            buttonSpeedMinus.Update();
+
             batch.DrawString(font, ((travelSpeed)).ToString(), new Vector2(1300, 800), Color.Black);
             base.drawParamMenu(batch);
         }
         public override bool isClickedParamMenu()
         {
-            return base.isClickedParamMenu() || buttonSpeedPlus.isClicked();
+            return base.isClickedParamMenu() || buttonSpeedPlus.isClicked() || buttonSpeedMinus.isClicked() ;
         }
 
     }

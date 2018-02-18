@@ -16,7 +16,7 @@ namespace Game1
 
         public GravityBox(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
-            this.fallHeight = 100;
+            this.fallHeight = 16;
             this.horizontal = false;
         }
 
@@ -70,22 +70,26 @@ namespace Game1
         }
 
 
-        Button buttonLengthPlus;
-        Button buttonHorizontalPlus;
+        Button buttonLengthPlus, buttonLengthMinus;
+        Button buttonHorizontalToggle;
 
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonLengthPlus == null)
                 buttonLengthPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { fallHeight += 16f; }, "saw");
-            if (buttonHorizontalPlus == null)
-                buttonHorizontalPlus = new Button(new Rectangle(1200, 700, 32, 32), delegate { horizontal =!horizontal; }, "saw");
+            if (buttonLengthMinus == null)
+                buttonLengthPlus = new Button(new Rectangle(1300-32, 700, 32, 32), delegate { fallHeight -= 16f; }, "saw");
+            if (buttonHorizontalToggle == null)
+                buttonHorizontalToggle = new Button(new Rectangle(1200, 700, 32, 32), delegate { horizontal =!horizontal; }, "saw");
 
+            buttonLengthPlus.Draw(batch);
+            buttonLengthPlus.Update();
             buttonLengthPlus.Draw(batch);
             buttonLengthPlus.Update();
             batch.DrawString(font, ((int)(fallHeight /16)).ToString(), new Vector2(1300, 800), Color.Black);
 
-            buttonHorizontalPlus.Draw(batch);
-            buttonHorizontalPlus.Update();
+            buttonHorizontalToggle.Draw(batch);
+            buttonHorizontalToggle.Update();
             batch.DrawString(font, ((horizontal)).ToString(), new Vector2(1200, 800), Color.Black);
 
             base.drawParamMenu(batch);
@@ -93,7 +97,7 @@ namespace Game1
 
         public override bool isClickedParamMenu()
         {
-            return base.isClickedParamMenu() || buttonLengthPlus.isClicked() || buttonHorizontalPlus.isClicked(); ;
+            return base.isClickedParamMenu() || buttonLengthPlus.isClicked() || buttonLengthMinus.isClicked() || buttonHorizontalToggle.isClicked(); ;
         }
 
     }
