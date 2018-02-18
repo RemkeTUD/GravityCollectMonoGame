@@ -12,7 +12,7 @@ namespace Game1
     {
         public StaticEnemy(ContentManager content, float X, float Y, float width, float height) : base(content, X, Y, width, height)
         {
-            textureTest = content.Load<Texture2D>("staticenemy");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/staticenemy");
         }
         public override void Update()
         {

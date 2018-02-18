@@ -21,7 +21,7 @@ namespace Game1
         public BoxDisapear(ContentManager content, float x, float y, float width, float height, ButtonDisapear button = null) : base(content, x, y, width, height)
         {
             if(textureTest == null)
-            textureTest = content.Load<Texture2D>("boxdisapear");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/boxdisapear");
             this.button = button;
         }
 

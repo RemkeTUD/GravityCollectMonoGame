@@ -13,7 +13,7 @@ namespace Game1
     {
         public CanonBall(ContentManager content, float x, float y, float width, float height, Vector2 speed) : base(content, x, y, width, height)
         {
-            textureTest = content.Load<Texture2D>("canonBall");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/canonBall");
             speed.Normalize();
             Console.WriteLine(speed);
             this.speed = speed * 35f;

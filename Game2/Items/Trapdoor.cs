@@ -16,14 +16,14 @@ namespace Game1
 
         public Trapdoor(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
-            textureTest = content.Load<Texture2D>("openwall");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/openwall");
             this.rotation = 0;
             angle = (float)Math.PI * 0.5f * (rotation + 1);
         }
 
         public Trapdoor(ContentManager content, float x, float y, float width, float height, int rotation = 0) : base(content, x, y, width, height)
         {
-            textureTest = content.Load<Texture2D>("openwall");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/openwall");
             this.rotation = rotation;
             angle = (float)Math.PI * 0.5f * (rotation + 1);
         }

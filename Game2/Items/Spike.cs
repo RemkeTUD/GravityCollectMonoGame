@@ -15,7 +15,7 @@ namespace Game1
 
         public Spike(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
-            textureTest = content.Load<Texture2D>("spike");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/spike");
             
         }
 

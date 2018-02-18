@@ -30,7 +30,7 @@ namespace Game1
         public Laser(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             this.angleSpeed = 0;
-            textureTest = content.Load<Texture2D>("laser");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/laser");
             Game1.penumbra.Lights.Add(light);
             raycast = new Raycast(pos, new Vector2(0, 0), 3000);
         }
@@ -38,7 +38,7 @@ namespace Game1
         public Laser(ContentManager content, float x, float y, float width, float height, float angleSpeed = 0) : base(content, x, y, width, height)
         {
             this.angleSpeed = angleSpeed;
-            textureTest = content.Load<Texture2D>("laser");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/laser");
             //Game1.penumbra.Lights.Add(light);
             raycast = new Raycast(pos, new Vector2(0,0), 3000);
         }

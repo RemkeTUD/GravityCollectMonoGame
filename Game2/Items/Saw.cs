@@ -13,12 +13,12 @@ namespace Game1
     {
         public Saw(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, width, 1, new Vector2(x,y))
         {
-            textureTest = content.Load<Texture2D>("saw");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/saw");
 
         }
         public Saw(ContentManager content, float x, float y, float width, float speed, Vector2 endPoint) : base(content, x, y, width, width, speed, endPoint)
         {
-            textureTest = content.Load<Texture2D>("saw");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/saw");
             
         }
 

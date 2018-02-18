@@ -16,7 +16,7 @@ namespace Game1
         {
             speed = new Vector2(0,0);
             if (textureTest == null)
-                textureTest = content.Load<Texture2D>("box");
+                textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/box");
 
 
 

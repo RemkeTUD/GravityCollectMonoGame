@@ -13,7 +13,7 @@ namespace Game1
     {
         public Enemy(ContentManager content, float X, float Y, float width, float height) : base(content, X, Y, width, height)
         {
-            textureTest = content.Load<Texture2D>("enemy");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/enemy");
            // setUpDirection();
         }
 

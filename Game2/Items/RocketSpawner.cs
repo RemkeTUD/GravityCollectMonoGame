@@ -16,14 +16,14 @@ namespace Game1
         public RocketSpawner(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height, 0, new Vector2(x,y))
         {
             this.content = content;
-            textureTest = content.Load<Texture2D>("rocketlauncher");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/rocketlauncher");
 
         }
 
         public RocketSpawner(ContentManager content, float x, float y, float width, float height, float speed, Vector2 endPoint) : base(content, x, y, width, height, speed, endPoint)
         {
             this.content = content;
-            textureTest = content.Load<Texture2D>("rocketlauncher");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/rocketlauncher");
 
         }
 

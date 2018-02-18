@@ -65,7 +65,7 @@ namespace Game1
             //addItem(button);
 
             //addItem(new Saw(content, 1024, 704, 128, 1, new Vector2(1200, 900)));
-            addItem(new RocketSpawner(content, 1024, 1024, 64, 64, 1, new Vector2(1024, 1500)));
+           // addItem(new RocketSpawner(content, 1024, 1024, 64, 64, 1, new Vector2(1024, 1500)));
 
             reloadBackgroundTexture(Game1.cManager, currentTheme);
 

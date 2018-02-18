@@ -17,7 +17,7 @@ namespace Game1
         public Rocket(ContentManager content, float x, float y, float width, float height, Vector2 movingDirection) : base(content, x, y, width, height)
         {
 
-            textureTest = content.Load<Texture2D>("rocket");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/rocket");
             this.travelSpeed = 15f;
             angle = MapTools.VectorToAngle(movingDirection) ;
 

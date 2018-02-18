@@ -13,7 +13,7 @@ namespace Game1
         int frames;
         public Canon(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
-            textureTest = content.Load<Texture2D>("Canon");
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/Canon");
         }
 
         public override void Update()
