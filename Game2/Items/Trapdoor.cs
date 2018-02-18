@@ -79,5 +79,22 @@ namespace Game1
 
             return base.collidesWithMovingPoint(point, direction);
         }
+
+        Button buttonRotationPlus;
+
+        public override void drawParamMenu(SpriteBatch batch)
+        {
+            if (buttonRotationPlus == null)
+                buttonRotationPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { rotation += 1; rotation %= 4; }, "saw");
+            buttonRotationPlus.Draw(batch);
+            buttonRotationPlus.Update();
+            batch.DrawString(font, ((int)(rotation)).ToString(), new Vector2(1300, 800), Color.Black);
+            base.drawParamMenu(batch);
+        }
+        public override bool isClickedParamMenu()
+        {
+            return base.isClickedParamMenu() || buttonRotationPlus.isClicked();
+        }
+
     }
 }

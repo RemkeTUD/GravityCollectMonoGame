@@ -11,16 +11,20 @@ namespace Game1
 {
     public class Enemy : Item
     {
+
+        float travelSpeed = 1f;
         public Enemy(ContentManager content, float X, float Y, float width, float height) : base(content, X, Y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/enemy");
-           // setUpDirection();
+            
         }
 
         public override void Update()
         {
             if (CollidesWithPlayer())
                 Game1.getPlayer().die();
+            if(pos == spawnPos)
+                setUpDirection();
             updateDirection();
             base.Update();
         }
@@ -89,6 +93,8 @@ namespace Game1
             {
                 speed.X = 0; speed.Y = 1;
             }
+            speed.Normalize();
+            speed *= travelSpeed;
 
         }
 
@@ -103,6 +109,23 @@ namespace Game1
 
             return setArray;
 
+        }
+
+        Button buttonSpeedPlus;
+
+        public override void drawParamMenu(SpriteBatch batch)
+        {
+            if (buttonSpeedPlus == null)
+                buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 0.1f; }, "saw");
+            buttonSpeedPlus.Draw(batch);
+            buttonSpeedPlus.Update();
+            batch.DrawString(font, ((int)(travelSpeed * 10f)).ToString(), new Vector2(1300, 800), Color.Black);
+            base.drawParamMenu(batch);
+        }
+
+        public override bool isClickedParamMenu()
+        {
+            return base.isClickedParamMenu() || buttonSpeedPlus.isClicked();
         }
     }
 }

@@ -63,6 +63,20 @@ namespace Game1
 
             base.Update();
         }
+        Button buttonSpeedPlus;
+        public override void drawParamMenu(SpriteBatch batch)
+        {
+            if (buttonSpeedPlus == null)
+                buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 0.1f; }, "saw");
+            buttonSpeedPlus.Draw(batch);
+            buttonSpeedPlus.Update();
+            batch.DrawString(font, ((travelSpeed)).ToString(), new Vector2(1300, 800), Color.Black);
+            base.drawParamMenu(batch);
+        }
+        public override bool isClickedParamMenu()
+        {
+            return base.isClickedParamMenu() || buttonSpeedPlus.isClicked();
+        }
 
     }
 }

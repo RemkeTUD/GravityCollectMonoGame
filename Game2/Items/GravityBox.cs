@@ -62,6 +62,32 @@ namespace Game1
             base.Update();
         }
 
-        
+
+        Button buttonLengthPlus;
+        Button buttonHorizontalPlus;
+
+        public override void drawParamMenu(SpriteBatch batch)
+        {
+            if (buttonLengthPlus == null)
+                buttonLengthPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { fallHeight += 16f; }, "saw");
+            if (buttonHorizontalPlus == null)
+                buttonHorizontalPlus = new Button(new Rectangle(1200, 700, 32, 32), delegate { horizontal =!horizontal; }, "saw");
+
+            buttonLengthPlus.Draw(batch);
+            buttonLengthPlus.Update();
+            batch.DrawString(font, ((int)(fallHeight /16)).ToString(), new Vector2(1300, 800), Color.Black);
+
+            buttonHorizontalPlus.Draw(batch);
+            buttonHorizontalPlus.Update();
+            batch.DrawString(font, ((horizontal)).ToString(), new Vector2(1200, 800), Color.Black);
+
+            base.drawParamMenu(batch);
+        }
+
+        public override bool isClickedParamMenu()
+        {
+            return base.isClickedParamMenu() || buttonLengthPlus.isClicked() || buttonHorizontalPlus.isClicked(); ;
+        }
+
     }
 }
