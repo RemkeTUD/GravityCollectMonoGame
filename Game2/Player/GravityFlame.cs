@@ -40,16 +40,21 @@ namespace Game1
             frame2++;
             Vector2 vecToPlayer;
             //if (id == 0 || frame2 < 60)
-                 vecToPlayer = (Game1.getPlayer().getCenter() - pos);
+            vecToPlayer = (Game1.getPlayer().getCenter() - pos);
             //else
             //    vecToPlayer = (Game1.getPlayer().flames[id-1].getCenter() - pos);
             vecToPlayer.Normalize();
             vecToPlayer *= 16 * (id+1);
 
             
+           // if((pos.X > Game1.getPlayer().getCenter().X && !Game1.getPlayer().flipped) || (pos.X < Game1.getPlayer().getCenter().X && Game1.getPlayer().flipped)) {
+                //vecToPlayer.Y *= 0.3f;
+           //     goalPos = Game1.getPlayer().getCenter() - vecToPlayer * 0.5f;
 
-            goalPos = Game1.getPlayer().getCenter() - vecToPlayer;
-            
+           // }
+          //  else
+                goalPos = Game1.getPlayer().getCenter() - vecToPlayer;
+
             pos += (goalPos - pos) * 0.2f;
 
             if (WorldInfo.gravity.X == 0)

@@ -22,7 +22,7 @@ namespace Game1
         public Rectangle rect = new Rectangle(1000, 1000, 16, 32);
         public Vector2 pos = new Vector2(1000,1000);
         KeyboardState state, prevState;
-        bool flipped;
+        public bool flipped;
 
         int framesInAir = 0, framesSpacePressed = 0;
 
