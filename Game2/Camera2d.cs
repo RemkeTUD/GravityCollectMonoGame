@@ -15,12 +15,14 @@ namespace Game1
         public Matrix _transform; // Matrix Transform
         public Vector2 _pos; // Camera Position
         protected float _rotation; // Camera Rotation
-        public Vector2 offset = new Vector2(0,0);
+
+        public float targetZoom = 1;
+
         public Camera2d()
         {
             _zoom = 1.0f;
             _rotation = 0.0f;
-            _pos = Vector2.Zero;
+            _pos = new Vector2(1000,1000);
         }
         public float Zoom
         {
@@ -47,24 +49,40 @@ namespace Game1
         }
         public void update()
         {
+
+            if (Zoom < targetZoom) {
+                Zoom *= 1.1f;
+                if(Zoom > targetZoom)
+                {
+                    Zoom = targetZoom;
+                }
+            }
+            if (Zoom > targetZoom)
+            {
+                Zoom /= 1.1f;
+                if (Zoom < targetZoom)
+                {
+                    Zoom = targetZoom;
+                }
+            }
+
             if (Game1.running)
             {
                 Pos = Game1.getPlayer().getCenter();
-                offset = new Vector2(0, 0);
             } else
             {
-                Pos = Game1.getPlayer().getCenter() + offset;
+                //Pos = Game1.getPlayer().getCenter() + offset;
 
                 KeyboardState state = Keyboard.GetState();
 
                 if (state.IsKeyDown(Keys.D))
-                    offset -= new Vector2(-8, 0);
+                    Pos -= new Vector2(-8, 0);
                 if (state.IsKeyDown(Keys.A))
-                    offset -= new Vector2(+8, 0);
+                    Pos -= new Vector2(+8, 0);
                 if (state.IsKeyDown(Keys.S))
-                    offset -= new Vector2(0,-8);
+                    Pos -= new Vector2(0,-8);
                 if (state.IsKeyDown(Keys.W))
-                    offset -= new Vector2(0,+8);
+                    Pos -= new Vector2(0,+8);
 
             }
 

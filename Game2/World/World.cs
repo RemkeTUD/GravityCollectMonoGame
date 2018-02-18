@@ -86,9 +86,17 @@ namespace Game1
 
         public void Draw(SpriteBatch spriteBatch)
         {
+
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+                Game1.getCam().targetZoom = 4;
+            if (Keyboard.GetState().IsKeyDown(Keys.K))
+                Game1.getCam().targetZoom = 2f;
+            if (Keyboard.GetState().IsKeyDown(Keys.J))
+                Game1.getCam().targetZoom = 1f;
+
             spriteBatch.Draw(
                 background,
-                position: Game1.getPlayer().pos * 0.5f - new Vector2(600,600),
+                position: Game1.getCam().Pos * 0.5f - new Vector2(600,600),
                 scale: new Vector2(2,2),
                 effects: SpriteEffects.None,
                 layerDepth: 1);

@@ -114,12 +114,7 @@ namespace Game1
                 Game1.getCam().Zoom *= 1.01f;
             if (state.ScrollWheelValue < 0)
                 Game1.getCam().Zoom /= 1.01f;
-            if (kstate.IsKeyDown(Keys.L))
-                Game1.getCam().Zoom = 2;
-            if (kstate.IsKeyDown(Keys.K))
-                Game1.getCam().Zoom = 1.4f;
-            if (kstate.IsKeyDown(Keys.J))
-                Game1.getCam().Zoom = 1f;
+            
 
 
             Vector2 pos = Vector2.Transform(new Vector2(state.X - 0, state.Y - 0), Matrix.Invert(Game1.getCam().get_transformation(graphicsDevice)));
@@ -138,7 +133,6 @@ namespace Game1
                 {
                     Game1.world.playerSpawn = pos;
                     Game1.getPlayer().pos = pos;
-                    Game1.getCam().offset = new Vector2(0, 0);
                 }
             }
             if (state.RightButton == ButtonState.Pressed && prevState.RightButton == ButtonState.Released)
