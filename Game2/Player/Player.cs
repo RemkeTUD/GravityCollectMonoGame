@@ -25,11 +25,19 @@ namespace Game1
         bool flipped;
 
         int framesInAir = 0, framesSpacePressed = 0;
+
+        public List<GravityFlame> flames = new List<GravityFlame>();
         public Player(ContentManager content)
         {
             textureTest = content.Load<Texture2D>("player");
             state = Keyboard.GetState();
             prevState = Keyboard.GetState();
+
+            flames.Add(new GravityFlame());
+            flames.Add(new GravityFlame());
+            flames.Add(new GravityFlame());
+            flames.Add(new GravityFlame());
+
         }
 
         public Vector2 getCenter()
@@ -46,7 +54,18 @@ namespace Game1
             else
                 effect = SpriteEffects.None;
             spriteBatch.Draw(textureTest, destinationRectangle: rect, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
-            
+
+            int flameId = 0;
+            foreach(GravityFlame flame in flames)
+            {
+                
+                flame.update(flameId);
+                
+                flame.draw(spriteBatch);
+                flameId++;
+
+            }
+
         }
         public void Input(float delta)
         {
@@ -221,6 +240,7 @@ namespace Game1
                 float tempSpeed = speed;
                 speed = fallSpeed;
                 fallSpeed = -tempSpeed;
+                //flames.RemoveAt(0);
 
             }
             if (state.IsKeyDown(Keys.Left) && prevState.IsKeyUp(Keys.Left))
@@ -231,6 +251,7 @@ namespace Game1
                 float tempSpeed = speed;
                 speed = -fallSpeed;
                 fallSpeed = tempSpeed;
+                //flames.RemoveAt(0);
 
             }
             if (state.IsKeyDown(Keys.Up) && prevState.IsKeyUp(Keys.Up))
@@ -238,6 +259,7 @@ namespace Game1
                 WorldInfo.setAngle(180);
                 fallSpeed *= -1;
                 speed *= -1;
+                //flames.RemoveAt(0);
             }
             prevState = state;
         }

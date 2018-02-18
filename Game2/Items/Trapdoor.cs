@@ -57,6 +57,7 @@ namespace Game1
                 if (WorldInfo.gravity.X < -0.5f)
                     isOpen = false;
             }
+            angle = (float)Math.PI * 0.5f * (rotation + 1);
             base.Update();
         }
 

@@ -73,6 +73,7 @@
     <Compile Include="Items\Trapdoor.cs" />
     <Compile Include="LineRenderer.cs" />
     <Compile Include="Player\CollisionInfo.cs" />
+    <Compile Include="Player\GravityFlame.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
