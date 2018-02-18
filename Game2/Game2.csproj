@@ -56,6 +56,7 @@
     <Compile Include="Items\ExplosionHandler.cs" />
     <Compile Include="Items\FreeGravityBox.cs" />
     <Compile Include="Items\GravityBox.cs" />
+    <Compile Include="Items\InversedGravityBox.cs" />
     <Compile Include="Items\isTraveling.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\Laser.cs" />

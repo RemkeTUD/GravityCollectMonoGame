@@ -47,6 +47,8 @@ namespace Game1
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(GravityBox), Game1.cManager, 32, 32); }, "box"));
             y++;
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(InversedGravityBox), Game1.cManager, 32, 32); }, "box"));
+            y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(TractorBeam), Game1.cManager, 32, 32); }, "TractorBeam"));
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Spike), Game1.cManager, 32, 32); }, "Spike"));

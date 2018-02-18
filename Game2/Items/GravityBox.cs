@@ -11,8 +11,8 @@ namespace Game1
 {
     public class GravityBox : CollisionBox
     {
-        bool horizontal = false;
-        float fallHeight;
+        protected bool horizontal = false;
+        protected float fallHeight;
 
         public GravityBox(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
@@ -41,7 +41,15 @@ namespace Game1
 
         public override void Update()
         {
-            if(!horizontal) {
+            calcDirection();
+            base.Update();
+        }
+
+
+        public virtual void calcDirection()
+        {
+            if (!horizontal)
+            {
 
                 speed.Y += 0.8f * ((float)(WorldInfo.gravity.Y));
 
@@ -59,7 +67,6 @@ namespace Game1
                 if (speed.X < 0 && pos.X < spawnPos.X)
                     speed.X = 0;
             }
-            base.Update();
         }
 
 
