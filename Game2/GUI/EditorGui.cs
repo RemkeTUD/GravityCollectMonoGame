@@ -110,10 +110,10 @@ namespace Game1
             state = Mouse.GetState();
             World world = Game1.world;
 
-            if (state.ScrollWheelValue > 0)
-                Game1.getCam().Zoom *= 1.01f;
-            if (state.ScrollWheelValue < 0)
-                Game1.getCam().Zoom /= 1.01f;
+            if (state.ScrollWheelValue > prevState.ScrollWheelValue)
+                Game1.getCam().targetZoom *= 1.2f;
+            if (state.ScrollWheelValue < prevState.ScrollWheelValue)
+                Game1.getCam().targetZoom /= 1.2f;
             
 
 
