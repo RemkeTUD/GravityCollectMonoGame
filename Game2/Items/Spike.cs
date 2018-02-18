@@ -40,9 +40,11 @@ namespace Game1
             
             startPoint = spawnPos;
             LineRenderer.DrawLine(spriteBatch, startPoint, endPoint, Color.Black, 3);
+#pragma warning disable CS0618 // Typ oder Element ist veraltet
             spriteBatch.Draw(
                textureTest,
-               position: spawnPos,
+               //position: spawnPos,
+               destinationRectangle: new Rectangle((int)spawnPos.X, (int)spawnPos.Y, (int)size.X, (int)size.Y +1 +(int)((pos - spawnPos).Length())),
                sourceRectangle: new Rectangle(0, 0, (int)(textureTest.Width * 0.51f), textureTest.Height + 1+(int)((pos - spawnPos).Length() * ((float)textureTest.Height/size.Y))),
                color: new Color(255, 255, 255, alpha),
                rotation: angle - (float)(Math.PI * 0.5f),
@@ -50,6 +52,7 @@ namespace Game1
                scale: new Vector2(2f * (size.X / (float)textureTest.Width), 1f * ((size.Y) / (float)textureTest.Height)),
                effects: SpriteEffects.FlipVertically,
                layerDepth: 1f);
+#pragma warning restore CS0618 // Typ oder Element ist veraltet
 
             spriteBatch.Draw(
                textureTest,
