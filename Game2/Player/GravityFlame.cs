@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Penumbra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Game1
     public class GravityFlame
     {
         Texture2D textureTest;
-        public Vector2 size = new Vector2(8, 8);
+        public Vector2 size = new Vector2(16,16);
         public Rectangle rect = new Rectangle(1000, 1000, 8, 8);
         public Vector2 pos = new Vector2(999, 999);
 
@@ -27,11 +28,25 @@ namespace Game1
         Vector2 offset = new Vector2(0,0);
         Vector2 offsetGoal = new Vector2(0, 0);
         static Random rnd = new Random();
+
+        Light light = new PointLight
+        {
+            Scale = new Vector2(50), // Range of the light source (how far the light will travel)
+            Radius = 0.1f,
+            Intensity = 0.5f,
+            CastsShadows = false,
+            Color = new Color(1f, 0.2f, 1f, 1)
+            
+        };
+
         public GravityFlame()
         {
             
             frame = rnd.Next(10000);
-            textureTest = Game1.cManager.Load<Texture2D>("player");
+            textureTest = Game1.cManager.Load<Texture2D>("flame");
+
+            Game1.penumbra.Lights.Add(light);
+
         }
 
         public void update(int id)
@@ -69,6 +84,8 @@ namespace Game1
             }
 
             offset += (offsetGoal - offset) * 0.3f;
+
+            light.Position = pos + offset;
 
         }
 

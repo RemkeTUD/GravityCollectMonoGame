@@ -28,10 +28,10 @@ namespace Game1
 
         Light light = new PointLight
         {
-            Scale = new Vector2(3000), // Range of the light source (how far the light will travel)
-            Radius = 20f,
-            Intensity = 0.1f,
-            ShadowType = ShadowType.Solid // Will not lit hulls themselves
+            Scale = new Vector2(1000), // Range of the light source (how far the light will travel)
+            Radius = 10f,
+            Intensity = 0.3f,
+            ShadowType = ShadowType.Illuminated // Will not lit hulls themselves
         };
 
         
