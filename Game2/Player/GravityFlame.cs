@@ -54,23 +54,36 @@ namespace Game1
             frame++;
             frame2++;
             Vector2 vecToPlayer;
-            //if (id == 0 || frame2 < 60)
-            vecToPlayer = (Game1.getPlayer().getCenter() - pos);
-            //else
-            //    vecToPlayer = (Game1.getPlayer().flames[id-1].getCenter() - pos);
+            if (id == 0)
+                vecToPlayer = (Game1.getPlayer().getCenter() - pos);
+            else
+                vecToPlayer = (Game1.getPlayer().flames[id-1].getCenter() - pos);
             vecToPlayer.Normalize();
-            vecToPlayer *= 16 * (id+1);
+            vecToPlayer *= 16;
 
-            
-           // if((pos.X > Game1.getPlayer().getCenter().X && !Game1.getPlayer().flipped) || (pos.X < Game1.getPlayer().getCenter().X && Game1.getPlayer().flipped)) {
-                //vecToPlayer.Y *= 0.3f;
-           //     goalPos = Game1.getPlayer().getCenter() - vecToPlayer * 0.5f;
 
-           // }
-          //  else
-                goalPos = Game1.getPlayer().getCenter() - vecToPlayer;
+            // if((pos.X > Game1.getPlayer().getCenter().X && !Game1.getPlayer().flipped) || (pos.X < Game1.getPlayer().getCenter().X && Game1.getPlayer().flipped)) {
+            //vecToPlayer.Y *= 0.3f;
+            //     goalPos = Game1.getPlayer().getCenter() - vecToPlayer * 0.5f;
 
-            pos += (goalPos - pos) * 0.2f;
+            // }
+            //  else
+            if (id == 0) {
+                if ((Game1.getPlayer().getCenter() - vecToPlayer - pos).Length() > vecToPlayer.Length())
+                {
+                    goalPos = Game1.getPlayer().getCenter() - vecToPlayer;
+
+                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.1f;
+                }
+            }
+            else {
+                if ((Game1.getPlayer().flames[id - 1].getCenter() - vecToPlayer - pos).Length() > vecToPlayer.Length())
+                {
+                    goalPos = Game1.getPlayer().flames[id - 1].getCenter() - vecToPlayer;
+
+                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.1f;
+                }
+            }
 
             if (WorldInfo.gravity.X == 0)
             {
