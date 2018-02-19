@@ -59,21 +59,24 @@ namespace Game1
             else
                 vecToPlayer = (Game1.getPlayer().flames[id-1].getCenter() - pos);
             vecToPlayer.Normalize();
-            vecToPlayer *= 16;
+            if (id == 0)
+                vecToPlayer *= 8;
+            else
+                vecToPlayer *= 16;
 
 
             // if((pos.X > Game1.getPlayer().getCenter().X && !Game1.getPlayer().flipped) || (pos.X < Game1.getPlayer().getCenter().X && Game1.getPlayer().flipped)) {
             //vecToPlayer.Y *= 0.3f;
             //     goalPos = Game1.getPlayer().getCenter() - vecToPlayer * 0.5f;
 
-            // }
-            //  else
+                // }
+                //  else
             if (id == 0) {
                 if ((Game1.getPlayer().getCenter() - vecToPlayer - pos).Length() > vecToPlayer.Length())
                 {
                     goalPos = Game1.getPlayer().getCenter() - vecToPlayer;
 
-                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.1f;
+                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.2f;
                 }
             }
             else {
@@ -81,7 +84,7 @@ namespace Game1
                 {
                     goalPos = Game1.getPlayer().flames[id - 1].getCenter() - vecToPlayer;
 
-                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.1f;
+                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.2f;
                 }
             }
 
