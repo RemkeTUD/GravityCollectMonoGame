@@ -60,7 +60,7 @@ namespace Game1
                 vecToPlayer = (Game1.getPlayer().flames[id-1].getCenter() - pos);
             vecToPlayer.Normalize();
             if (id == 0)
-                vecToPlayer *= 8;
+                vecToPlayer *= 14;
             else
                 vecToPlayer *= 16;
 
@@ -76,7 +76,7 @@ namespace Game1
                 {
                     goalPos = Game1.getPlayer().getCenter() - vecToPlayer;
 
-                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.2f;
+                    
                 }
             }
             else {
@@ -84,17 +84,22 @@ namespace Game1
                 {
                     goalPos = Game1.getPlayer().flames[id - 1].getCenter() - vecToPlayer;
 
-                    pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.2f;
+                   
                 }
+                
             }
+
+            if ((((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.2f).Length() < (goalPos - pos).Length())
+                pos += ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)) * 0.2f;
+
 
             if (WorldInfo.gravity.X == 0)
             {
-                offsetGoal.Y = (float)Math.Sin(frame * 0.03f) * 5;
+                offsetGoal.Y = (float)Math.Sin((float)frame * 0.03f) * 5;
                 offsetGoal.X = 0;
             }
             else {
-                offsetGoal.X = (float)Math.Sin(frame * 0.03f) * 5;
+                offsetGoal.X = (float)Math.Sin((float)frame * 0.03f) * 5;
                 offsetGoal.Y = 0;
 
             }
