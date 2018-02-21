@@ -220,7 +220,7 @@ namespace Game1
         {
             
             light.Position = player.getCenter();
-            //GraphicsDevice.SetRenderTarget(rt);
+            GraphicsDevice.SetRenderTarget(rt);
             penumbra.Transform = cam.get_transformation(GraphicsDevice);
             penumbra.BeginDraw();
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -231,14 +231,14 @@ namespace Game1
             player.Draw(spriteBatch);
             
             spriteBatch.End();
-
-            //GraphicsDevice.SetRenderTarget(null);
-            /*
+            penumbra.Draw(gameTime);
+            GraphicsDevice.SetRenderTarget(null);
+            
             spriteBatch.Begin();
             spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), Color.White);
             spriteBatch.End();
-            */
-            penumbra.Draw(gameTime);
+            
+            
             guiBatch.Begin();
             EditorGui.Draw(guiBatch);
             guiBatch.End();
