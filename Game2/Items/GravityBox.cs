@@ -78,14 +78,14 @@ namespace Game1
             if (buttonLengthPlus == null)
                 buttonLengthPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { fallHeight += 16f; }, "saw");
             if (buttonLengthMinus == null)
-                buttonLengthPlus = new Button(new Rectangle(1300-32, 700, 32, 32), delegate { fallHeight -= 16f; }, "saw");
+                buttonLengthMinus = new Button(new Rectangle(1300-32, 700, 32, 32), delegate { fallHeight -= 16f; }, "saw");
             if (buttonHorizontalToggle == null)
                 buttonHorizontalToggle = new Button(new Rectangle(1200, 700, 32, 32), delegate { horizontal =!horizontal; }, "saw");
 
             buttonLengthPlus.Draw(batch);
             buttonLengthPlus.Update();
-            buttonLengthPlus.Draw(batch);
-            buttonLengthPlus.Update();
+            buttonLengthMinus.Draw(batch);
+            buttonLengthMinus.Update();
             batch.DrawString(font, ((int)(fallHeight /16)).ToString(), new Vector2(1300, 800), Color.Black);
 
             buttonHorizontalToggle.Draw(batch);

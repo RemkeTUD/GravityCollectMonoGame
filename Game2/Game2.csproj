@@ -62,6 +62,7 @@
     <Compile Include="Items\Laser.cs" />
     <Compile Include="Items\MoveableItem.cs" />
     <Compile Include="Items\Moving Box.cs" />
+    <Compile Include="Items\OnGravityChangeBlock.cs" />
     <Compile Include="Items\OpenWall.cs" />
     <Compile Include="Items\Raycast.cs" />
     <Compile Include="Items\Rocket.cs" />

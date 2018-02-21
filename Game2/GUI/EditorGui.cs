@@ -61,6 +61,8 @@ namespace Game1
                 ((BoxDisapear)currentDragItem).button = button;
             }, "Button"));
             y++;
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(OnGravityChangeBlock), Game1.cManager, 32, 32); }, "Box"));
+            y++;
 
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
             guiElements.Add(saveText);

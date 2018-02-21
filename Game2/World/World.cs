@@ -34,6 +34,8 @@ namespace Game1
 
         public Vector2 playerSpawn = new Vector2(1000,1000);
 
+        public bool gravityChanged = false;
+
         public World(int width, int height, ContentManager content)
         {
             this.width = width; this.height = height;
@@ -140,7 +142,7 @@ namespace Game1
                 items.ElementAt(i).Update();
             }
 
-            
+            gravityChanged = false;
 
             
         }

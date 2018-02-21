@@ -241,7 +241,7 @@ namespace Game1
                 speed = fallSpeed;
                 fallSpeed = -tempSpeed;
                 //flames.RemoveAt(0);
-
+                Game1.world.gravityChanged = true;
             }
             if (state.IsKeyDown(Keys.Left) && prevState.IsKeyUp(Keys.Left))
             {
@@ -252,7 +252,7 @@ namespace Game1
                 speed = -fallSpeed;
                 fallSpeed = tempSpeed;
                 //flames.RemoveAt(0);
-
+                Game1.world.gravityChanged = true;
             }
             if (state.IsKeyDown(Keys.Up) && prevState.IsKeyUp(Keys.Up))
             {
@@ -260,6 +260,7 @@ namespace Game1
                 fallSpeed *= -1;
                 speed *= -1;
                 //flames.RemoveAt(0);
+                Game1.world.gravityChanged = true;
             }
             prevState = state;
         }
