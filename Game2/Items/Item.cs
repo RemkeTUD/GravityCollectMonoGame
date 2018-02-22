@@ -26,7 +26,7 @@ namespace Game1
         public bool destroy = false;
 
         public static SpriteFont font;
-
+        public Rectangle sourceRect;
         public Item(ContentManager content, float x, float y, float width, float height)
         {
             pos.X = x;
@@ -44,14 +44,20 @@ namespace Game1
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
+            Console.WriteLine(sourceRect);
+            if (sourceRect.Width == 0)
+            {
+                sourceRect = new Rectangle(0, 0, textureTest.Width, textureTest.Height);
+
+            }
             spriteBatch.Draw(
                 textureTest,
                 position: pos,
-                sourceRectangle: new Rectangle(0, 0, textureTest.Width, textureTest.Height),
+                sourceRectangle: sourceRect,
                 color: new Color(r,g,b, alpha),
                 rotation: angle,
-                origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f),
-                scale: new Vector2(1 * (size.X / (float)textureTest.Width), 1 * (size.Y / (float)textureTest.Height)),
+                origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
+                scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
                 effects: SpriteEffects.None,
                 layerDepth: 1);
         }

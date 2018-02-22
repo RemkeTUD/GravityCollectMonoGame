@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animation.cs" />
     <Compile Include="Camera2d.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GUI\Button.cs" />
