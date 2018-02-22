@@ -24,7 +24,7 @@ namespace Game1
         KeyboardState state, prevState;
         public bool flipped;
 
-        int framesInAir = 0, framesSpacePressed = 0;
+        public int framesInAir = 0, framesSpacePressed = 0;
 
         public List<GravityFlame> flames = new List<GravityFlame>();
         public Player(ContentManager content)
@@ -420,18 +420,18 @@ namespace Game1
             if (g.Y > 0.5f)
                 fallSpeed = -speed;
             if (g.X < -0.5f)
-                this.speed = speed;
-            if (g.X > 0.5f)
                 this.speed = -speed;
+            if (g.X > 0.5f)
+                this.speed = speed;
         }
 
         public void setXSpeed(float speed)
         {
             Vector2 g = WorldInfo.gravity;
             if (g.X < -0.5f)
-                fallSpeed = speed;
-            if (g.X > 0.5f)
                 fallSpeed = -speed;
+            if (g.X > 0.5f)
+                fallSpeed = speed;
             if (g.Y < -0.5f)
                 this.speed = -speed;
             if (g.Y > 0.5f)

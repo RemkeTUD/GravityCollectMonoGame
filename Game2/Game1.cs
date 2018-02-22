@@ -41,7 +41,7 @@ namespace Game1
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferHeight = 900;
             graphics.PreferredBackBufferWidth = 1600;
-            graphics.SynchronizeWithVerticalRetrace = true;
+            //graphics.SynchronizeWithVerticalRetrace = true;
             //graphics.ToggleFullScreen();
 
             Content.RootDirectory = "Content";
