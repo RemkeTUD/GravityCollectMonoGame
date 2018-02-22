@@ -78,6 +78,7 @@
     <Compile Include="Player\CollisionInfo.cs" />
     <Compile Include="Player\GravityFlame.cs" />
     <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\PlayerPositionShow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World\Block.cs" />

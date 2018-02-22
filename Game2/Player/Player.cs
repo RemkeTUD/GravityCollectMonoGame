@@ -26,6 +26,12 @@ namespace Game1
 
         public int framesInAir = 0, framesSpacePressed = 0;
 
+        long frames = 0;
+
+        bool showPlayerPositions = false;
+
+        List<PlayerPositionShow> playerPositions = new List<PlayerPositionShow>();
+
         public List<GravityFlame> flames = new List<GravityFlame>();
         public Player(ContentManager content)
         {
@@ -66,6 +72,14 @@ namespace Game1
 
             }
 
+            int playerPosID = 30;
+            if(!Game1.running && showPlayerPositions)
+            foreach (PlayerPositionShow pl in playerPositions) {
+
+                    pl.Draw(spriteBatch, playerPosID);
+                    playerPosID--;
+                }
+
         }
         public void Input(float delta)
         {
@@ -75,19 +89,21 @@ namespace Game1
 
             state = Keyboard.GetState();
 
-
-            
+            if (state.IsKeyDown(Keys.I) && prevState.IsKeyUp(Keys.I))
+                showPlayerPositions = !showPlayerPositions;
 
             inputJump();
             
 
             inputMovement();
 
+            if(frames % 10 == 0)
+                playerPositions.Add(new PlayerPositionShow(pos, size, flipped, WorldInfo.gravity));
+            if (playerPositions.Count > 30)
+                playerPositions.RemoveAt(0);
 
+            frames++;
 
-            
-
-            
 
         }
 
