@@ -79,7 +79,7 @@ namespace Game1
             }
 
             cam.Zoom = 1f;
-            rt = new RenderTarget2D(graphics.GraphicsDevice, 1600, 900);
+            rt = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
             graphicsDevice = graphics.GraphicsDevice;
 
             penumbra.Initialize();
@@ -234,7 +234,7 @@ namespace Game1
             penumbra.Draw(gameTime);
             GraphicsDevice.SetRenderTarget(null);
             
-            spriteBatch.Begin();
+            spriteBatch.Begin(samplerState: SamplerState.PointWrap);
             spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), Color.White);
             spriteBatch.End();
             

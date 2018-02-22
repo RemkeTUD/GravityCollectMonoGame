@@ -176,12 +176,14 @@ namespace Game1
                         if (xCoord >= 0 && xCoord < world.width && yCoord >= 0 && yCoord < world.height)
                         {
                             if (!Keyboard.GetState().IsKeyDown(Keys.LeftShift)) {
+                                if(world.blocks[((int)pos.X / 16), (int)(pos.Y / 16)].Type != currentBlockType) {
                                 world.blocks[((int)pos.X / 16), (int)(pos.Y / 16)] = new Block(currentBlockType, xCoord, yCoord);
                                 if(lastIndexClicked.X != -1)
                                 {
                                     world.setLine((int)lastIndexClicked.X, (int)lastIndexClicked.Y ,((int)pos.X / 16), (int)(pos.Y / 16), currentBlockType);
                                 }
                                 lastIndexClicked = new Vector2(((int)pos.X / 16), (int)(pos.Y / 16));
+                                }
                             }
                             else
                                 world.fill(((int)pos.X / 16), (int)(pos.Y / 16), currentBlockType, world.get((int)(pos.X / 16), (int)(pos.Y / 16)).Type, 0);
