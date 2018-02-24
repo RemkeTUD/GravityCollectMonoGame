@@ -24,6 +24,7 @@ namespace Game1
         protected int alpha = 255 ,r =255,g=255 ,b=255;
 
         public bool destroy = false;
+        public bool hasIllumination = false;
 
         public static SpriteFont font;
         public Rectangle sourceRect;
@@ -60,6 +61,28 @@ namespace Game1
                 scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
                 effects: SpriteEffects.None,
                 layerDepth: 1);
+        }
+
+        public virtual void drawIllumination(SpriteBatch spriteBatch)
+        {
+            if (hasIllumination)
+            {
+                if (sourceRect.Width == 0)
+                {
+                    sourceRect = new Rectangle(0, 0, textureTest.Width, textureTest.Height);
+
+                }
+                spriteBatch.Draw(
+                    textureTest,
+                    position: pos,
+                    sourceRectangle: sourceRect,
+                    color: new Color(r, g, b, alpha),
+                    rotation: angle,
+                    origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
+                    scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
+                    effects: SpriteEffects.None,
+                    layerDepth: 1);
+            }
         }
 
         public virtual void Update()

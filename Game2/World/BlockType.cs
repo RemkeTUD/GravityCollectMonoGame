@@ -10,25 +10,27 @@ namespace Game1
 {
     public class BlockType
     {
-        public static readonly BlockType GREEN = new BlockType("Green","themes/Normal/blocks/green", true, true, false);
-        public static readonly BlockType STONE = new BlockType("Stone", "themes/Normal/blocks/stone", true, true, false);
-        public static readonly BlockType CLEAN = new BlockType("Clean", "themes/Normal/blocks/clean", true, true, false);
-        public static readonly BlockType SPIKE = new BlockType("Spike", "themes/Normal/blocks/spike", false, false, true);
-        public static readonly BlockType AIR = new BlockType("Air", "themes/Normal/blocks/air", false, true, false);
+        public static readonly BlockType GREEN = new BlockType("Green","themes/Normal/blocks/green", true, true, false, true);
+        public static readonly BlockType STONE = new BlockType("Stone", "themes/Normal/blocks/stone", true, true, false, false);
+        public static readonly BlockType CLEAN = new BlockType("Clean", "themes/Normal/blocks/clean", true, true, false, false);
+        public static readonly BlockType SPIKE = new BlockType("Spike", "themes/Normal/blocks/spike", false, false, true, false);
+        public static readonly BlockType AIR = new BlockType("Air", "themes/Normal/blocks/air", false, true, false, false);
         private string texName;
         private string name;
         private bool collision;
         private Texture2D texture;
         bool connectsToSelf;
         bool killing;
+        bool illumination;
 
-        public BlockType(string name, string texName, bool collision, bool connectsToSelf, bool killing)
+        public BlockType(string name, string texName, bool collision, bool connectsToSelf, bool killing, bool illumination)
         {
             this.name = name;
             this.texName = texName;
             this.collision = collision;
             this.connectsToSelf = connectsToSelf;
             this.killing = killing;
+            this.illumination = illumination;
 
         }
         public void reloadTexture(ContentManager content, string theme)
@@ -68,5 +70,6 @@ namespace Game1
         public Texture2D Texture { get { return texture; } }
         public bool Collision { get { return collision; } }
         public bool Killing { get { return killing; } }
+        public bool Illumination { get { return illumination; } }
     }
 }

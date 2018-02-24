@@ -67,7 +67,23 @@ namespace Game1
                 color: Color.White);
         }
 
-        
+        public void drawIllumination(SpriteBatch spriteBatch, int x, int y)
+        {
+            if (type.Illumination)
+            {
+                rect.X = x * 16;
+                rect.Y = y * 16;
+                //setTexRegions();
+                int texWidth = type.Texture.Width / 4; int texHeight = type.Texture.Height / 4;
+                spriteBatch.Draw(type.Texture,
+                    destinationRectangle: rect,
+                    sourceRectangle: new Rectangle(texRegionX * texWidth, texRegionY * texHeight, texWidth, texHeight),
+                    color: Color.White);
+            }
+
+        }
+
+
         public Dictionary<string, string> Neighbours { get { return neighbours; } }
         public BlockType Type { get { return type; } }
 

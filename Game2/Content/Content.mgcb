@@ -6824,3 +6824,15 @@
 /processorParam:TextureFormat=Color
 /build:sign.png
 
+#begin shader/horBlur.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:shader/horBlur.fx
+
+#begin shader/vertBlur.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:shader/vertBlur.fx
+

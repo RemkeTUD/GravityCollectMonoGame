@@ -126,6 +126,31 @@ namespace Game1
             
 
         }
+        
+        public void drawIllumination(SpriteBatch spriteBatch)
+        {
+            Vector2 startVec = MapTools.mapToGridCoords(Game1.getCam().Pos);
+
+            for (int x = (int)startVec.X - 100; x < (int)startVec.X + 100; x++)
+            {
+                for (int y = (int)startVec.Y - 64; y < (int)startVec.Y + 64; y++)
+                {
+                    if (x > 0 && y > 0 && x < width && y < height && blocks[x, y] != airDefault)
+                    {
+
+
+                        blocks[x, y].drawIllumination(spriteBatch, x, y);
+
+                    }
+                }
+            }
+
+            foreach (Item item in items)
+            {
+                item.drawIllumination(spriteBatch);
+            }
+        }
+
         public void applyChanges(GraphicsDevice graphicsDevice)
         {
 

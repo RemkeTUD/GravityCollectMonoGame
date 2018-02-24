@@ -19,6 +19,10 @@ namespace Game1
         public static World world;
         static Camera2d cam;
         RenderTarget2D rt;
+
+        RenderTarget2D bloomTarget;
+        BlurPass blurPass;
+
         public static bool running = false;
         KeyboardState state, prevState;
         public static ContentManager cManager;
@@ -80,6 +84,8 @@ namespace Game1
 
             cam.Zoom = 1f;
             rt = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
+            bloomTarget = new RenderTarget2D(GraphicsDevice, 160, 90);
+            blurPass = new BlurPass(GraphicsDevice, Content,160, 90, 1.0f);
             graphicsDevice = graphics.GraphicsDevice;
 
             penumbra.Initialize();
@@ -233,12 +239,30 @@ namespace Game1
             spriteBatch.End();
             penumbra.Draw(gameTime);
             GraphicsDevice.SetRenderTarget(null);
-            
-            spriteBatch.Begin(samplerState: SamplerState.PointWrap);
+
+            /* Bloom Pass Begin */
+            GraphicsDevice.SetRenderTarget(bloomTarget);
+            GraphicsDevice.Clear(Color.Black);
+            float zoom = cam.Zoom;
+            cam.Zoom = zoom * 0.1f;
+            spriteBatch.Begin(samplerState: SamplerState.LinearClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
+            world.drawIllumination(spriteBatch);
+            spriteBatch.End();
+            GraphicsDevice.SetRenderTarget(null);
+            cam.Zoom = zoom;
+            blurPass.blur(spriteBatch, bloomTarget, bloomTarget);
+
+            /* Bloom Pass End */
+
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), Color.White);
             spriteBatch.End();
-            
-            
+
+            spriteBatch.Begin(blendState: BlendState.Additive, samplerState: SamplerState.LinearClamp);
+            spriteBatch.Draw(bloomTarget, new Rectangle(0, 0, 1600, 900), Color.White);
+            spriteBatch.End();
+
+
             guiBatch.Begin();
             EditorGui.Draw(guiBatch);
             guiBatch.End();
