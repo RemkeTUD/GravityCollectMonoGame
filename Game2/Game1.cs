@@ -20,6 +20,7 @@ namespace Game1
         static Camera2d cam;
         RenderTarget2D rt;
 
+        RenderTarget2D preBloomTarget;
         RenderTarget2D bloomTarget;
         BlurPass blurPass;
 
@@ -84,6 +85,7 @@ namespace Game1
 
             cam.Zoom = 1f;
             rt = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
+            preBloomTarget = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
             bloomTarget = new RenderTarget2D(GraphicsDevice, 160, 90);
             blurPass = new BlurPass(GraphicsDevice, Content,160, 90, 1.0f);
             graphicsDevice = graphics.GraphicsDevice;
@@ -241,16 +243,13 @@ namespace Game1
             GraphicsDevice.SetRenderTarget(null);
 
             /* Bloom Pass Begin */
-            GraphicsDevice.SetRenderTarget(bloomTarget);
+            GraphicsDevice.SetRenderTarget(preBloomTarget);
             GraphicsDevice.Clear(Color.Black);
-            float zoom = cam.Zoom;
-            cam.Zoom = zoom * 0.1f;
             spriteBatch.Begin(samplerState: SamplerState.LinearClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
             world.drawIllumination(spriteBatch);
             spriteBatch.End();
             GraphicsDevice.SetRenderTarget(null);
-            cam.Zoom = zoom;
-            blurPass.blur(spriteBatch, bloomTarget, bloomTarget);
+            blurPass.blur(spriteBatch, preBloomTarget, bloomTarget);
 
             /* Bloom Pass End */
 

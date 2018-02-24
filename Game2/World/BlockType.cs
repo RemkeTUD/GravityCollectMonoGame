@@ -10,10 +10,11 @@ namespace Game1
 {
     public class BlockType
     {
-        public static readonly BlockType GREEN = new BlockType("Green","themes/Normal/blocks/green", true, true, false, true);
+        public static readonly BlockType GREEN = new BlockType("Green","themes/Normal/blocks/green", true, true, false, false);
         public static readonly BlockType STONE = new BlockType("Stone", "themes/Normal/blocks/stone", true, true, false, false);
         public static readonly BlockType CLEAN = new BlockType("Clean", "themes/Normal/blocks/clean", true, true, false, false);
         public static readonly BlockType SPIKE = new BlockType("Spike", "themes/Normal/blocks/spike", false, false, true, false);
+        public static readonly BlockType LAVA = new BlockType("Lava", "themes/Normal/blocks/lava", false, true, true, true);
         public static readonly BlockType AIR = new BlockType("Air", "themes/Normal/blocks/air", false, true, false, false);
         private string texName;
         private string name;
@@ -46,6 +47,7 @@ namespace Game1
                 yield return STONE;
                 yield return CLEAN;
                 yield return SPIKE;
+                yield return LAVA;
                 yield return AIR;
             }
         }
