@@ -39,7 +39,6 @@ namespace Game1
             vertBlur.Parameters["factor"].SetValue(factor);
 
             GraphicsDevice.SetRenderTarget(blurTarget);
-
             spriteBatch.Begin(0, null, SamplerState.LinearClamp, null, null, horBlur);
             spriteBatch.Draw(source, new Rectangle(0, 0, width, height), Color.White);
             spriteBatch.End();

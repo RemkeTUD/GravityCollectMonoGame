@@ -23,6 +23,8 @@ namespace Game1
         RenderTarget2D preBloomTarget;
         RenderTarget2D bloomTarget;
         BlurPass blurPass;
+        BlurPass blurPass2;
+        Mipmap bloomMipmap;
 
         public static bool running = false;
         KeyboardState state, prevState;
@@ -86,10 +88,11 @@ namespace Game1
             cam.Zoom = 1f;
             rt = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
             preBloomTarget = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
-            bloomTarget = new RenderTarget2D(GraphicsDevice, 160, 90);
-            blurPass = new BlurPass(GraphicsDevice, Content,160, 90, 1.0f);
+            bloomTarget = new RenderTarget2D(GraphicsDevice, 50, 28);
+            blurPass = new BlurPass(GraphicsDevice, Content, 50, 28, 1.5f);
+            blurPass2 = new BlurPass(GraphicsDevice, Content, 400, 225, 1f);
             graphicsDevice = graphics.GraphicsDevice;
-
+            bloomMipmap = new Mipmap(preBloomTarget, 5, GraphicsDevice);
             penumbra.Initialize();
 
 
@@ -249,16 +252,20 @@ namespace Game1
             world.drawIllumination(spriteBatch);
             spriteBatch.End();
             GraphicsDevice.SetRenderTarget(null);
-            blurPass.blur(spriteBatch, preBloomTarget, bloomTarget);
-
+            bloomMipmap.generate(spriteBatch);
+            //            blurPass.blur(spriteBatch, bloomMipmap.getLevel(4), bloomMipmap.getLevel(4));
+            blurPass2.blur(spriteBatch, bloomMipmap.getLevel(1), bloomMipmap.getLevel(1));
+            blurPass.blur(spriteBatch, bloomMipmap.getLevel(4), bloomMipmap.getLevel(4));
             /* Bloom Pass End */
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), Color.White);
             spriteBatch.End();
 
+            
             spriteBatch.Begin(blendState: BlendState.Additive, samplerState: SamplerState.LinearClamp);
-            spriteBatch.Draw(bloomTarget, new Rectangle(0, 0, 1600, 900), Color.White);
+            spriteBatch.Draw(bloomMipmap.getLevel(1), new Rectangle(0, 0, 1600, 900), Color.White);
+            spriteBatch.Draw(bloomMipmap.getLevel(4), new Rectangle(0, 0, 1600, 900), Color.White);
             spriteBatch.End();
 
 

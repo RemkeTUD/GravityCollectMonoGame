@@ -52,6 +52,18 @@ namespace Game1
             }
             base.Draw(spriteBatch);
         }
+
+        public override void drawIllumination(SpriteBatch spriteBatch)
+        {
+
+
+            if (Game1.running)
+            {
+                LineRenderer.DrawLine(spriteBatch, pos, hitOfRaycast.pos, Color.Red, 3f);
+                light.Position = hitOfRaycast.pos - raycast.dir * 5;
+            }
+            base.drawIllumination(spriteBatch);
+        }
         public override void Update()
         {
 
