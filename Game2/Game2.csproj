@@ -69,6 +69,7 @@
     <Compile Include="Items\Rocket.cs" />
     <Compile Include="Items\RocketSpawner.cs" />
     <Compile Include="Items\Saw.cs" />
+    <Compile Include="Items\Sign.cs" />
     <Compile Include="Items\Spike.cs" />
     <Compile Include="Items\StaticEnemy.cs" />
     <Compile Include="Items\tractorBeam.cs" />

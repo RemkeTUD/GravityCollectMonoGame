@@ -66,6 +66,15 @@ namespace Game1
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Trampoline), Game1.cManager, 32, 32); }, "OpenWall"));
             y++;
 
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
+                currentDragItem = Game1.world.createInstanceAtMouse(typeof(Sign), Game1.cManager, 32, 32);
+                List<Textbox> boxes = new List<Textbox>();
+                boxes.Add(new Textbox("Test"));
+                boxes.Add(new Textbox("Test2"));
+                ((Sign)currentDragItem).setDialog(new TextDialog(boxes));
+            }, "sign"));
+            y++;
+
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
             guiElements.Add(saveText);
             guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world.loadFromXML(); }, "saw"));
