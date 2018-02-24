@@ -6836,3 +6836,10 @@
 /processorParam:DebugMode=Auto
 /build:shader/vertBlur.fx
 
+#begin TextBoxFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:TextBoxFont.spritefont
+

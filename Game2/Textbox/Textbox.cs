@@ -22,7 +22,7 @@ namespace Game1
             rect = new Rectangle(100, 500, 1400, 300);
             textureTest = Game1.cManager.Load<Texture2D>("textfield");
             if (font == null)
-                font = Game1.cManager.Load<SpriteFont>("font");
+                font = Game1.cManager.Load<SpriteFont>("textboxfont");
         }
 
 
