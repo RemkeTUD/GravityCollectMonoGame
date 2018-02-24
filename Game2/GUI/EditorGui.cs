@@ -69,7 +69,7 @@ namespace Game1
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
                 currentDragItem = Game1.world.createInstanceAtMouse(typeof(Sign), Game1.cManager, 32, 32);
                 List<Textbox> boxes = new List<Textbox>();
-                boxes.Add(new Textbox("Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "));
+                boxes.Add(new Textbox("Dies ist ein Text zum ausprobieren der soeben eingefuegten Funktion. Felix suckt. Remke ist der Beste. Es macht Spass sich dumme Texte auszudenken, insbesondere wenn sie Felix beleidigen. Eisbaeren sind keine Rudeltiere, sie jagen Robben zum ueberleben und Leben in Australien."));
                 boxes.Add(new Textbox("Test2"));
                 ((Sign)currentDragItem).setDialog(new TextDialog(boxes));
             }, "sign"));
