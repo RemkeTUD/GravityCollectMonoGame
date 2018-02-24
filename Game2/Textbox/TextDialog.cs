@@ -45,6 +45,7 @@ namespace Game1
             if(isInDialog && state.IsKeyDown(Keys.Space)&& prevstate.IsKeyUp(Keys.Space))
             {
                 nextID();
+                Game1.getPlayer().prevState = Keyboard.GetState();
             }
             prevstate = Keyboard.GetState();
         }

@@ -21,7 +21,7 @@ namespace Game1
         public Vector2 size = new Vector2(14, 32);
         public Rectangle rect = new Rectangle(1000, 1000, 16, 32);
         public Vector2 pos = new Vector2(1000,1000);
-        KeyboardState state, prevState;
+        public KeyboardState state, prevState;
         public bool flipped;
 
         public int framesInAir = 0, framesSpacePressed = 0;
@@ -141,7 +141,7 @@ namespace Game1
 
             }
 
-            if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space) && isGrounded().collided)
+            if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space) && isGrounded().collided && !TextDialog.isInDialog)
             {
                 fallSpeed += -5;
                 framesSpacePressed++;
@@ -164,7 +164,7 @@ namespace Game1
         }
         public void inputMovement()
         {
-            if (state.IsKeyDown(Keys.A))
+            if (state.IsKeyDown(Keys.A) && !TextDialog.isInDialog)
             {
                 flipped = true;
                 if (speed > -maxSpeed + isGrounded().getRealSpeed())
@@ -175,7 +175,7 @@ namespace Game1
                         speed -= acceleration * 0.35f;
                 }
             }
-            else if (state.IsKeyDown(Keys.D))
+            else if (state.IsKeyDown(Keys.D) && !TextDialog.isInDialog)
             {
                 flipped = false;
                 if (speed < maxSpeed + isGrounded().getRealSpeed())
