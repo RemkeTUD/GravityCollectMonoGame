@@ -265,6 +265,7 @@ namespace Game1
 
             guiBatch.Begin();
             EditorGui.Draw(guiBatch);
+            TextDialog.draw(guiBatch);
             guiBatch.End();
             
             base.Draw(gameTime);
