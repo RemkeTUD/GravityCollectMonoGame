@@ -30,7 +30,27 @@ namespace Game1
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(textureTest, rect, Color.White);
-            spriteBatch.DrawString(font, text, rect.Location.ToVector2() + new Vector2(40,40), Color.Black);
+            spriteBatch.DrawString(font, parseText(text), rect.Location.ToVector2() + new Vector2(40,40), Color.Black);
+        }
+
+        private String parseText(String text)
+        {
+            String line = String.Empty;
+            String returnString = String.Empty;
+            String[] wordArray = text.Split(' ');
+
+            foreach (String word in wordArray)
+            {
+                if (font.MeasureString(line + word).Length() > 1350)
+                {
+                    returnString = returnString + line + '\n';
+                    line = String.Empty;
+                }
+
+                line = line + word + ' ';
+            }
+
+            return returnString + line;
         }
 
     }
