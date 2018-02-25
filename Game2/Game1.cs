@@ -57,7 +57,7 @@ namespace Game1
             penumbra = new PenumbraComponent(this);
             penumbra.Lights.Add(light);
             penumbra.AmbientColor = new Color(0.93f,0.93f,0.93f,1);
-            penumbra.AmbientColor = new Color(0.2f, 0.2f, 0.2f, 1);
+            //penumbra.AmbientColor = new Color(0.2f, 0.2f, 0.2f, 1);
             cam = new Camera2d();
         }
 
@@ -131,6 +131,11 @@ namespace Game1
 
             state = Keyboard.GetState();
 
+            if (state.IsKeyDown(Keys.O))
+                penumbra.AmbientColor = new Color(penumbra.AmbientColor.R+1, penumbra.AmbientColor.G+1, penumbra.AmbientColor.B+1);
+            if (state.IsKeyDown(Keys.I))
+                penumbra.AmbientColor = new Color(penumbra.AmbientColor.R - 1, penumbra.AmbientColor.G - 1, penumbra.AmbientColor.B - 1);
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -167,14 +172,15 @@ namespace Game1
 
                         world.frameInit();
 
-                        if (!TextDialog.isInDialog)
+                        //if (!TextDialog.isInDialog)
                             player.Input((float)gameTime.ElapsedGameTime.TotalSeconds);
                         if (!TextDialog.isInDialog)
                             world.update(GraphicsDevice);
                         world.checkForWalls();
                         FreeGravityBox.setAllSpeedChains();
-                        world.applyChanges(GraphicsDevice);
                         if (!TextDialog.isInDialog)
+                            world.applyChanges(GraphicsDevice);
+                        //if (!TextDialog.isInDialog)
                             player.update(0);
 
 
