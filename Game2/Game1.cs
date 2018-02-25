@@ -274,7 +274,7 @@ namespace Game1
             /* Bloom Pass End */
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), new Color(0.4f, 0.4f, 0.4f, 1));
+            spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), Color.White);
             spriteBatch.End();
 
             if (bloomEnabled)
