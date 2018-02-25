@@ -25,6 +25,7 @@ namespace Game1
         BlurPass blurPass;
         BlurPass blurPass2;
         Mipmap bloomMipmap;
+        bool bloomEnabled = true;
 
         public static bool running = false;
         KeyboardState state, prevState;
@@ -89,8 +90,8 @@ namespace Game1
             rt = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
             preBloomTarget = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
             bloomTarget = new RenderTarget2D(GraphicsDevice, 50, 28);
-            blurPass = new BlurPass(GraphicsDevice, Content, 50, 28, 1.5f);
-            blurPass2 = new BlurPass(GraphicsDevice, Content, 400, 225, 1f);
+            blurPass = new BlurPass(GraphicsDevice, Content, 50, 28, 3f);
+            blurPass2 = new BlurPass(GraphicsDevice, Content, 400, 225, 1.2f);
             graphicsDevice = graphics.GraphicsDevice;
             bloomMipmap = new Mipmap(preBloomTarget, 5, GraphicsDevice);
             penumbra.Initialize();
@@ -218,6 +219,11 @@ namespace Game1
                 penumbra.Visible = !penumbra.Visible;
             }
 
+            if(state.IsKeyDown(Keys.Y) && prevState.IsKeyUp(Keys.Y))
+            {
+                bloomEnabled = !bloomEnabled;
+            }
+
             cam.update();
             base.Update(gameTime);
 
@@ -239,7 +245,7 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
 
-            spriteBatch.Begin(samplerState: SamplerState.PointWrap, transformMatrix: cam.get_transformation(GraphicsDevice));
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
             world.Draw(spriteBatch);
             player.Draw(spriteBatch);
             
@@ -252,6 +258,7 @@ namespace Game1
             GraphicsDevice.Clear(Color.Black);
             spriteBatch.Begin(samplerState: SamplerState.LinearClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
             world.drawIllumination(spriteBatch);
+            player.drawIllumination(spriteBatch);
             spriteBatch.End();
             GraphicsDevice.SetRenderTarget(null);
             bloomMipmap.generate(spriteBatch);
@@ -261,14 +268,17 @@ namespace Game1
             /* Bloom Pass End */
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), Color.White);
+            spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), new Color(0.4f, 0.4f, 0.4f, 1));
             spriteBatch.End();
 
-            
-            spriteBatch.Begin(blendState: BlendState.Additive, samplerState: SamplerState.LinearClamp);
-            spriteBatch.Draw(bloomMipmap.getLevel(1), new Rectangle(0, 0, 1600, 900), Color.White);
-            spriteBatch.Draw(bloomMipmap.getLevel(4), new Rectangle(0, 0, 1600, 900), Color.White);
-            spriteBatch.End();
+            if (bloomEnabled)
+            {
+                spriteBatch.Begin(blendState: BlendState.Additive, samplerState: SamplerState.LinearClamp);
+                spriteBatch.Draw(bloomMipmap.getLevel(1), new Rectangle(0, 0, 1600, 900), Color.White);
+                spriteBatch.Draw(bloomMipmap.getLevel(4), new Rectangle(0, 0, 1600, 900), Color.White);
+                spriteBatch.End();
+            }
+
 
 
             guiBatch.Begin();

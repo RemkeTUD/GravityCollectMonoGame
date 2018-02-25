@@ -103,6 +103,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\shader\horBlur.fx" />
+    <Content Include="Content\shader\vertBlur.fx" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

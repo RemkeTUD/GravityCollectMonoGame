@@ -51,9 +51,9 @@ blur.x = input.TextureCoordinates.x;
 for (int i = 0; i < 13; i++)
 {
 	blur.y = input.TextureCoordinates.y + (i - 6) * pixelHeight;
-	color += tex2D(SpriteTextureSampler, blur.xy) * BlurWeights[i] * factor;
+	color += tex2D(SpriteTextureSampler, blur.xy) * BlurWeights[i];
 }
-return color;
+return color * factor;
 }
 
 technique SpriteDrawing

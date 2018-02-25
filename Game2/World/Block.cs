@@ -65,6 +65,7 @@ namespace Game1
                 destinationRectangle: rect,
                 sourceRectangle: new Rectangle(texRegionX * texWidth, texRegionY * texHeight, texWidth, texHeight),
                 color: Color.White);
+                
         }
 
         public void drawIllumination(SpriteBatch spriteBatch, int x, int y)
@@ -78,7 +79,7 @@ namespace Game1
                 spriteBatch.Draw(type.Texture,
                     destinationRectangle: rect,
                     sourceRectangle: new Rectangle(texRegionX * texWidth, texRegionY * texHeight, texWidth, texHeight),
-                    color: Color.White);
+                    color: new Color(0.15f, 0.15f, 0.15f, 1));
             }
 
         }
