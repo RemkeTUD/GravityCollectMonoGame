@@ -55,12 +55,13 @@ namespace Game1
                 Light light = new PointLight
                 {
                     Position = new Vector2(getCenter().X, getCenter().Y) - speed,
-                    Scale = new Vector2(1500), // Range of the light source (how far the light will travel)
+                    Scale = new Vector2(500), // Range of the light source (how far the light will travel)
                     Radius = 1f,
                     Intensity = 1f,
 
-                    Color = new Color(1f, 0.1f, 0, 1),
-                    ShadowType = ShadowType.Solid // Will not lit hulls themselves
+                    Color = new Color(1f, 0.5f, 0, 1),
+                    CastsShadows = false,
+                    ShadowType = ShadowType.Illuminated // Will not lit hulls themselves
 
                 };
 

@@ -23,8 +23,8 @@ namespace Game1
             for(int i = 0; i < explosions.Count; i++)
             {
 
-                explosions[i].Scale -= new Vector2(100f, 100f);
-                if(explosions[i].Scale.X < 100)
+                explosions[i].Scale -= new Vector2(20f, 20f);
+                if(explosions[i].Scale.X < 20)
                 {
                     explosions.RemoveAt(i);
                     i--;
