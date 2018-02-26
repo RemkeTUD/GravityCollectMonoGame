@@ -81,7 +81,11 @@ namespace Game1
             guiElements.Add(saveText);
             guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world.loadFromXML(); }, "saw"));
             guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(); }, "box"));
-            
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
+                TeleporterDestination teleporterDest = (TeleporterDestination)Game1.world.createInstanceAtMouse(typeof(TeleporterDestination), Game1.cManager, 32, 32);
+                currentDragItem = Game1.world.createInstanceAtMouse(typeof(Teleporter), Game1.cManager, 32, 32);
+                ((Teleporter)currentDragItem).dest = teleporterDest;
+            }, "teleporter"));
 
             y++;
 

@@ -73,6 +73,8 @@
     <Compile Include="Items\Sign.cs" />
     <Compile Include="Items\Spike.cs" />
     <Compile Include="Items\StaticEnemy.cs" />
+    <Compile Include="Items\Teleporter.cs" />
+    <Compile Include="Items\TeleporterDestination.cs" />
     <Compile Include="Items\tractorBeam.cs" />
     <Compile Include="Items\Trampoline.cs" />
     <Compile Include="Items\Trapdoor.cs" />
