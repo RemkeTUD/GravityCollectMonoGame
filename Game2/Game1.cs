@@ -173,17 +173,18 @@ namespace Game1
                         world.frameInit();
 
                         //if (!TextDialog.isInDialog)
-                            player.Input((float)gameTime.ElapsedGameTime.TotalSeconds);
+                        player.Input((float)gameTime.ElapsedGameTime.TotalSeconds);
+                        
+                        
+                        //if (!TextDialog.isInDialog)
+                        
                         if (!TextDialog.isInDialog)
                             world.update(GraphicsDevice);
                         world.checkForWalls();
                         FreeGravityBox.setAllSpeedChains();
+                        player.update(0);
                         if (!TextDialog.isInDialog)
                             world.applyChanges(GraphicsDevice);
-                        //if (!TextDialog.isInDialog)
-                            player.update(0);
-
-
 
                         world.correctDownCollisions();
 

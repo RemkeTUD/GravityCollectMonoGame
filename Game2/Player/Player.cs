@@ -52,8 +52,7 @@ namespace Game1
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            rect.X = (int)pos.X;
-            rect.Y = (int)pos.Y;
+            
             SpriteEffects effect;
             if (flipped)
                 effect = SpriteEffects.FlipHorizontally;
@@ -128,7 +127,7 @@ namespace Game1
             {
                 die();
             }
-
+            
 
         }
 
@@ -353,7 +352,7 @@ namespace Game1
 
             foreach (CollisionBox box in Game1.world.collisionBoxes)
             {
-                if (collidesRightWithCollisionBox(box))
+                if (!(box is FreeGravityBox) && collidesRightWithCollisionBox(box))
                     return true;
             }
 
@@ -373,7 +372,7 @@ namespace Game1
 
             foreach (CollisionBox box in Game1.world.collisionBoxes)
             {
-                 if (collidesLeftWithCollisionBox(box))
+                 if (!(box is FreeGravityBox) && collidesLeftWithCollisionBox(box))
                      return true;
             }
             
@@ -504,11 +503,13 @@ namespace Game1
         {
             if ((speed > 0 && !collidesRight()) || (speed < 0 && !collidesLeft()))
             {
-                pos.X += (int)(speed * MapTools.getXMultiplier());
-                pos.Y += (int)(speed * MapTools.getYMultiplier());
+                pos.X += (float)(speed * Math.Round(MapTools.getXMultiplier()));
+                pos.Y += (float)(speed * Math.Round(MapTools.getYMultiplier()));
             }
             else
                 speed = 0;
+            rect.X = (int)pos.X;
+            rect.Y = (int)pos.Y;
         }
 
         public virtual bool collidesWithMovingPoint(Vector2 point, Vector2 direction)
