@@ -74,6 +74,8 @@ namespace Game1
                 ((Sign)currentDragItem).setDialog(new TextDialog(boxes));
             }, "sign"));
             y++;
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Bumper), Game1.cManager, 32, 32); }, "Bumper"));
+            y++;
 
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
             guiElements.Add(saveText);

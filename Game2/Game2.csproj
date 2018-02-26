@@ -49,6 +49,7 @@
     <Compile Include="GUI\GUIElement.cs" />
     <Compile Include="GUI\Textfield.cs" />
     <Compile Include="Items\BoxDisapear.cs" />
+    <Compile Include="Items\Bumper.cs" />
     <Compile Include="Items\ButtonDisapear.cs" />
     <Compile Include="Items\Canon.cs" />
     <Compile Include="Items\CanonBall.cs" />

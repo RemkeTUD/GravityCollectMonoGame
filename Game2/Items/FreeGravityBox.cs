@@ -216,8 +216,8 @@ namespace Game1
                 pos.X -= (float)(WorldInfo.gravity.X);
                 pos.Y -= (float)(WorldInfo.gravity.Y);
             }
-            pos.X += 2*(float)Math.Round(WorldInfo.gravity.X);
-            pos.Y += 2*(float)Math.Round(WorldInfo.gravity.Y);
+            pos.X += 1*(float)Math.Round(WorldInfo.gravity.X);
+            pos.Y += 1*(float)Math.Round(WorldInfo.gravity.Y);
 
             rect.X = (int)Math.Round(pos.X);
             rect.Y = (int)Math.Round(pos.Y);
