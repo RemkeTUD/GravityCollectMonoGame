@@ -35,8 +35,10 @@ namespace Game1
             else
             {
                 setFallSpeed(collidesDownWithMap().getFallSpeed());
-                if(collidesDownWithMap().getRealSpeed() !=0)
-                setRealSpeed(collidesDownWithMap().getRealSpeed());
+                if (collidesDownWithMap().getRealSpeed() != 0)
+                {
+                    setRealSpeed(collidesDownWithMap().getRealSpeed());
+                }
 
                 foreach (Vector2 point in Game1.getPlayer().rightPoints())
                 {
@@ -148,22 +150,24 @@ namespace Game1
                 if (collidesRightWithMap().isStatic)
                 {
                     this.setRealSpeed(0);
-                    setSpeedChainUp(speed);
+                    setSpeedChainUp(0);
                     return false;
                 }
                 this.setRealSpeed(speed);
-                foreach(FreeGravityBox gravityBox in boxes)
+                setSpeedChainUp(speed);
+                foreach (FreeGravityBox gravityBox in boxes)
                 {
-                    if(gravityBox!=this)
+                    //if(gravityBox!=this)
                     if(gravityBox.collidesWithMovingPoint(rightPoint(),Vector2.Zero))
                     {
                         if(!gravityBox.setSpeedChainRight(speed))
                         {
                             this.setRealSpeed(0);
-                            setSpeedChainUp(speed);
+                            setSpeedChainUp(0);
                             return false;
                         }
-                        setSpeedChainUp(speed);
+                        
+                        
                     }
                 }
             }
@@ -179,24 +183,26 @@ namespace Game1
                 if (collidesLeftWithMap().isStatic)
                 {
                     this.setRealSpeed(0);
-                    setSpeedChainUp(speed);
+                    setSpeedChainUp(0);
                     return false;
 
                 }
                 this.setRealSpeed(speed);
-                
+                setSpeedChainUp(speed);
+
                 foreach (FreeGravityBox gravityBox in boxes)
                 {
-                    if (gravityBox != this)
+                    //if (gravityBox != this)
                         if (gravityBox.collidesWithMovingPoint(leftPoint(), Vector2.Zero))
                     {
                         if (!gravityBox.setSpeedChainLeft(speed))
                         {
                             this.setRealSpeed(0);
-                            setSpeedChainUp(speed);
+                            setSpeedChainUp(0);
                             return false;
                         }
-                        setSpeedChainUp(speed);
+                        
+                        
                     }
                 }
             }

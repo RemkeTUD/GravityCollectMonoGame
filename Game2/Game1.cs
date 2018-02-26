@@ -180,16 +180,20 @@ namespace Game1
                         
                         if (!TextDialog.isInDialog)
                             world.update(GraphicsDevice);
-                        world.checkForWalls();
                         FreeGravityBox.setAllSpeedChains();
-                        player.update(0);
+
+                        world.checkForWalls();
+
                         if (!TextDialog.isInDialog)
                             world.applyChanges(GraphicsDevice);
-
-                        world.correctDownCollisions();
+                        
+                        player.update(0);
 
                         world.correctRightCollisions();
                         world.correctLeftCollisions();
+                        world.correctDownCollisions();
+
+                        
 
 
                         if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {

@@ -400,7 +400,9 @@ namespace Game1
                     {
                         if (box.collidesWithMovingPoint(pos, Vector2.Zero))
                         {
+                            if(!(box is FreeGravityBox))
                             return new CollisionInfo(true, box.speed);
+                            return new CollisionInfo(true, Vector2.Zero);
                         }
                     }
                 }
