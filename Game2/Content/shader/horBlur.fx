@@ -51,9 +51,9 @@ float4 MainPS(VertexShaderOutput input) : COLOR
 	for (int i = 0; i < 13; i++)
 	{
 		blur.x = input.TextureCoordinates.x + (i - 6) * pixelWidth;
-		color += tex2D(SpriteTextureSampler, blur.xy) * BlurWeights[i] * factor;
+		color += tex2D(SpriteTextureSampler, blur.xy) * BlurWeights[i];
 	}
-	return color;
+	return color * factor;
 }
 
 technique SpriteDrawing

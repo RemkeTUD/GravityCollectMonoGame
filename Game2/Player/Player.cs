@@ -81,6 +81,18 @@ namespace Game1
                 }
 
         }
+
+        public void drawIllumination(SpriteBatch spriteBatch)
+        {
+            int flameId = 0;
+            foreach (GravityFlame flame in flames)
+            {
+
+                flame.draw(spriteBatch);
+                flameId++;
+
+            }
+        }
         public void Input(float delta)
         {
             
