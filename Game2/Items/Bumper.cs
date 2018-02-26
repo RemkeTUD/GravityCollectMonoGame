@@ -11,6 +11,12 @@ namespace Game1
 {
     public class Bumper : Item
     {
+
+        public Bumper()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("Bumper");
+        }
+
         public Bumper(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             if (textureTest == null)

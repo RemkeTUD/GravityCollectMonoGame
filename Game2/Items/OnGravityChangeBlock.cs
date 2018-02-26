@@ -13,11 +13,16 @@ namespace Game1
     public class OnGravityChangeBlock : CollisionBox
     {
         public bool active = true;
-        bool activeSet = true;
+        public bool activeSet = true;
         KeyboardState state, prevState;
+
         public OnGravityChangeBlock(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
-            
+        }
+
+        public OnGravityChangeBlock()
+        {
+
         }
 
         public override bool collidesWithMovingPoint(Vector2 point, Vector2 direction)

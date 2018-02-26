@@ -12,7 +12,11 @@ namespace Game1
     public class RocketSpawner : MoveableItem
     {
         ContentManager content;
-        int frames = 0;
+        public int frames = 0;
+        public RocketSpawner()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/rocketlauncher");
+        }
         public RocketSpawner(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height, 0, new Vector2(x,y))
         {
             this.content = content;

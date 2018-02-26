@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace Game1
 {
-    class Trapdoor : CollisionBox
+    public class Trapdoor : CollisionBox
     {
-        int rotation;
-        bool isOpen = true;
-
+        public int rotation;
+        public bool isOpen = true;
+        public Trapdoor()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/openwall");
+        }
         public Trapdoor(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/openwall");

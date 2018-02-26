@@ -12,7 +12,11 @@ namespace Game1
     public class Enemy : Item
     {
 
-        float travelSpeed = 1f;
+        public float travelSpeed = 1f;
+        public Enemy()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/enemy");
+        }
         public Enemy(ContentManager content, float X, float Y, float width, float height) : base(content, X, Y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/enemy");

@@ -11,7 +11,10 @@ namespace Game1
 {
     public class CollisionBox : Item
     {
-
+        public CollisionBox()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/box");
+        }
         public CollisionBox(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             speed = new Vector2(0,0);

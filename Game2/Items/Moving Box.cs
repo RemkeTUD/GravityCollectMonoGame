@@ -12,9 +12,15 @@ namespace Game1
     public class Moving_Box : CollisionBox, isTraveling
     {
 
-        Vector2 startPoint, endPoint;
-        bool toEndPoint = true;
-        float travelSpeed;
+        public Vector2 startPoint, endPoint;
+        public bool toEndPoint = true;
+        public float travelSpeed;
+
+        public Moving_Box()
+        {
+           
+        }
+
         public Moving_Box(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             this.endPoint = new Vector2(x,y);

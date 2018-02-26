@@ -15,7 +15,10 @@ namespace Game1
         public Vector2 pos;
 
         public bool isStatic = false;
+        public CollisionInfo()
+        {
 
+        }
         public CollisionInfo(bool collided, Vector2 speed)
         {
             this.collided = collided;

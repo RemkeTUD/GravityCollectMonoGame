@@ -11,8 +11,12 @@ namespace Game1
     {
         public Vector2 pos;
         public Vector2 dir;
-        float length;
-        public Raycast(Vector2 pos, Vector2 dir, float length = 1000f)
+        public float length;
+        public Raycast()
+        {
+
+        }
+            public Raycast(Vector2 pos, Vector2 dir, float length = 1000f)
         {
             this.pos = pos;
             this.dir = dir;

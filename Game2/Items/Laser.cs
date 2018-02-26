@@ -12,9 +12,9 @@ namespace Game1
 {
     public class Laser : Item
     {
-        float angleSpeed;
-        Raycast raycast;
-        CollisionInfo hitOfRaycast;
+        public float angleSpeed;
+        public Raycast raycast;
+        public CollisionInfo hitOfRaycast;
 
         Light light = new PointLight
         {
@@ -26,7 +26,10 @@ namespace Game1
             ShadowType = ShadowType.Solid // Will not lit hulls themselves
             
         };
-
+        public Laser()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/Laser");
+        }
         public Laser(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             this.angleSpeed = 0;

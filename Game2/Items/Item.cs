@@ -7,9 +7,39 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Game1
 {
+    [XmlInclude(typeof(MoveableItem))]
+    [XmlInclude(typeof(Saw))]
+    [XmlInclude(typeof(Bumper))]
+    [XmlInclude(typeof(Enemy))]
+    [XmlInclude(typeof(BoxDisapear))]
+    [XmlInclude(typeof(ButtonDisapear))]
+    [XmlInclude(typeof(Canon))]
+    [XmlInclude(typeof(CanonBall))]
+    [XmlInclude(typeof(CollisionBox))]
+    [XmlInclude(typeof(FreeGravityBox))]
+    [XmlInclude(typeof(GravityBox))]
+    [XmlInclude(typeof(InversedGravityBox))]
+    [XmlInclude(typeof(Laser))]
+    [XmlInclude(typeof(Moving_Box))]
+    [XmlInclude(typeof(OnGravityChangeBlock))]
+    [XmlInclude(typeof(OpenWall))]
+    [XmlInclude(typeof(RocketSpawner))]
+    [XmlInclude(typeof(Sign))]
+    [XmlInclude(typeof(Spike))]
+    [XmlInclude(typeof(StaticEnemy))]
+    [XmlInclude(typeof(Teleporter))]
+    [XmlInclude(typeof(TeleporterDestination))]
+    [XmlInclude(typeof(TractorBeam))]
+    [XmlInclude(typeof(Trampoline))]
+    [XmlInclude(typeof(Trapdoor))]
+    [XmlInclude(typeof(Textbox))]
+    [XmlInclude(typeof(TextDialog))]
+    [XmlInclude(typeof(Raycast))]
+    [XmlInclude(typeof(CollisionInfo))]
     public abstract class Item
     {
         public Vector2 speed = new Vector2(0, 0);
@@ -20,14 +50,20 @@ namespace Game1
         public Vector2 pos = new Vector2(1000, 1000);
         public Vector2 size = new Vector2(1000, 1000);
         public Vector2 spawnPos = new Vector2(1000, 1000);
-        protected float angle;
-        protected int alpha = 255 ,r =255,g=255 ,b=255;
+        public float angle;
+        public int alpha = 255 ,r =255,g=255 ,b=255;
 
         public bool destroy = false;
         public bool hasIllumination = false;
 
         public static SpriteFont font;
         public Rectangle sourceRect;
+
+        public Item()
+        {
+
+        }
+
         public Item(ContentManager content, float x, float y, float width, float height)
         {
             pos.X = x;

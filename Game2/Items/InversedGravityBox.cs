@@ -9,6 +9,9 @@ namespace Game1
 {
     public class InversedGravityBox : GravityBox
     {
+        public InversedGravityBox()
+        {
+        }
         public InversedGravityBox(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
         }

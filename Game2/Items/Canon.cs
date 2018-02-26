@@ -10,7 +10,13 @@ namespace Game1
 {
     public class Canon : MoveableItem
     {
-        int frames;
+        public int frames;
+
+        public Canon()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/Canon");
+        }
+
         public Canon(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/Canon");

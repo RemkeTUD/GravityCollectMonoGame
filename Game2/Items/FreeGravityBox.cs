@@ -11,8 +11,11 @@ namespace Game1
     public class FreeGravityBox : CollisionBox
     {
 
-        static List<FreeGravityBox> boxes = new List<FreeGravityBox>();
-
+        public static List<FreeGravityBox> boxes = new List<FreeGravityBox>();
+        public FreeGravityBox()
+        {
+            boxes.Add(this);
+        }
         public FreeGravityBox(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             boxes.Add(this);

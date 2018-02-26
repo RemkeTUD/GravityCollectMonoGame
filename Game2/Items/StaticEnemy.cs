@@ -10,6 +10,11 @@ namespace Game1
 {
     public class StaticEnemy : Enemy
     {
+        public StaticEnemy()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/staticenemy");
+        }
+
         public StaticEnemy(ContentManager content, float X, float Y, float width, float height) : base(content, X, Y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/staticenemy");

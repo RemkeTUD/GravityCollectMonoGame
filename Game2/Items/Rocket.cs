@@ -12,8 +12,8 @@ namespace Game1
 {
     public class Rocket : Item
     {
-        float angleSpeed = 0;
-        float travelSpeed;
+        public float angleSpeed = 0;
+        public float travelSpeed;
         public Rocket(ContentManager content, float x, float y, float width, float height, Vector2 movingDirection) : base(content, x, y, width, height)
         {
 

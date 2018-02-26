@@ -11,7 +11,12 @@ namespace Game1
 {
     public class TractorBeam : Item
     {
-        float length = 32 * 30;
+        public float length = 32 * 30;
+
+        public TractorBeam()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/tractorBeam");
+        }
         public TractorBeam(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/tractorBeam");

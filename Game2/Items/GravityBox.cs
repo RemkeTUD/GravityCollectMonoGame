@@ -11,9 +11,12 @@ namespace Game1
 {
     public class GravityBox : CollisionBox
     {
-        protected bool horizontal = false;
-        protected float fallHeight;
-
+        public bool horizontal = false;
+        public float fallHeight;
+        public GravityBox()
+        {
+            //textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/enemy");
+        }
         public GravityBox(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             this.fallHeight = 16;

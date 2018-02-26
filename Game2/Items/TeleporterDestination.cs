@@ -10,6 +10,10 @@ namespace Game1
 {
     public class TeleporterDestination : Item
     {
+        public TeleporterDestination()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("teleporter");
+        }
         public TeleporterDestination(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = content.Load<Texture2D>("teleporter");

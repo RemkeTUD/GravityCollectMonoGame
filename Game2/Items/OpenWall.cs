@@ -11,9 +11,12 @@ namespace Game1
 {
     public class OpenWall : CollisionBox
     {
-        int rotation;
-        bool isColliding;
-
+        public int rotation;
+        public bool isColliding;
+        public OpenWall()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/OpenWall");
+        }
         public OpenWall(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/openwall");

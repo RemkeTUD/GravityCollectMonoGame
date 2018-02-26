@@ -11,8 +11,11 @@ namespace Game1
 {
     public class Sign : Item
     {
-        TextDialog dialog;
-
+        public TextDialog dialog;
+        public Sign()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("sign");
+        }
         public Sign(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = Game1.cManager.Load<Texture2D>("sign");

@@ -10,7 +10,10 @@ namespace Game1
 {
     public class ButtonDisapear : Item
     {
-
+        public ButtonDisapear()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/button");
+        }
 
         public ButtonDisapear(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {

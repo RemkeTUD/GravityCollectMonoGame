@@ -12,10 +12,14 @@ namespace Game1
     public class TextDialog
     {
         public static bool isInDialog = false;
-        List<Textbox> textboxes;
-        static int currentID = -1;
+        public List<Textbox> textboxes;
+        public static int currentID = -1;
         public static TextDialog currentTextDialog;
         static KeyboardState state, prevstate;
+        public TextDialog()
+        {
+
+        }
         public TextDialog(List<Textbox> textboxes)
         {
             this.textboxes = textboxes;

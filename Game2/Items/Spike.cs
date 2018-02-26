@@ -11,7 +11,10 @@ namespace Game1
 {
     public class Spike : MoveableItem
     {
-        
+        public Spike()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/spike");
+        }
 
         public Spike(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {

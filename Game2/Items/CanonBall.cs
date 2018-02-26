@@ -11,6 +11,10 @@ namespace Game1
 {
     public class CanonBall : Item
     {
+        public CanonBall()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/canonBall");
+        }
         public CanonBall(ContentManager content, float x, float y, float width, float height, Vector2 speed) : base(content, x, y, width, height)
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/canonBall");

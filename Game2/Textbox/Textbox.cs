@@ -10,12 +10,16 @@ namespace Game1
 {
     public class Textbox
     {
-        string text;
+        public string text;
         Texture2D textureTest;
-        Rectangle rect;
+        public Rectangle rect;
 
         public static SpriteFont font;
+        public Textbox()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("textfield");
 
+        }
         public Textbox(string text)
         {
             this.text = text;

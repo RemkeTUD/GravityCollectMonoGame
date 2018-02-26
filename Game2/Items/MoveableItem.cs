@@ -12,10 +12,16 @@ namespace Game1
     public class MoveableItem : Item, isTraveling
     {
         
-        protected Vector2 startPoint, endPoint;
-        float spawnSpeed;
-        float travelSpeed;
-        bool toEndPoint = true;
+        public Vector2 startPoint, endPoint;
+        public float spawnSpeed;
+        public float travelSpeed;
+        public bool toEndPoint = true;
+
+        public MoveableItem() : base()
+        {
+
+        }
+
         public MoveableItem(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             this.endPoint = new Vector2(x,y);
@@ -97,6 +103,17 @@ namespace Game1
         public override bool isClickedParamMenu()
         {
             return base.isClickedParamMenu() || buttonSpeedPlus.isClicked() || buttonSpeedMinus.isClicked() ;
+        }
+
+        public override Dictionary<string, string> getAttributeList()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+
+            result.Add("Speed", speed.ToString());
+            result.Add("EndpointX", endPoint.X.ToString());
+            result.Add("EndpointY", endPoint.Y.ToString());
+
+            return base.getAttributeList().Concat(result).GroupBy(p => p.Key).ToDictionary(g => g.Key, g => g.Last().Value);
         }
 
     }

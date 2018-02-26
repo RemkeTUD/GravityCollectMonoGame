@@ -12,6 +12,10 @@ namespace Game1
     public class BoxDisapear : CollisionBox
     {
         public ButtonDisapear button;
+        public BoxDisapear()
+        {
+            textureTest = Game1.cManager.Load<Texture2D>("boxdisapear");
+        }
         public BoxDisapear(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             if (textureTest == null)

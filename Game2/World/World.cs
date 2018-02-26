@@ -10,9 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Game1
 {
+    
     public class World
     {
         public int width, height;
@@ -35,7 +37,10 @@ namespace Game1
         public Vector2 playerSpawn = new Vector2(1000,1000);
 
         public bool gravityChanged = false;
+        public World()
+        {
 
+        }
         public World(int width, int height, ContentManager content)
         {
             this.width = width; this.height = height;
@@ -456,7 +461,7 @@ namespace Game1
                             blocks[x, y] = new Block(BlockType.getBlockTypeByName(type),x ,y);
 
                         }
-                        if (reader.Name == "Item")
+                        /*if (reader.Name == "Item")
                         {
 
                             List<Object> param = new List<object>();
@@ -470,11 +475,17 @@ namespace Game1
                                 if (reader.Name == "Item")
                                     break;
                                 if (reader.NodeType == XmlNodeType.Text)
-                                    param.Add(Int32.Parse(reader.Value));
+                                    param.Add(float.Parse(reader.Value));
                                 
                             }
                             addItem((Item)Activator.CreateInstance(type, param.ToArray()));
 
+                        }*/
+                        else if(reader.Name == "Items") {
+                            reader.Read();
+                        XmlSerializer xsSubmit = new XmlSerializer(typeof(List<Item>));
+                        items = (List<Item>)xsSubmit.Deserialize(reader);
+                            
                         }
                     }
                     
@@ -487,8 +498,10 @@ namespace Game1
 
         }
 
+        
         public void saveAsXML()
         {
+
             using (XmlWriter writer = XmlWriter.Create(EditorGui.saveText.text + ".xml"))
             {
                 writer.WriteStartDocument();
@@ -515,17 +528,23 @@ namespace Game1
 
                 writer.WriteStartElement("Items");
 
-                foreach(Item item in items)
-                {
-                    writer.WriteStartElement("Item");
+                
+                XmlSerializer xsSubmit = new XmlSerializer(typeof(List<Item>));
+                
+                //foreach (Item item in items)
+                //{
+
+                    xsSubmit.Serialize(writer, items);
+
+                    /*writer.WriteStartElement("Item");
                     writer.WriteElementString("Type", item.GetType().FullName);
                     foreach (string key in item.getAttributeList().Keys)
                     {
                         writer.WriteElementString(key, item.getAttributeList()[key]);
                     }
 
-                    writer.WriteEndElement();
-                }
+                    writer.WriteEndElement();*/
+                //}
 
                 writer.WriteEndElement();
 
