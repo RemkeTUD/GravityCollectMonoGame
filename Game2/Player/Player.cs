@@ -216,7 +216,7 @@ namespace Game1
 
 
 
-            if (!isGrounded().collided && collidesRight() && state.IsKeyDown(Keys.D))
+            if (!isGrounded().collided && collidesRight() && !flipped)
             {
                 if (fallSpeed > 5)
                     fallSpeed -= fallAcceleration + 0.3f;
@@ -232,7 +232,7 @@ namespace Game1
                 }
             }
 
-            if (!isGrounded().collided && collidesLeft() && state.IsKeyDown(Keys.A))
+            if (!isGrounded().collided && collidesLeft() && flipped)
             {
                 if (fallSpeed > 5)
                     fallSpeed -= fallAcceleration + 0.3f;
