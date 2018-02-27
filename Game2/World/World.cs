@@ -14,17 +14,21 @@ using System.Xml.Serialization;
 
 namespace Game1
 {
-    
+    [XmlInclude(typeof(List<Item>))]
+    [XmlInclude(typeof(List<CollisionBox>))]
+    [XmlInclude(typeof(Item))]
     public class World
     {
         public int width, height;
+        [XmlIgnoreAttribute]
         public Block[,] blocks;
         ContentManager content;
         public List<Item> items;
+        [XmlIgnoreAttribute]
         public List<CollisionBox> collisionBoxes;
 
         public static string[] themeNames;
-
+        [XmlIgnoreAttribute]
         public Block airDefault = new Block(BlockType.AIR, 3, 3);
 
         Texture2D background;
@@ -39,7 +43,9 @@ namespace Game1
         public bool gravityChanged = false;
         public World()
         {
-
+            this.content = Game1.cManager;
+            airDefault = new Block(BlockType.AIR, 3, 3);
+            reloadBackgroundTexture(Game1.cManager, currentTheme);
         }
         public World(int width, int height, ContentManager content)
         {
@@ -425,7 +431,7 @@ namespace Game1
             return item;
         }
 
-        public void loadFromXML()
+        public World loadFromXML()
         {
 
             items.Clear();
@@ -483,8 +489,11 @@ namespace Game1
                         }*/
                         else if(reader.Name == "Items") {
                             reader.Read();
-                        XmlSerializer xsSubmit = new XmlSerializer(typeof(List<Item>));
-                        items = (List<Item>)xsSubmit.Deserialize(reader);
+                        XmlSerializer xsSubmit = new XmlSerializer(typeof(World));
+                            World world = (World)xsSubmit.Deserialize(reader);
+                            world.blocks = blocks;
+                            world.airDefault = airDefault;
+                        return world;
                             
                         }
                     }
@@ -495,9 +504,25 @@ namespace Game1
             }
 
             setNeighboursOfBlocks();
-
+            return null;
         }
 
+        public void updateWorldAfterLoad()
+        {
+            if (collisionBoxes == null)
+                collisionBoxes = new List<CollisionBox>();
+            updateCollisionBoxList();
+            setNeighboursOfBlocks();
+        }
+
+        public void updateCollisionBoxList()
+        {
+            foreach(Item item in items)
+            {
+                if(item is CollisionBox)
+                collisionBoxes.Add((CollisionBox)item);
+            }
+        }
         
         public void saveAsXML()
         {
@@ -529,12 +554,12 @@ namespace Game1
                 writer.WriteStartElement("Items");
 
                 
-                XmlSerializer xsSubmit = new XmlSerializer(typeof(List<Item>));
+                XmlSerializer xsSubmit = new XmlSerializer(typeof(World));
                 
                 //foreach (Item item in items)
                 //{
 
-                    xsSubmit.Serialize(writer, items);
+                    xsSubmit.Serialize(writer, this);
 
                     /*writer.WriteStartElement("Item");
                     writer.WriteElementString("Type", item.GetType().FullName);

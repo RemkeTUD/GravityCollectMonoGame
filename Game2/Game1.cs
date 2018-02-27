@@ -153,7 +153,8 @@ namespace Game1
             if (Keyboard.GetState().IsKeyDown(Keys.F) && !prevState.IsKeyDown(Keys.F))
             {
 
-                world.loadFromXML();
+                world = world.loadFromXML();
+                world.updateWorldAfterLoad();
             }
 
             if (!running)

@@ -79,7 +79,7 @@ namespace Game1
 
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
             guiElements.Add(saveText);
-            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world.loadFromXML(); }, "saw"));
+            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(); Game1.world.updateWorldAfterLoad(); }, "saw"));
             guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(); }, "box"));
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
                 TeleporterDestination teleporterDest = (TeleporterDestination)Game1.world.createInstanceAtMouse(typeof(TeleporterDestination), Game1.cManager, 32, 32);
