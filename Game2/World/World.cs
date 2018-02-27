@@ -513,6 +513,15 @@ namespace Game1
                 collisionBoxes = new List<CollisionBox>();
             updateCollisionBoxList();
             setNeighboursOfBlocks();
+            foreach (BlockType block in BlockType.Values)
+            {
+                block.reloadTexture(content, currentTheme);
+            }
+            foreach (Item item in items)
+            {
+                item.reloadTexture(content, currentTheme);
+            }
+            reloadBackgroundTexture(Game1.cManager, currentTheme);
         }
 
         public void updateCollisionBoxList()
