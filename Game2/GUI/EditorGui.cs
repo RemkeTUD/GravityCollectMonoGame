@@ -152,6 +152,8 @@ namespace Game1
                 }
                 if(kstate.IsKeyDown(Keys.P))
                 {
+                    pos.X = pos.X - pos.X % 16;
+                    pos.Y = pos.Y - pos.Y % 16;
                     Game1.world.playerSpawn = pos;
                     Game1.getPlayer().pos = pos;
                 }
