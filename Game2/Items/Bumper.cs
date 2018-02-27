@@ -11,7 +11,7 @@ namespace Game1
 {
     public class Bumper : Item
     {
-
+        Animation animation = new Animation(48, 48, 10, false, 2);
         public Bumper()
         {
             textureTest = Game1.cManager.Load<Texture2D>("Bumper");
@@ -32,6 +32,7 @@ namespace Game1
                 direction *= 10;
                 Game1.getPlayer().setXSpeed(direction.X);
                 Game1.getPlayer().setYSpeed(-direction.Y);
+                animation.startPlay();
             }
 
             base.Update();
@@ -42,6 +43,12 @@ namespace Game1
             return (MapTools.distanceOfVecs(Game1.getPlayer().getCenter(), getCenter()) < size.X * 0.5f);
         }
 
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            sourceRect = animation.getSourceRectange();
+            animation.update();
+            base.Draw(spriteBatch);
+        }
 
     }
 }
