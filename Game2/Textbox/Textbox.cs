@@ -18,7 +18,8 @@ namespace Game1
         public Textbox()
         {
             textureTest = Game1.cManager.Load<Texture2D>("textfield");
-
+            if (font == null)
+                font = Game1.cManager.Load<SpriteFont>("textboxfont");
         }
         public Textbox(string text)
         {

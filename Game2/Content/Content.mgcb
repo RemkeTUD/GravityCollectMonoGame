@@ -260,6 +260,85 @@
 /processorParam:TextureFormat=Color
 /build:textfield.png
 
+#begin flame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:flame.png
+
+#begin trampoline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:trampoline.png
+
+#begin sign.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sign.png
+
+#begin shader/horBlur.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:shader/horBlur.fx
+
+#begin shader/vertBlur.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:shader/vertBlur.fx
+
+#begin TextBoxFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:TextBoxFont.spritefont
+
+#begin Bumper.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bumper.png
+
+#begin Teleporter.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Teleporter.png
+
 #begin themes/acid/background/test.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -680,6 +759,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/acid/items/box2.png
 
+#begin themes/acid/items/boxdisapear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/acid/items/boxdisapear.png
+
 #begin themes/acid/items/boxLock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -715,6 +806,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/acid/items/box_n.png
+
+#begin themes/acid/items/Bumper.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/acid/items/Bumper.png
 
 #begin themes/acid/items/bush.png
 /importer:TextureImporter
@@ -1076,6 +1179,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/acid/items/RocketLauncher_n.png
 
+#begin themes/acid/items/rocketspawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/acid/items/rocketspawner.png
+
 #begin themes/acid/items/rocket_n.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1123,6 +1238,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/acid/items/saw_n.png
+
+#begin themes/acid/items/sign.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/acid/items/sign.png
 
 #begin themes/acid/items/spike.png
 /importer:TextureImporter
@@ -1207,6 +1334,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/acid/items/teleporter_n.png
+
+#begin themes/acid/items/tractorBeam.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/acid/items/tractorBeam.png
+
+#begin themes/acid/items/trampoline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/acid/items/trampoline.png
 
 #begin themes/acid/items/transportBlock.png
 /importer:TextureImporter
@@ -1760,6 +1911,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/candy/items/box2.png
 
+#begin themes/candy/items/boxdisapear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/candy/items/boxdisapear.png
+
 #begin themes/candy/items/boxLock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1795,6 +1958,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/candy/items/box_n.png
+
+#begin themes/candy/items/Bumper.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/candy/items/Bumper.png
 
 #begin themes/candy/items/bush.png
 /importer:TextureImporter
@@ -2156,6 +2331,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/candy/items/RocketLauncher_n.png
 
+#begin themes/candy/items/rocketspawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/candy/items/rocketspawner.png
+
 #begin themes/candy/items/rocket_n.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2203,6 +2390,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/candy/items/saw_n.png
+
+#begin themes/candy/items/sign.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/candy/items/sign.png
 
 #begin themes/candy/items/spike.png
 /importer:TextureImporter
@@ -2287,6 +2486,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/candy/items/teleporter_n.png
+
+#begin themes/candy/items/tractorBeam.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/candy/items/tractorBeam.png
+
+#begin themes/candy/items/trampoline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/candy/items/trampoline.png
 
 #begin themes/candy/items/transportBlock.png
 /importer:TextureImporter
@@ -2840,6 +3063,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/gameboy/items/box2.png
 
+#begin themes/gameboy/items/boxdisapear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/gameboy/items/boxdisapear.png
+
 #begin themes/gameboy/items/boxLock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2875,6 +3110,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/gameboy/items/box_n.png
+
+#begin themes/gameboy/items/Bumper.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/gameboy/items/Bumper.png
 
 #begin themes/gameboy/items/bush.png
 /importer:TextureImporter
@@ -3236,6 +3483,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/gameboy/items/RocketLauncher_n.png
 
+#begin themes/gameboy/items/rocketspawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/gameboy/items/rocketspawner.png
+
 #begin themes/gameboy/items/rocket_n.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3283,6 +3542,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/gameboy/items/saw_n.png
+
+#begin themes/gameboy/items/sign.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/gameboy/items/sign.png
 
 #begin themes/gameboy/items/spike.png
 /importer:TextureImporter
@@ -3367,6 +3638,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/gameboy/items/teleporter_n.png
+
+#begin themes/gameboy/items/tractorBeam.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/gameboy/items/tractorBeam.png
+
+#begin themes/gameboy/items/trampoline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/gameboy/items/trampoline.png
 
 #begin themes/gameboy/items/transportBlock.png
 /importer:TextureImporter
@@ -3908,6 +4203,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/Normal/items/box2.png
 
+#begin themes/Normal/items/boxdisapear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/boxdisapear.png
+
 #begin themes/Normal/items/boxLock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3943,6 +4250,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/Normal/items/box_n.png
+
+#begin themes/Normal/items/Bumper.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/Bumper.png
 
 #begin themes/Normal/items/bush.png
 /importer:TextureImporter
@@ -4304,6 +4623,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/Normal/items/RocketLauncher_n.png
 
+#begin themes/Normal/items/rocketspawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/rocketspawner.png
+
 #begin themes/Normal/items/rocket_n.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -4351,6 +4682,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/Normal/items/saw_n.png
+
+#begin themes/Normal/items/sign.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/sign.png
 
 #begin themes/Normal/items/spike.png
 /importer:TextureImporter
@@ -4447,6 +4790,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/Normal/items/TimeSlower_n.png
+
+#begin themes/Normal/items/tractorBeam.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/tractorBeam.png
+
+#begin themes/Normal/items/trampoline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/trampoline.png
 
 #begin themes/Normal/items/transportBlock.png
 /importer:TextureImporter
@@ -5024,6 +5391,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/paper/items/box2.png
 
+#begin themes/paper/items/boxdisapear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/paper/items/boxdisapear.png
+
 #begin themes/paper/items/boxLock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5059,6 +5438,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/paper/items/box_n.png
+
+#begin themes/paper/items/Bumper.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/paper/items/Bumper.png
 
 #begin themes/paper/items/bush.png
 /importer:TextureImporter
@@ -5420,6 +5811,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/paper/items/RocketLauncher_n.png
 
+#begin themes/paper/items/rocketspawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/paper/items/rocketspawner.png
+
 #begin themes/paper/items/rocket_n.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5467,6 +5870,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/paper/items/saw_n.png
+
+#begin themes/paper/items/sign.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/paper/items/sign.png
 
 #begin themes/paper/items/spike.png
 /importer:TextureImporter
@@ -5551,6 +5966,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/paper/items/teleporter_n.png
+
+#begin themes/paper/items/tractorBeam.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/paper/items/tractorBeam.png
+
+#begin themes/paper/items/trampoline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/paper/items/trampoline.png
 
 #begin themes/paper/items/transportBlock.png
 /importer:TextureImporter
@@ -6128,6 +6567,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/underworld/items/box2.png
 
+#begin themes/underworld/items/boxdisapear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/underworld/items/boxdisapear.png
+
 #begin themes/underworld/items/boxLock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -6163,6 +6614,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/underworld/items/box_n.png
+
+#begin themes/underworld/items/Bumper.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/underworld/items/Bumper.png
 
 #begin themes/underworld/items/bush.png
 /importer:TextureImporter
@@ -6524,6 +6987,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/underworld/items/RocketLauncher_n.png
 
+#begin themes/underworld/items/rocketspawner.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/underworld/items/rocketspawner.png
+
 #begin themes/underworld/items/rocket_n.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -6571,6 +7046,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/underworld/items/saw_n.png
+
+#begin themes/underworld/items/sign.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/underworld/items/sign.png
 
 #begin themes/underworld/items/spike.png
 /importer:TextureImporter
@@ -6655,6 +7142,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/underworld/items/teleporter_n.png
+
+#begin themes/underworld/items/tractorBeam.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/underworld/items/tractorBeam.png
+
+#begin themes/underworld/items/trampoline.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/underworld/items/trampoline.png
 
 #begin themes/underworld/items/transportBlock.png
 /importer:TextureImporter
@@ -6787,155 +7298,4 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/underworld/items/warpLines.png
-
-#begin flame.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:flame.png
-
-#begin trampoline.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:trampoline.png
-
-#begin sign.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:sign.png
-
-#begin shader/horBlur.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:shader/horBlur.fx
-
-#begin shader/vertBlur.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:shader/vertBlur.fx
-
-#begin TextBoxFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:TextBoxFont.spritefont
-
-#begin themes/acid/items/tractorBeam.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:themes/acid/items/tractorBeam.png
-
-#begin themes/candy/items/tractorBeam.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:themes/candy/items/tractorBeam.png
-
-#begin themes/gameboy/items/tractorBeam.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:themes/gameboy/items/tractorBeam.png
-
-#begin themes/Normal/items/tractorBeam.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:themes/Normal/items/tractorBeam.png
-
-#begin themes/paper/items/tractorBeam.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:themes/paper/items/tractorBeam.png
-
-#begin themes/underworld/items/tractorBeam.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:themes/underworld/items/tractorBeam.png
-
-#begin Bumper.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bumper.png
-
-#begin Teleporter.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Teleporter.png
 
