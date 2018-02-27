@@ -31,7 +31,7 @@ namespace Game1
             y = 0;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Saw), Game1.cManager, 32, 32); }, "saw"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Enemy), Game1.cManager, 32, 32); }, "enemy"));
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(StaticEnemy), Game1.cManager, 32, 32); }, "Enemy"));
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(FreeGravityBox), Game1.cManager, 32, 32); }, "box"));
             y++;
@@ -75,6 +75,8 @@ namespace Game1
             }, "sign"));
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Bumper), Game1.cManager, 32, 32); }, "Bumper"));
+            y++;
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Ink), Game1.cManager, 16, 16); }, "ink"));
             y++;
 
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
