@@ -522,6 +522,8 @@ namespace Game1
                 item.reloadTexture(content, currentTheme);
             }
             reloadBackgroundTexture(Game1.cManager, currentTheme);
+            Game1.getPlayer().pos = playerSpawn;
+            Game1.getPlayer().die();
         }
 
         public void updateCollisionBoxList()

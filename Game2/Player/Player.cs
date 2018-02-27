@@ -52,7 +52,8 @@ namespace Game1
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            
+            rect.X = (int)pos.X;
+            rect.Y = (int)pos.Y;
             SpriteEffects effect;
             if (flipped)
                 effect = SpriteEffects.FlipHorizontally;
