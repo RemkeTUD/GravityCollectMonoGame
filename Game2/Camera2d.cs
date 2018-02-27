@@ -71,7 +71,7 @@ namespace Game1
                 Pos = Game1.getPlayer().getCenter();
                 _pos.X = (int)Pos.X;
                 _pos.Y = (int)Pos.Y;
-            } else
+            } else if(!EditorGui.saveText.isActive)
             {
                 //Pos = Game1.getPlayer().getCenter() + offset;
 

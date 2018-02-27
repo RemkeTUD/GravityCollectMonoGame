@@ -12,7 +12,7 @@ namespace Game1
     public class Textfield : GUIElement
     {
         public string text = "";
-        bool isActive = false;
+        public bool isActive = false;
         int framesLastKeyPressed = 0;
         public Textfield(Rectangle rect) : base(rect)
         {
@@ -41,7 +41,7 @@ namespace Game1
                 var keyValue = keys[0].ToString();
                 
                 if(framesLastKeyPressed == 0) {
-                    if (keyValue == "Back")
+                    if (text.Count() > 0 && keyValue == "Back")
                         text = text.Remove(text.Length - 1);
                     else
                         text += keyValue;

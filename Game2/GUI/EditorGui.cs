@@ -79,8 +79,8 @@ namespace Game1
 
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
             guiElements.Add(saveText);
-            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(); Game1.world.updateWorldAfterLoad(); }, "saw"));
-            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(); }, "box"));
+            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "saw"));
+            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "box"));
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
                 TeleporterDestination teleporterDest = (TeleporterDestination)Game1.world.createInstanceAtMouse(typeof(TeleporterDestination), Game1.cManager, 32, 32);
                 currentDragItem = Game1.world.createInstanceAtMouse(typeof(Teleporter), Game1.cManager, 32, 32);
@@ -118,17 +118,29 @@ namespace Game1
         {
 
             kstate = Keyboard.GetState();
-            if(Keyboard.GetState().IsKeyDown(Keys.H) && kprevState.IsKeyUp(Keys.H))
-            {
-                Game1.world.changeTheme();
-            }
 
             foreach (GUIElement elem in guiElements)
             {
                 elem.Update();
             }
+            if(!saveText.isActive) {
+            if (Keyboard.GetState().IsKeyDown(Keys.H) && kprevState.IsKeyUp(Keys.H))
+            {
+                Game1.world.changeTheme();
+            }
 
-            state = Mouse.GetState();
+                if (Keyboard.GetState().IsKeyDown(Keys.G) && !kprevState.IsKeyDown(Keys.G))
+                {
+                    Game1.world.saveAsXML(EditorGui.saveText.text + ".xml");
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.F) && !kprevState.IsKeyDown(Keys.F))
+                {
+
+                    Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml");
+                    Game1.world.updateWorldAfterLoad();
+                }
+
+                state = Mouse.GetState();
             World world = Game1.world;
 
             if (state.ScrollWheelValue > prevState.ScrollWheelValue)
@@ -234,7 +246,7 @@ namespace Game1
                     world.setNeighboursOfBlocks();
                 }
             }
-
+            }
             kprevState = kstate ;
             prevState = state;
         }

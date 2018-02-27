@@ -141,21 +141,12 @@ namespace Game1
 
                 // TODO: Add your update logic here
 
-                if (Keyboard.GetState().IsKeyDown(Keys.T) && !prevState.IsKeyDown(Keys.T))
+                if (Keyboard.GetState().IsKeyDown(Keys.T) && !prevState.IsKeyDown(Keys.T) && !EditorGui.saveText.isActive)
                 {
                     running = !running;
                 }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.G) && !prevState.IsKeyDown(Keys.G))
-            {
-                world.saveAsXML();
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.F) && !prevState.IsKeyDown(Keys.F))
-            {
-
-                world = world.loadFromXML();
-                world.updateWorldAfterLoad();
-            }
+            
 
             if (!running)
             {

@@ -431,7 +431,7 @@ namespace Game1
             return item;
         }
 
-        public World loadFromXML()
+        public World loadFromXML(string path)
         {
 
             items.Clear();
@@ -444,7 +444,7 @@ namespace Game1
                 }
             }
 
-                    using (XmlReader reader = XmlReader.Create(EditorGui.saveText.text + ".xml"))
+                    using (XmlReader reader = XmlReader.Create(path))
             {
                 reader.MoveToContent();
                 while(reader.Read())
@@ -535,10 +535,10 @@ namespace Game1
             }
         }
         
-        public void saveAsXML()
+        public void saveAsXML(string path)
         {
 
-            using (XmlWriter writer = XmlWriter.Create(EditorGui.saveText.text + ".xml"))
+            using (XmlWriter writer = XmlWriter.Create(path))
             {
                 writer.WriteStartDocument();
                 writer.WriteStartElement("World");
