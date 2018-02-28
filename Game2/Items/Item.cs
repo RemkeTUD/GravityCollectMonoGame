@@ -55,6 +55,7 @@ namespace Game1
 
         public bool destroy = false;
         public bool hasIllumination = false;
+        public float illuminationStrength = 1;
 
         public static SpriteFont font;
         public Rectangle sourceRect;
@@ -112,7 +113,7 @@ namespace Game1
                     textureTest,
                     position: pos,
                     sourceRectangle: sourceRect,
-                    color: new Color(r, g, b, alpha),
+                    color: new Color(r * illuminationStrength, g * illuminationStrength, b * illuminationStrength, alpha),
                     rotation: angle,
                     origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
                     scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),

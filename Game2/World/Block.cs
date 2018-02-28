@@ -79,7 +79,7 @@ namespace Game1
                 spriteBatch.Draw(type.Texture,
                     destinationRectangle: rect,
                     sourceRectangle: new Rectangle(texRegionX * texWidth, texRegionY * texHeight, texWidth, texHeight),
-                    color: new Color(0.15f, 0.15f, 0.15f, 1));
+                    color: new Color(0.25f, 0.25f, 0.25f, 1));
             }
 
         }
