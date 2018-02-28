@@ -209,6 +209,85 @@ namespace Game1
 
                 }
             }
+            if (type.isConnectsToOthers)
+            {
+                if (Neighbours["Left"] != "Air" && Neighbours["Right"] == "Air")
+                {
+                    texRegionX = 2;
+                    texRegionY = 1;
+                }
+                if (Neighbours["Right"] != "Air" && Neighbours["Left"] == "Air")
+                {
+                    texRegionX = 0;
+                    texRegionY = 1;
+                }
+                if (Neighbours["Up"] != "Air" && Neighbours["Down"] == "Air")
+                {
+                    texRegionX = 1;
+                    texRegionY = 2;
+                }
+                if (Neighbours["Down"] != "Air" && Neighbours["Up"] == "Air")
+                {
+                    texRegionX = 1;
+                    texRegionY = 0;
+
+
+                }
+                if (Neighbours["Down"] != "Air" && Neighbours["Up"] == "Air" && Neighbours["Left"] != "Air" && Neighbours["Right"] == "Air")
+                {
+                    texRegionX = 2;
+                    texRegionY = 0;
+                }
+                if (Neighbours["Down"] != "Air" && Neighbours["Up"] == "Air" && Neighbours["Left"] == "Air" && Neighbours["Right"] != "Air")
+                {
+                    texRegionX = 0;
+                    texRegionY = 0;
+                }
+                if (Neighbours["Down"] == "Air" && Neighbours["Up"] != "Air" && Neighbours["Left"] != "Air" && Neighbours["Right"] == "Air")
+                {
+                    texRegionX = 2;
+                    texRegionY = 2;
+                }
+                if (Neighbours["Down"] == "Air" && Neighbours["Up"] != "Air" && Neighbours["Left"] == "Air" && Neighbours["Right"] != "Air")
+                {
+                    texRegionX = 0;
+                    texRegionY = 2;
+
+
+
+                }
+
+                if (Neighbours["Left"] != "Air" && Neighbours["Right"] != "Air" && Neighbours["Up"] != "Air" && Neighbours["Down"] != "Air")
+                {
+                    texRegionX = 1;
+                    texRegionY = 1;
+                }
+
+                if (Neighbours["Down"] != "Air" && Neighbours["Up"] != "Air" && Neighbours["Left"] != "Air" && Neighbours["Right"] != "Air" &&
+                        Neighbours["DownLeft"] != "Air" && Neighbours["DownRight"] != "Air" && Neighbours["UpRight"] == "Air" && Neighbours["UpLeft"] != "Air")
+                {
+                    texRegionX = 2;
+                    texRegionY = 3;
+                }
+                if (Neighbours["Down"] != "Air" && Neighbours["Up"] != "Air" && Neighbours["Left"] != "Air" && Neighbours["Right"] != "Air" &&
+                     Neighbours["DownLeft"] != "Air" && Neighbours["DownRight"] == "Air" && Neighbours["UpRight"] != "Air" && Neighbours["UpLeft"] != "Air")
+                {
+                    texRegionX = 1;
+                    texRegionY = 3;
+                }
+                if (Neighbours["Down"] != "Air" && Neighbours["Up"] != "Air" && Neighbours["Left"] != "Air" && Neighbours["Right"] != "Air" &&
+                     Neighbours["DownLeft"] == "Air" && Neighbours["DownRight"] != "Air" && Neighbours["UpRight"] != "Air" && Neighbours["UpLeft"] != "Air")
+                {
+                    texRegionX = 0;
+                    texRegionY = 3;
+                }
+                if (Neighbours["Down"] != "Air" && Neighbours["Up"] != "Air" && Neighbours["Left"] != "Air" && Neighbours["Right"] != "Air" &&
+                     Neighbours["DownLeft"] != "Air" && Neighbours["DownRight"] != "Air" && Neighbours["UpRight"] != "Air" && Neighbours["UpLeft"] == "Air")
+                {
+                    texRegionX = 3;
+                    texRegionY = 3;
+                }
+            }
         }
     }
 }
