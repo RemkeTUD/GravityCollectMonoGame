@@ -16,12 +16,14 @@ namespace Game1
         {
             textureTest = Game1.cManager.Load<Texture2D>("ink");
             hasIllumination = true;
+            illuminationStrength = 0.0015f;
         }
 
         public Ink(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = Game1.cManager.Load<Texture2D>("ink");
             hasIllumination = true;
+            illuminationStrength = 0.0015f;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
