@@ -23,7 +23,7 @@ namespace Game1
 
         public override void Update()
         {
-            r = 0; g = 0; b = 0;
+            //r = 0; g = 0; b = 0;
             //if (!collidesLeftWithMap().collided && !collidesRightWithMap().collided)
             setRealSpeed(0);
 

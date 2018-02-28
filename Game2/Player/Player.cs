@@ -33,6 +33,9 @@ namespace Game1
         List<PlayerPositionShow> playerPositions = new List<PlayerPositionShow>();
 
         public List<GravityFlame> flames = new List<GravityFlame>();
+
+        Animation animation = new Animation(16, 32, 5, true, 12);
+        Rectangle sourceRectange;
         public Player(ContentManager content)
         {
             textureTest = content.Load<Texture2D>("player");
@@ -52,14 +55,16 @@ namespace Game1
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            rect.X = (int)pos.X;
+            rect.X = (int)(pos.X);
             rect.Y = (int)pos.Y;
             SpriteEffects effect;
             if (flipped)
                 effect = SpriteEffects.FlipHorizontally;
             else
                 effect = SpriteEffects.None;
-            spriteBatch.Draw(textureTest, destinationRectangle: rect, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            sourceRectange = animation.getSourceRectange();
+            animation.update();
+            spriteBatch.Draw(textureTest, destinationRectangle: rect, sourceRectangle: sourceRectange, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(16 * 0.5f, 32 * 0.5f), effects: effect);
 
             int flameId = 0;
             foreach(GravityFlame flame in flames)

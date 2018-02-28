@@ -15,11 +15,13 @@ namespace Game1
         public Ink()
         {
             textureTest = Game1.cManager.Load<Texture2D>("ink");
+            hasIllumination = true;
         }
 
         public Ink(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
             textureTest = Game1.cManager.Load<Texture2D>("ink");
+            hasIllumination = true;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -27,7 +29,7 @@ namespace Game1
             frame++;
             sourceRect = animation.getSourceRectange();
             animation.update();
-            this.angle = (float)(Math.Sin(frame * 0.1f) * 0.1f);
+            this.angle = (float)(Math.Sin(frame * 0.1f) * 0.1f) + MapTools.VectorToAngle(WorldInfo.gravity) - 3.1415f * 0.5f;
             base.Draw(spriteBatch);
         }
     }
