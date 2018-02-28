@@ -97,14 +97,19 @@ namespace Game1
             {
                 offsetGoal.Y = (float)Math.Sin((float)frame * 0.03f) * 5;
                 offsetGoal.X = 0;
+                flipped = ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)).X < 0;
             }
             else {
                 offsetGoal.X = (float)Math.Sin((float)frame * 0.03f) * 5;
                 offsetGoal.Y = 0;
-
+                flipped = ((goalPos - pos) / (float)Math.Pow((goalPos - pos).Length() / 16f, 0.5f)).Y > 0;
+            }
+            if (WorldInfo.gravity.X<-0.5f || WorldInfo.gravity.Y < -0.5f)
+            {
+                flipped = !flipped;
             }
 
-            offset += (offsetGoal - offset) * 0.3f;
+                offset += (offsetGoal - offset) * 0.3f;
 
             light.Position = pos + offset;
 
