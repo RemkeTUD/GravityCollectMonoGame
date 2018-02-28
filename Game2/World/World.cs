@@ -27,6 +27,9 @@ namespace Game1
         [XmlIgnoreAttribute]
         public List<CollisionBox> collisionBoxes;
 
+        [XmlIgnoreAttribute]
+        Background backgroundTest = new Background();
+
         public static string[] themeNames;
         [XmlIgnoreAttribute]
         public Block airDefault = new Block(BlockType.AIR, 3, 3);
@@ -49,6 +52,10 @@ namespace Game1
         }
         public World(int width, int height, ContentManager content)
         {
+
+            backgroundTest.addObject("mountain1", new Vector2(1000, 1000), 2, "mountains");
+            backgroundTest.addObject("mountain2", new Vector2(1000, 750), 4, "mountains");
+
             this.width = width; this.height = height;
             this.content = content;
             foreach(BlockType block in BlockType.Values)
@@ -113,6 +120,8 @@ namespace Game1
                 scale: new Vector2(2,2),
                 effects: SpriteEffects.None,
                 layerDepth: 1);
+
+            backgroundTest.draw(spriteBatch);
 
             Vector2 startVec = MapTools.mapToGridCoords(Game1.getCam().Pos);
 
