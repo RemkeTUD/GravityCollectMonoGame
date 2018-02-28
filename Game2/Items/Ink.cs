@@ -30,6 +30,7 @@ namespace Game1
             sourceRect = animation.getSourceRectange();
             animation.update();
             this.angle = (float)(Math.Sin(frame * 0.1f) * 0.1f) + MapTools.VectorToAngle(WorldInfo.gravity) - 3.1415f * 0.5f;
+            r = 150; g = 150; b = 150;
             base.Draw(spriteBatch);
         }
     }
