@@ -53,8 +53,8 @@ namespace Game1
         public World(int width, int height, ContentManager content)
         {
 
-            backgroundTest.addObject("mountain1", new Vector2(1000, 1000), 2, "mountains");
-            backgroundTest.addObject("mountain2", new Vector2(1000, 750), 4, "mountains");
+           // backgroundTest.addObject("mountain1", new Vector2(1000, 1000), 2, "mountains");
+           // backgroundTest.addObject("mountain2", new Vector2(1000, 750), 4, "mountains");
 
             this.width = width; this.height = height;
             this.content = content;
