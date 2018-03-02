@@ -216,11 +216,11 @@ namespace Game1
         {
             while (collidesDownWithMap().collided)
             {
-                pos.X -= (float)(WorldInfo.gravity.X);
-                pos.Y -= (float)(WorldInfo.gravity.Y);
+                pos.X -= 0.1f * (float)(WorldInfo.gravity.X);
+                pos.Y -= 0.1f * (float)(WorldInfo.gravity.Y);
             }
-            pos.X += 1*(float)Math.Round(WorldInfo.gravity.X);
-            pos.Y += 1*(float)Math.Round(WorldInfo.gravity.Y);
+            pos.X += 0.4f *(float)Math.Round(WorldInfo.gravity.X);
+            pos.Y += 0.4f  * (float)Math.Round(WorldInfo.gravity.Y);
 
             rect.X = (int)Math.Round(pos.X);
             rect.Y = (int)Math.Round(pos.Y);
@@ -232,11 +232,11 @@ namespace Game1
             {
                 while (collidesRightWithMap().collided)
                 {
-                    pos.X -= (float)(WorldInfo.gravity.Y);
-                    pos.Y += (float)(WorldInfo.gravity.X);
+                    pos.X -= 0.1f * (float)(WorldInfo.gravity.Y);
+                    pos.Y += 0.1f * (float)(WorldInfo.gravity.X);
                 }
-                pos.X += 2*(float)Math.Round(WorldInfo.gravity.Y);
-                pos.Y -= 2*(float)Math.Round(WorldInfo.gravity.X);
+                pos.X += 0.5f *(float)Math.Round(WorldInfo.gravity.Y);
+                pos.Y -= 0.5f *(float)Math.Round(WorldInfo.gravity.X);
 
                 rect.X = (int)pos.X;
                 rect.Y = (int)pos.Y;
@@ -249,11 +249,11 @@ namespace Game1
             {
                 while (collidesLeftWithMap().collided)
                 {
-                    pos.X += (float)(WorldInfo.gravity.Y);
-                    pos.Y -= (float)(WorldInfo.gravity.X);
+                    pos.X += 0.1f * (float)(WorldInfo.gravity.Y);
+                    pos.Y -= 0.1f * (float)(WorldInfo.gravity.X);
                 }
-                pos.X -= 2*(float)Math.Round(WorldInfo.gravity.Y);
-                pos.Y += 2*(float)Math.Round(WorldInfo.gravity.X);
+                pos.X -= 0.5f *(float)Math.Round(WorldInfo.gravity.Y);
+                pos.Y += 0.5f * (float)Math.Round(WorldInfo.gravity.X);
 
                 rect.X = (int)pos.X;
                 rect.Y = (int)pos.Y;

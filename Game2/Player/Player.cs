@@ -57,6 +57,9 @@ namespace Game1
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+
+            Console.WriteLine(collidesUp().collided);
+
             rect.X = (int)(Math.Round(pos.X));
             rect.Y = (int)(Math.Round(pos.Y));
             SpriteEffects effect;
@@ -72,7 +75,7 @@ namespace Game1
                     sourceRectangle: sourceRectange,
                     color: Color.White,
                     rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
-                    origin: new Vector2(sourceRectange.Width * 0.5f, sourceRectange.Height * 0.5f),
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
                     scale: 1,
                     effects: effect,
                     layerDepth: 1);
@@ -330,7 +333,7 @@ namespace Game1
 
         public CollisionInfo collidesUp()
         {
-
+            
             Vector2 pos = MapTools.mapToGridCoords(upPoint());
             if (Game1.world.get((int)pos.X, (int)pos.Y).Type.Collision)
                 return new CollisionInfo(true, Vector2.Zero);
@@ -531,24 +534,28 @@ namespace Game1
         public void correctDownCollision()
         {
             while(isGrounded().collided) {
-                pos.X -= (float)(WorldInfo.gravity.X);
-                pos.Y -= (float)(WorldInfo.gravity.Y);
+                pos.X -= 0.1f * (float)(WorldInfo.gravity.X);
+                pos.Y -= 0.1f * (float)(WorldInfo.gravity.Y);
             }
-            pos.X += (float)Math.Round(WorldInfo.gravity.X);
-            pos.Y += (float)Math.Round(WorldInfo.gravity.Y);
+            pos.X += 0.2f * (float)Math.Round(WorldInfo.gravity.X);
+            pos.Y += 0.2f * (float)Math.Round(WorldInfo.gravity.Y);
 
             rect.X = (int)(Math.Round(pos.X));
             rect.Y = (int)(Math.Round(pos.Y));
         }
         public void correctUpCollision()
         {
+            if (collidesUp().collided) {
+                fallSpeed = 1;
+                framesSpacePressed = 30;
+            }
             while (collidesUp().collided)
             {
-                pos.X += (float)(WorldInfo.gravity.X);
-                pos.Y += (float)(WorldInfo.gravity.Y);
+                pos.X += 0.1f * (float)(WorldInfo.gravity.X);
+                pos.Y += 0.1f * (float)(WorldInfo.gravity.Y);
             }
-            pos.X -= (float)Math.Round(WorldInfo.gravity.X);
-            pos.Y -= (float)Math.Round(WorldInfo.gravity.Y);
+            pos.X -= 0.2f * (float)Math.Round(WorldInfo.gravity.X);
+            pos.Y -= 0.2f * (float)Math.Round(WorldInfo.gravity.Y);
 
             rect.X = (int)(Math.Round(pos.X));
             rect.Y = (int)(Math.Round(pos.Y));
@@ -607,12 +614,15 @@ namespace Game1
             }
             Console.WriteLine(collisionInfoDownBeginOfFrame.getFallSpeed());
             Console.WriteLine(speed + collisionInfoDownBeginOfFrame.getFallSpeed());
+            if (collidesUp().collided)
+                fallSpeed = 1;
             if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) > 0) {
                 pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
                 pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
             }
             else if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) < 0)
             {
+                
                 pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
                 pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
 
