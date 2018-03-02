@@ -79,6 +79,8 @@
     <Compile Include="Items\tractorBeam.cs" />
     <Compile Include="Items\Trampoline.cs" />
     <Compile Include="Items\Trapdoor.cs" />
+    <Compile Include="Items\Tree.cs" />
+    <Compile Include="Items\Wolf.cs" />
     <Compile Include="LineRenderer.cs" />
     <Compile Include="Player\CollisionInfo.cs" />
     <Compile Include="Player\GravityFlame.cs" />
