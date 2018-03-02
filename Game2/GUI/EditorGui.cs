@@ -84,17 +84,23 @@ namespace Game1
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(DonutBlock), Game1.cManager, 32, 32); }, "box"));
             y++;
+            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
+                TeleporterDestination teleporterDest = (TeleporterDestination)Game1.world.createInstanceAtMouse(typeof(TeleporterDestination), Game1.cManager, 32, 32);
+                currentDragItem = Game1.world.createInstanceAtMouse(typeof(Teleporter), Game1.cManager, 32, 32);
+                ((Teleporter)currentDragItem).dest = teleporterDest;
+            }, "teleporter"));
+
+            int x = 2;
+            y = 0;
+            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RotateSpike), Game1.cManager, 32, 128); }, "rotateSpike"));
+            y++;
 
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
             guiElements.Add(saveText);
             guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "saw"));
             guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "box"));
 
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
-                TeleporterDestination teleporterDest = (TeleporterDestination)Game1.world.createInstanceAtMouse(typeof(TeleporterDestination), Game1.cManager, 32, 32);
-                currentDragItem = Game1.world.createInstanceAtMouse(typeof(Teleporter), Game1.cManager, 32, 32);
-                ((Teleporter)currentDragItem).dest = teleporterDest;
-            }, "teleporter"));
+            
 
             y++;
 

@@ -71,6 +71,7 @@
     <Compile Include="Items\Raycast.cs" />
     <Compile Include="Items\Rocket.cs" />
     <Compile Include="Items\RocketSpawner.cs" />
+    <Compile Include="Items\RotateSpike.cs" />
     <Compile Include="Items\Saw.cs" />
     <Compile Include="Items\Sign.cs" />
     <Compile Include="Items\Spike.cs" />

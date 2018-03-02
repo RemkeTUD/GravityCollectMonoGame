@@ -306,6 +306,7 @@ namespace Game1
             foreach (Item item in Game1.world.items)
                 item.reset();
             WorldInfo.gravity = new Vector2(0, 1);
+            WorldInfo.angle = 0;
         }
 
         public CollisionInfo isGrounded()
