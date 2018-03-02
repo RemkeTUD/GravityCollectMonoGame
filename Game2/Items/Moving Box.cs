@@ -25,7 +25,7 @@ namespace Game1
         {
             this.endPoint = new Vector2(x,y);
             startPoint = new Vector2(x, y);
-            this.travelSpeed = 2;
+            this.travelSpeed = 1;
         }
         public Moving_Box(ContentManager content, float x, float y, float width, float height, float speed, Vector2 endPoint) : base(content, x, y, width, height)
         {

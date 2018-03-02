@@ -185,10 +185,10 @@ namespace Game1
                         world.correctLeftCollisions();
                         world.correctDownCollisions();
 
-                        
 
 
-                        if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
+
+                        /*if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
 
                         player.correctUpCollision();
                         player.correctDownCollision();
@@ -203,7 +203,7 @@ namespace Game1
                             player.correctUpCollision();
                             player.correctDownCollision();
 
-                        }
+                        }*/
                         if (!TextDialog.isInDialog)
                         player.inputGravityChange();
 

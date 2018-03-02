@@ -30,6 +30,8 @@ namespace Game1
 
         bool showPlayerPositions = false;
 
+        CollisionInfo collisionInfoDownBeginOfFrame;
+
         List<PlayerPositionShow> playerPositions = new List<PlayerPositionShow>();
 
         public List<GravityFlame> flames = new List<GravityFlame>();
@@ -100,7 +102,7 @@ namespace Game1
         }
         public void Input(float delta)
         {
-            
+
             
 
 
@@ -121,11 +123,14 @@ namespace Game1
 
             frames++;
 
+            
+
 
         }
 
         public void update(float delta)
         {
+            collisionInfoDownBeginOfFrame = isGrounded();
             applySpeed();
             applyFallSpeed(delta);
            Vector2 gridCoords = MapTools.mapToGridCoords(getCenter());
@@ -147,8 +152,8 @@ namespace Game1
 
             if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space) && isGrounded().collided && !TextDialog.isInDialog)
             {
-                fallSpeed += -5;
-                speed = isGrounded().getRealSpeed();
+                fallSpeed += -5 + collisionInfoDownBeginOfFrame.getFallSpeed();
+                speed += collisionInfoDownBeginOfFrame.getRealSpeed();
                 framesSpacePressed++;
             }
             if (!state.IsKeyDown(Keys.Space) && isGrounded().collided)
@@ -496,11 +501,10 @@ namespace Game1
 
         public void applySpeed()
         {
-            if ((speed + isGrounded().getRealSpeed() > 0 && !collidesRight()) || (speed + isGrounded().getRealSpeed() < 0 && !collidesLeft()))
+            if ((speed + collisionInfoDownBeginOfFrame.getRealSpeed() > 0 && !collidesRight()) || (speed + collisionInfoDownBeginOfFrame.getRealSpeed() < 0 && !collidesLeft()))
             {
-                Console.WriteLine(isGrounded().getRealSpeed());
-                pos.X += (float)((speed + isGrounded().getRealSpeed()) * Math.Round(MapTools.getXMultiplier()));
-                pos.Y += (float)((speed + isGrounded().getRealSpeed()) * Math.Round(MapTools.getYMultiplier()));
+                pos.X += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getXMultiplier()));
+                pos.Y += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getYMultiplier()));
             }
             else
                 speed = 0;
@@ -590,31 +594,19 @@ namespace Game1
             }
             else if(!Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                fallSpeed = isGrounded().getFallSpeed();
+                fallSpeed = 0;
 
             }
 
-            if(fallSpeed > 0) {
-                pos.X += (int)(fallSpeed * (float)(Math.Round(WorldInfo.gravity.X)));
-                pos.Y += (int)(fallSpeed * (float)(Math.Round(WorldInfo.gravity.Y)));
+            if((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) > 0) {
+                pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
+                pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
             }
-            else if (fallSpeed < 0)
+            else if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) < 0)
             {
-                for (int i = 0; i > fallSpeed; i--)
-                {
+                pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
+                pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
 
-                    if (collidesUp().collided)
-                    {
-                        framesSpacePressed = 30;
-                        fallSpeed = 1 + MathHelper.Clamp(collidesUp().getFallSpeed(),0,10000);
-                        //break;
-                    }
-                    else
-                    {
-                        pos.X -= (float)(WorldInfo.gravity.X);
-                        pos.Y -= (float)(WorldInfo.gravity.Y);
-                    }
-                }
             }
 
             /*
