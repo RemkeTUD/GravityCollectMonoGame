@@ -54,6 +54,7 @@
     <Compile Include="Items\Canon.cs" />
     <Compile Include="Items\CanonBall.cs" />
     <Compile Include="Items\CollisionBox.cs" />
+    <Compile Include="Items\DonutBlock.cs" />
     <Compile Include="Items\Enemy.cs" />
     <Compile Include="Items\ExplosionHandler.cs" />
     <Compile Include="Items\FreeGravityBox.cs" />
