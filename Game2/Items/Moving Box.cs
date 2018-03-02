@@ -65,7 +65,7 @@ namespace Game1
             if (!toEndPoint)
                 speed *= -1;
 
-            
+            Console.WriteLine(speed);
 
             base.Update();
         }

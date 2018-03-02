@@ -57,8 +57,8 @@ namespace Game1
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            rect.X = (int)(pos.X);
-            rect.Y = (int)pos.Y;
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
             SpriteEffects effect;
             if (flipped)
                 effect = SpriteEffects.FlipHorizontally;
@@ -66,8 +66,16 @@ namespace Game1
                 effect = SpriteEffects.None;
             sourceRectange = animation.getSourceRectange();
             animation.update();
-            spriteBatch.Draw(textureTest, destinationRectangle: rect, sourceRectangle: sourceRectange, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(16 * 0.5f, 32 * 0.5f), effects: effect);
-
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos,
+                    sourceRectangle: sourceRectange,
+                    color: Color.White,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2(sourceRectange.Width * 0.5f, sourceRectange.Height * 0.5f),
+                    scale: 1,
+                    effects: effect,
+                    layerDepth: 1);
             int flameId = 0;
             foreach(GravityFlame flame in flames)
             {
@@ -529,8 +537,8 @@ namespace Game1
             pos.X += (float)Math.Round(WorldInfo.gravity.X);
             pos.Y += (float)Math.Round(WorldInfo.gravity.Y);
 
-            rect.X = (int)pos.X;
-            rect.Y = (int)pos.Y;
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
         }
         public void correctUpCollision()
         {
@@ -542,8 +550,8 @@ namespace Game1
             pos.X -= (float)Math.Round(WorldInfo.gravity.X);
             pos.Y -= (float)Math.Round(WorldInfo.gravity.Y);
 
-            rect.X = (int)pos.X;
-            rect.Y = (int)pos.Y;
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
         }
 
         public void correctRightCollision()
@@ -557,8 +565,8 @@ namespace Game1
                 pos.X += (float)Math.Round(WorldInfo.gravity.Y);
                 pos.Y -= (float)Math.Round(WorldInfo.gravity.X);
 
-                rect.X = (int)pos.X;
-                rect.Y = (int)pos.Y;
+                rect.X = (int)(Math.Round(pos.X));
+                rect.Y = (int)(Math.Round(pos.Y));
             }
         }
 
@@ -574,8 +582,8 @@ namespace Game1
                 pos.X -= (float)Math.Round(WorldInfo.gravity.Y);
                 pos.Y += (float)Math.Round(WorldInfo.gravity.X);
 
-                rect.X = (int)pos.X;
-                rect.Y = (int)pos.Y;
+                rect.X = (int)(Math.Round(pos.X));
+                rect.Y = (int)(Math.Round(pos.Y));
             }
         }
 
@@ -597,8 +605,9 @@ namespace Game1
                 fallSpeed = 0;
 
             }
-
-            if((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) > 0) {
+            Console.WriteLine(collisionInfoDownBeginOfFrame.getFallSpeed());
+            Console.WriteLine(speed + collisionInfoDownBeginOfFrame.getFallSpeed());
+            if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) > 0) {
                 pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
                 pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
             }
