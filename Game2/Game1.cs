@@ -175,11 +175,11 @@ namespace Game1
                         FreeGravityBox.setAllSpeedChains();
 
                         world.checkForWalls();
-
+                        player.update(0);
                         if (!TextDialog.isInDialog)
                             world.applyChanges(GraphicsDevice);
                         
-                        player.update(0);
+                        
 
                         world.correctRightCollisions();
                         world.correctLeftCollisions();

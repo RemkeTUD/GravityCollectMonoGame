@@ -143,24 +143,12 @@ namespace Game1
             {
                 framesSpacePressed = 2000;
             }
-            if (!isGrounded().collided)
-            {
-                if(fallSpeed < maxFallSpeed)
-                if (framesSpacePressed >= 30)
-                    fallSpeed += fallAcceleration * 1f;
-                else
-                    fallSpeed += fallAcceleration * 0.3f;
-                framesInAir++;
-            }
-            else
-            {
-                fallSpeed = isGrounded().getFallSpeed();
-
-            }
+            
 
             if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space) && isGrounded().collided && !TextDialog.isInDialog)
             {
                 fallSpeed += -5;
+                speed = isGrounded().getRealSpeed();
                 framesSpacePressed++;
             }
             if (!state.IsKeyDown(Keys.Space) && isGrounded().collided)
@@ -184,7 +172,7 @@ namespace Game1
             if (state.IsKeyDown(Keys.A) && !TextDialog.isInDialog)
             {
                 flipped = true;
-                if (speed > -maxSpeed + isGrounded().getRealSpeed())
+                if (speed > -maxSpeed)
                 {
                     if (isGrounded().collided)
                         speed -= acceleration;
@@ -195,7 +183,7 @@ namespace Game1
             else if (state.IsKeyDown(Keys.D) && !TextDialog.isInDialog)
             {
                 flipped = false;
-                if (speed < maxSpeed + isGrounded().getRealSpeed())
+                if (speed < maxSpeed)
                 {
                     if (isGrounded().collided)
                         speed += acceleration;
@@ -205,7 +193,7 @@ namespace Game1
             }
             else
             {
-                if (speed > 0 + isGrounded().getRealSpeed())
+                if (speed > 0)
                 {
                     if (speed > acceleration)
                     {
@@ -215,9 +203,9 @@ namespace Game1
                             speed -= acceleration * 0.25f;
                     }
                     else
-                        speed = 0 + isGrounded().getRealSpeed();
+                        speed = 0;
                 }
-                if (speed < 0 + isGrounded().getRealSpeed())
+                if (speed < 0)
                 {
                     if (speed < -acceleration)
                     {
@@ -227,7 +215,7 @@ namespace Game1
                             speed += acceleration * 0.25f;
                     }
                     else
-                        speed = 0 + isGrounded().getRealSpeed();
+                        speed = 0;
                 }
             }
 
@@ -508,10 +496,11 @@ namespace Game1
 
         public void applySpeed()
         {
-            if ((speed > 0 && !collidesRight()) || (speed < 0 && !collidesLeft()))
+            if ((speed + isGrounded().getRealSpeed() > 0 && !collidesRight()) || (speed + isGrounded().getRealSpeed() < 0 && !collidesLeft()))
             {
-                pos.X += (float)(speed * Math.Round(MapTools.getXMultiplier()));
-                pos.Y += (float)(speed * Math.Round(MapTools.getYMultiplier()));
+                Console.WriteLine(isGrounded().getRealSpeed());
+                pos.X += (float)((speed + isGrounded().getRealSpeed()) * Math.Round(MapTools.getXMultiplier()));
+                pos.Y += (float)((speed + isGrounded().getRealSpeed()) * Math.Round(MapTools.getYMultiplier()));
             }
             else
                 speed = 0;
@@ -589,6 +578,22 @@ namespace Game1
 
         public void applyFallSpeed(float delta)
         {
+
+            if (!isGrounded().collided)
+            {
+                if(fallSpeed < maxFallSpeed)
+                if (framesSpacePressed >= 30)
+                    fallSpeed += fallAcceleration * 1f;
+                else
+                    fallSpeed += fallAcceleration * 0.3f;
+                framesInAir++;
+            }
+            else if(!Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                fallSpeed = isGrounded().getFallSpeed();
+
+            }
+
             if(fallSpeed > 0) {
                 pos.X += (int)(fallSpeed * (float)(Math.Round(WorldInfo.gravity.X)));
                 pos.Y += (int)(fallSpeed * (float)(Math.Round(WorldInfo.gravity.Y)));
