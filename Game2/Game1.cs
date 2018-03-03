@@ -188,22 +188,24 @@ namespace Game1
 
 
 
-                        if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
+                        //if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
 
-                        player.correctUpCollision();
-                        player.correctDownCollision();
+                            player.correctUpCollision();
+                            player.correctDownCollision();
+                            
 
-                        player.correctRightCollision();
+                            player.correctRightCollision();
                         player.correctLeftCollision();
-                        } else
-                        {
+                        //} else
+                        /*{
                             player.correctRightCollision();
                             player.correctLeftCollision();
 
                             player.correctUpCollision();
                             player.correctDownCollision();
+                            
 
-                        }
+                        }*/
                         if (!TextDialog.isInDialog)
                         player.inputGravityChange();
 

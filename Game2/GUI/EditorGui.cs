@@ -94,6 +94,8 @@ namespace Game1
             y = 0;
             guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RotateSpike), Game1.cManager, 32, 128); }, "rotateSpike"));
             y++;
+            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Raven), Game1.cManager, 32, 32); }, "raven"));
+            y++;
 
             saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
             guiElements.Add(saveText);

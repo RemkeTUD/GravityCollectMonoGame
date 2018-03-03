@@ -74,13 +74,13 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonSpeedPlus == null)
-                buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 0.1f; }, "saw");
+                buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 1f; }, "saw");
             buttonSpeedPlus.Draw(batch);
             buttonSpeedPlus.Update();
 
 
             if (buttonSpeedMinus == null)
-                buttonSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { travelSpeed -= 0.1f; }, "saw");
+                buttonSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { travelSpeed -= 1f; }, "saw");
             buttonSpeedMinus.Draw(batch);
             buttonSpeedMinus.Update();
 
