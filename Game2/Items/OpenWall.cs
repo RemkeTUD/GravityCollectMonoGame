@@ -52,8 +52,6 @@ namespace Game1
 
         public override void frameInit()
         {
-            Console.WriteLine("X: " + Game1.getPlayer().getXSpeed());
-            Console.WriteLine("Y: " + Game1.getPlayer().getYSpeed());
             if (
                 rotation == 0 && Game1.getPlayer().getCenter().Y + 16 < (getCenter() - size * 0.5f).Y + 2 && Game1.getPlayer().getYSpeed() >= 0 ||
                 rotation == 3 && Game1.getPlayer().getCenter().X + 16 < (getCenter() - size * 0.5f).X + 2 && Game1.getPlayer().getXSpeed() >= 0 ||

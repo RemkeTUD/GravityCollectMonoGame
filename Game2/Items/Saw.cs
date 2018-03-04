@@ -46,8 +46,7 @@ namespace Game1
 
         public override void drawIllumination(SpriteBatch spriteBatch)
         {
-
-            Console.WriteLine(sourceRect);
+            
             if (sourceRect.Width == 0)
             {
                 sourceRect = new Rectangle(0, 0, textureTest.Width, textureTest.Height);

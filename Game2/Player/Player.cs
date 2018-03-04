@@ -120,8 +120,7 @@ namespace Game1
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-
-            Console.WriteLine(collidesUp().collided);
+            
 
             rect.X = (int)(Math.Round(pos.X));
             rect.Y = (int)(Math.Round(pos.Y));
@@ -303,7 +302,7 @@ namespace Game1
 
 
 
-            if (!isGrounded().collided && collidesRight() && !flipped)
+            if (!isGrounded().collided && collidesRight(false) && !flipped)
             {
                 if (fallSpeed > 5)
                     fallSpeed -= fallAcceleration + 0.3f;
@@ -319,7 +318,7 @@ namespace Game1
                 }
             }
 
-            if (!isGrounded().collided && collidesLeft() && flipped)
+            if (!isGrounded().collided && collidesLeft(false) && flipped)
             {
                 if (fallSpeed > 5)
                     fallSpeed -= fallAcceleration + 0.3f;
@@ -414,9 +413,8 @@ namespace Game1
             return new CollisionInfo(false, Vector2.Zero);
         }
 
-        public Boolean collidesRight()
+        public Boolean collidesRight(bool withFreeGravityBox)
         {
-
             Vector2 pos;
             List<Vector2> points = rightPoints();
             foreach (Vector2 point in points)
@@ -429,14 +427,14 @@ namespace Game1
 
             foreach (CollisionBox box in Game1.world.collisionBoxes)
             {
-                if (!(box is FreeGravityBox) && collidesRightWithCollisionBox(box))
+                if (!(box is FreeGravityBox && !withFreeGravityBox) && collidesRightWithCollisionBox(box))
                     return true;
             }
 
             return false;
         }
 
-        public Boolean collidesLeft()
+        public Boolean collidesLeft(bool withFreeGravityBox)
         {
             Vector2 pos;
             List<Vector2> points = leftPoints();
@@ -449,7 +447,7 @@ namespace Game1
 
             foreach (CollisionBox box in Game1.world.collisionBoxes)
             {
-                 if (!(box is FreeGravityBox) && collidesLeftWithCollisionBox(box))
+                 if (!(box is FreeGravityBox && !withFreeGravityBox) && collidesLeftWithCollisionBox(box))
                      return true;
             }
             
@@ -578,7 +576,7 @@ namespace Game1
 
         public void applySpeed()
         {
-            if ((speed + collisionInfoDownBeginOfFrame.getRealSpeed() > 0 && !collidesRight()) || (speed + collisionInfoDownBeginOfFrame.getRealSpeed() < 0 && !collidesLeft()))
+            if ((speed + collisionInfoDownBeginOfFrame.getRealSpeed() > 0 && !collidesRight(false)) || (speed + collisionInfoDownBeginOfFrame.getRealSpeed() < 0 && !collidesLeft(false)))
             {
                 pos.X += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getXMultiplier()));
                 pos.Y += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getYMultiplier()));
@@ -599,7 +597,7 @@ namespace Game1
 
         public void decideCollisionCorrection(bool leftAndDown)
         {
-
+            Console.WriteLine("inDecide");
             Vector2 posUp = downPoint();
             List<Vector2> posSide;
             int multiplier = 1;
@@ -616,11 +614,11 @@ namespace Game1
             while (Game1.world.collidesWithPoint(posUp).collided
                 && Game1.world.collidesWithPoints(posSide).collided)
             {
-                posUp += WorldInfo.gravity;
-                posSide[0] += MapTools.getMultiplierVec() * multiplier;
-                posSide[1] += MapTools.getMultiplierVec() * multiplier;
-                posSide[2] += MapTools.getMultiplierVec() * multiplier;
-                
+                posUp -= WorldInfo.gravity;
+                posSide[0] += new Vector2((float)(WorldInfo.gravity.Y), (float)(WorldInfo.gravity.X)) * multiplier;
+                posSide[1] += new Vector2((float)(WorldInfo.gravity.Y), (float)(WorldInfo.gravity.X)) * multiplier;
+                posSide[2] += new Vector2((float)(WorldInfo.gravity.Y), (float)(WorldInfo.gravity.X)) * multiplier;
+
             }
 
             if(!Game1.world.collidesWithPoint(posUp).collided)
@@ -629,7 +627,10 @@ namespace Game1
             }
             if (!Game1.world.collidesWithPoints(posSide).collided)
             {
-                correctLeftCollision();
+                if (leftAndDown)
+                    correctLeftCollision();
+                else
+                    correctRightCollision();
             }
             /*
             while (isGrounded().collided) {
@@ -644,6 +645,7 @@ namespace Game1
         }
         public void correctDownCollision()
         {
+            
             while (isGrounded().collided)
             {
                 pos.X -= 0.1f * (float)(WorldInfo.gravity.X);
@@ -675,8 +677,9 @@ namespace Game1
 
         public void correctRightCollision()
         {
-            if(collidesRight()) { 
-                while (collidesRight())
+            Console.Write("RightCorrect");
+            if(collidesRight(true)) { 
+                while (collidesRight(true))
                 {
                     pos.X -= (float)(WorldInfo.gravity.Y);
                     pos.Y += (float)(WorldInfo.gravity.X);
@@ -691,9 +694,10 @@ namespace Game1
 
         public void correctLeftCollision()
         {
-            if (collidesLeft())
+            Console.WriteLine("LeftCorrect");
+            if (collidesLeft(true))
             {
-                while (collidesLeft())
+                while (collidesLeft(true))
                 {
                     pos.X += (float)(WorldInfo.gravity.Y);
                     pos.Y -= (float)(WorldInfo.gravity.X);

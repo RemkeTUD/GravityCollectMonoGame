@@ -64,8 +64,7 @@ namespace Game1
             speed *= travelSpeed;
             if (!toEndPoint)
                 speed *= -1;
-
-            Console.WriteLine(speed);
+            
 
             base.Update();
         }

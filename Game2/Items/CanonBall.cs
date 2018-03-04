@@ -19,7 +19,6 @@ namespace Game1
         {
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/canonBall");
             speed.Normalize();
-            Console.WriteLine(speed);
             this.speed = speed * 35f;
         }
 

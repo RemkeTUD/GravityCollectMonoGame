@@ -189,21 +189,21 @@ namespace Game1
 
 
                         //if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
-
-                        player.correctUpCollision();
-                        /*if (player.collidesLeft() && player.isGrounded().collided)
+                        //player.correctUpCollision();
+                        //player.correctUpCollision();
+                        if (player.collidesLeft(true) && player.isGrounded().collided)
                             player.decideCollisionCorrection(true);
-                        else if (player.collidesRight() && player.isGrounded().collided)
+                        else if (player.collidesRight(true) && player.isGrounded().collided)
                             player.decideCollisionCorrection(false);
                         else if (player.isGrounded().collided)
                             player.correctDownCollision();
-                        else if (player.collidesRight())
+                        else if (player.collidesRight(true))
                             player.correctRightCollision();
-                        else if (player.collidesLeft())
-                            player.correctLeftCollision();*/
-                        player.correctDownCollision();
-                            player.correctRightCollision();
-                        player.correctLeftCollision();
+                        else if (player.collidesLeft(true))
+                            player.correctLeftCollision();
+                        //player.correctDownCollision();
+                          //  player.correctRightCollision();
+                        //player.correctLeftCollision();
                         //} else
                         /*{
                             player.correctRightCollision();

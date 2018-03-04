@@ -32,7 +32,6 @@ namespace Game1
                 setRealSpeed(collidesRightWithMap().getRealSpeed());
             else
                 setRealSpeed(0);
-            Console.WriteLine(getRealSpeed());
 
             if (collidesUpWithMap().collided && getFallSpeed() < -0.1f)
             {
