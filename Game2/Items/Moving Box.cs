@@ -25,7 +25,7 @@ namespace Game1
         {
             this.endPoint = new Vector2(x,y);
             startPoint = new Vector2(x, y);
-            this.travelSpeed = 2;
+            this.travelSpeed = 1;
         }
         public Moving_Box(ContentManager content, float x, float y, float width, float height, float speed, Vector2 endPoint) : base(content, x, y, width, height)
         {
@@ -65,7 +65,7 @@ namespace Game1
             if (!toEndPoint)
                 speed *= -1;
 
-            
+            Console.WriteLine(speed);
 
             base.Update();
         }
@@ -74,13 +74,13 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonSpeedPlus == null)
-                buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 0.1f; }, "saw");
+                buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 1f; }, "saw");
             buttonSpeedPlus.Draw(batch);
             buttonSpeedPlus.Update();
 
 
             if (buttonSpeedMinus == null)
-                buttonSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { travelSpeed -= 0.1f; }, "saw");
+                buttonSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { travelSpeed -= 1f; }, "saw");
             buttonSpeedMinus.Draw(batch);
             buttonSpeedMinus.Update();
 

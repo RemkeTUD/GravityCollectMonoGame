@@ -82,7 +82,7 @@ namespace Game1
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            Console.WriteLine(sourceRect);
+           
             if (sourceRect.Width == 0)
             {
                 sourceRect = new Rectangle(0, 0, textureTest.Width, textureTest.Height);
@@ -93,6 +93,56 @@ namespace Game1
                 position: pos,
                 sourceRectangle: sourceRect,
                 color: new Color(r,g,b, alpha),
+                rotation: angle,
+                origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
+                scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
+                effects: SpriteEffects.None,
+                layerDepth: 1);
+        }
+
+        public virtual void drawOutlines(SpriteBatch spriteBatch)
+        {
+
+            if (sourceRect.Width == 0)
+            {
+                sourceRect = new Rectangle(0, 0, textureTest.Width, textureTest.Height);
+
+            }
+            spriteBatch.Draw(
+                textureTest,
+                position: pos + new Vector2(1f / Game1.getCam().Zoom, 0),
+                sourceRectangle: sourceRect,
+                color: new Color(0,0,0, alpha),
+                rotation: angle,
+                origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
+                scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
+                effects: SpriteEffects.None,
+                layerDepth: 1);
+            spriteBatch.Draw(
+                textureTest,
+                position: pos + new Vector2(-1f / Game1.getCam().Zoom, 0),
+                sourceRectangle: sourceRect,
+                color: new Color(0, 0, 0, alpha),
+                rotation: angle,
+                origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
+                scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
+                effects: SpriteEffects.None,
+                layerDepth: 1);
+            spriteBatch.Draw(
+                textureTest,
+                position: pos + new Vector2(0, 1f / Game1.getCam().Zoom),
+                sourceRectangle: sourceRect,
+                color: new Color(0, 0, 0, alpha),
+                rotation: angle,
+                origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
+                scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
+                effects: SpriteEffects.None,
+                layerDepth: 1);
+            spriteBatch.Draw(
+                textureTest,
+                position: pos + new Vector2(0, -1f / Game1.getCam().Zoom),
+                sourceRectangle: sourceRect,
+                color: new Color(0, 0, 0, alpha),
                 rotation: angle,
                 origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
                 scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
@@ -115,7 +165,7 @@ namespace Game1
                     sourceRectangle: sourceRect,
                     color: new Color(r * illuminationStrength, g * illuminationStrength, b * illuminationStrength, alpha),
                     rotation: angle,
-                    origin: new Vector2(sourceRect.Width * 0.5f, sourceRect.Height * 0.5f),
+                     origin: new Vector2((float)sourceRect.Width * 0.5f, (float)sourceRect.Height * 0.5f),
                     scale: new Vector2(1 * (size.X / (float)sourceRect.Width), 1 * (size.Y / (float)sourceRect.Height)),
                     effects: SpriteEffects.None,
                     layerDepth: 1);

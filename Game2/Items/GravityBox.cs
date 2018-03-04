@@ -54,7 +54,7 @@ namespace Game1
             if (!horizontal)
             {
 
-                speed.Y += 0.8f * ((float)(WorldInfo.gravity.Y));
+                speed.Y += 0.4f * ((float)(WorldInfo.gravity.Y));
 
                 if (speed.Y > 0 && pos.Y > spawnPos.Y + fallHeight)
                     speed.Y = 0;
@@ -63,7 +63,7 @@ namespace Game1
             }
             else
             {
-                speed.X += 0.8f * ((float)(WorldInfo.gravity.X));
+                speed.X += 0.4f * ((float)(WorldInfo.gravity.X));
 
                 if (speed.X > 0 && pos.X > spawnPos.X + fallHeight)
                     speed.X = 0;

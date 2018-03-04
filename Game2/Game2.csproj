@@ -54,6 +54,7 @@
     <Compile Include="Items\Canon.cs" />
     <Compile Include="Items\CanonBall.cs" />
     <Compile Include="Items\CollisionBox.cs" />
+    <Compile Include="Items\DonutBlock.cs" />
     <Compile Include="Items\Enemy.cs" />
     <Compile Include="Items\ExplosionHandler.cs" />
     <Compile Include="Items\FreeGravityBox.cs" />
@@ -67,9 +68,11 @@
     <Compile Include="Items\Moving Box.cs" />
     <Compile Include="Items\OnGravityChangeBlock.cs" />
     <Compile Include="Items\OpenWall.cs" />
+    <Compile Include="Items\Raven.cs" />
     <Compile Include="Items\Raycast.cs" />
     <Compile Include="Items\Rocket.cs" />
     <Compile Include="Items\RocketSpawner.cs" />
+    <Compile Include="Items\RotateSpike.cs" />
     <Compile Include="Items\Saw.cs" />
     <Compile Include="Items\Sign.cs" />
     <Compile Include="Items\Spike.cs" />
@@ -79,6 +82,8 @@
     <Compile Include="Items\tractorBeam.cs" />
     <Compile Include="Items\Trampoline.cs" />
     <Compile Include="Items\Trapdoor.cs" />
+    <Compile Include="Items\Tree.cs" />
+    <Compile Include="Items\Wolf.cs" />
     <Compile Include="LineRenderer.cs" />
     <Compile Include="Particle\Particle.cs" />
     <Compile Include="Particle\ParticleEmitter.cs" />

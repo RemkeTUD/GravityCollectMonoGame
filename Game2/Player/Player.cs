@@ -30,6 +30,8 @@ namespace Game1
 
         bool showPlayerPositions = false;
 
+        CollisionInfo collisionInfoDownBeginOfFrame;
+
         List<PlayerPositionShow> playerPositions = new List<PlayerPositionShow>();
 
         public List<GravityFlame> flames = new List<GravityFlame>();
@@ -53,10 +55,76 @@ namespace Game1
         {
             return pos ;
         }
+
+        public void drawOutlines(SpriteBatch spriteBatch)
+        {
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
+            SpriteEffects effect;
+            if (flipped)
+                effect = SpriteEffects.FlipHorizontally;
+            else
+                effect = SpriteEffects.None;
+            sourceRectange = animation.getSourceRectange();
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(1f / Game1.getCam().Zoom, 0),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(0, 1f / Game1.getCam().Zoom),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(-1f / Game1.getCam().Zoom, 0),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(0, -1f / Game1.getCam().Zoom),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+
+            int flameId = 0;
+            foreach (GravityFlame flame in flames)
+            {
+
+
+
+                flame.drawOutlines(spriteBatch);
+                flameId++;
+
+            }
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
-            rect.X = (int)(pos.X);
-            rect.Y = (int)pos.Y;
+
+            Console.WriteLine(collidesUp().collided);
+
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
             SpriteEffects effect;
             if (flipped)
                 effect = SpriteEffects.FlipHorizontally;
@@ -64,15 +132,26 @@ namespace Game1
                 effect = SpriteEffects.None;
             sourceRectange = animation.getSourceRectange();
             animation.update();
-            spriteBatch.Draw(textureTest, destinationRectangle: rect, sourceRectangle: sourceRectange, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(16 * 0.5f, 32 * 0.5f), effects: effect);
-
+            
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos,
+                    sourceRectangle: sourceRectange,
+                    color: Color.White,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1,
+                    effects: effect,
+                    layerDepth: 1);
+            
             int flameId = 0;
             foreach(GravityFlame flame in flames)
             {
                 
-                flame.update(flameId);
+                
                 
                 flame.draw(spriteBatch);
+                flame.update(flameId);
                 flameId++;
 
             }
@@ -100,7 +179,7 @@ namespace Game1
         }
         public void Input(float delta)
         {
-            
+
             
 
 
@@ -121,11 +200,14 @@ namespace Game1
 
             frames++;
 
+            
+
 
         }
 
         public void update(float delta)
         {
+            collisionInfoDownBeginOfFrame = isGrounded();
             applySpeed();
             applyFallSpeed(delta);
            Vector2 gridCoords = MapTools.mapToGridCoords(getCenter());
@@ -143,24 +225,12 @@ namespace Game1
             {
                 framesSpacePressed = 2000;
             }
-            if (!isGrounded().collided)
-            {
-                if(fallSpeed < maxFallSpeed)
-                if (framesSpacePressed >= 30)
-                    fallSpeed += fallAcceleration * 1f;
-                else
-                    fallSpeed += fallAcceleration * 0.3f;
-                framesInAir++;
-            }
-            else
-            {
-                fallSpeed = isGrounded().getFallSpeed();
-
-            }
+            
 
             if (state.IsKeyDown(Keys.Space) && prevState.IsKeyUp(Keys.Space) && isGrounded().collided && !TextDialog.isInDialog)
             {
-                fallSpeed += -5;
+                fallSpeed += -5 + collisionInfoDownBeginOfFrame.getFallSpeed();
+                speed += collisionInfoDownBeginOfFrame.getRealSpeed();
                 framesSpacePressed++;
             }
             if (!state.IsKeyDown(Keys.Space) && isGrounded().collided)
@@ -184,7 +254,7 @@ namespace Game1
             if (state.IsKeyDown(Keys.A) && !TextDialog.isInDialog)
             {
                 flipped = true;
-                if (speed > -maxSpeed + isGrounded().getRealSpeed())
+                if (speed > -maxSpeed)
                 {
                     if (isGrounded().collided)
                         speed -= acceleration;
@@ -195,7 +265,7 @@ namespace Game1
             else if (state.IsKeyDown(Keys.D) && !TextDialog.isInDialog)
             {
                 flipped = false;
-                if (speed < maxSpeed + isGrounded().getRealSpeed())
+                if (speed < maxSpeed)
                 {
                     if (isGrounded().collided)
                         speed += acceleration;
@@ -205,7 +275,7 @@ namespace Game1
             }
             else
             {
-                if (speed > 0 + isGrounded().getRealSpeed())
+                if (speed > 0)
                 {
                     if (speed > acceleration)
                     {
@@ -215,9 +285,9 @@ namespace Game1
                             speed -= acceleration * 0.25f;
                     }
                     else
-                        speed = 0 + isGrounded().getRealSpeed();
+                        speed = 0;
                 }
-                if (speed < 0 + isGrounded().getRealSpeed())
+                if (speed < 0)
                 {
                     if (speed < -acceleration)
                     {
@@ -227,7 +297,7 @@ namespace Game1
                             speed += acceleration * 0.25f;
                     }
                     else
-                        speed = 0 + isGrounded().getRealSpeed();
+                        speed = 0;
                 }
             }
 
@@ -306,6 +376,7 @@ namespace Game1
             foreach (Item item in Game1.world.items)
                 item.reset();
             WorldInfo.gravity = new Vector2(0, 1);
+            WorldInfo.angle = 0;
         }
 
         public CollisionInfo isGrounded()
@@ -328,7 +399,7 @@ namespace Game1
 
         public CollisionInfo collidesUp()
         {
-
+            
             Vector2 pos = MapTools.mapToGridCoords(upPoint());
             if (Game1.world.get((int)pos.X, (int)pos.Y).Type.Collision)
                 return new CollisionInfo(true, Vector2.Zero);
@@ -507,10 +578,10 @@ namespace Game1
 
         public void applySpeed()
         {
-            if ((speed > 0 && !collidesRight()) || (speed < 0 && !collidesLeft()))
+            if ((speed + collisionInfoDownBeginOfFrame.getRealSpeed() > 0 && !collidesRight()) || (speed + collisionInfoDownBeginOfFrame.getRealSpeed() < 0 && !collidesLeft()))
             {
-                pos.X += (float)(speed * Math.Round(MapTools.getXMultiplier()));
-                pos.Y += (float)(speed * Math.Round(MapTools.getYMultiplier()));
+                pos.X += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getXMultiplier()));
+                pos.Y += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getYMultiplier()));
             }
             else
                 speed = 0;
@@ -529,27 +600,31 @@ namespace Game1
         public void correctDownCollision()
         {
             while(isGrounded().collided) {
-                pos.X -= (float)(WorldInfo.gravity.X);
-                pos.Y -= (float)(WorldInfo.gravity.Y);
+                pos.X -= 0.1f * (float)(WorldInfo.gravity.X);
+                pos.Y -= 0.1f * (float)(WorldInfo.gravity.Y);
             }
-            pos.X += (float)Math.Round(WorldInfo.gravity.X);
-            pos.Y += (float)Math.Round(WorldInfo.gravity.Y);
+            pos.X += 0.2f * (float)Math.Round(WorldInfo.gravity.X);
+            pos.Y += 0.2f * (float)Math.Round(WorldInfo.gravity.Y);
 
-            rect.X = (int)pos.X;
-            rect.Y = (int)pos.Y;
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
         }
         public void correctUpCollision()
         {
+            if (collidesUp().collided) {
+                fallSpeed = 1;
+                framesSpacePressed = 30;
+            }
             while (collidesUp().collided)
             {
-                pos.X += (float)(WorldInfo.gravity.X);
-                pos.Y += (float)(WorldInfo.gravity.Y);
+                pos.X += 0.1f * (float)(WorldInfo.gravity.X);
+                pos.Y += 0.1f * (float)(WorldInfo.gravity.Y);
             }
-            pos.X -= (float)Math.Round(WorldInfo.gravity.X);
-            pos.Y -= (float)Math.Round(WorldInfo.gravity.Y);
+            pos.X -= 0.2f * (float)Math.Round(WorldInfo.gravity.X);
+            pos.Y -= 0.2f * (float)Math.Round(WorldInfo.gravity.Y);
 
-            rect.X = (int)pos.X;
-            rect.Y = (int)pos.Y;
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
         }
 
         public void correctRightCollision()
@@ -563,8 +638,8 @@ namespace Game1
                 pos.X += (float)Math.Round(WorldInfo.gravity.Y);
                 pos.Y -= (float)Math.Round(WorldInfo.gravity.X);
 
-                rect.X = (int)pos.X;
-                rect.Y = (int)pos.Y;
+                rect.X = (int)(Math.Round(pos.X));
+                rect.Y = (int)(Math.Round(pos.Y));
             }
         }
 
@@ -580,35 +655,41 @@ namespace Game1
                 pos.X -= (float)Math.Round(WorldInfo.gravity.Y);
                 pos.Y += (float)Math.Round(WorldInfo.gravity.X);
 
-                rect.X = (int)pos.X;
-                rect.Y = (int)pos.Y;
+                rect.X = (int)(Math.Round(pos.X));
+                rect.Y = (int)(Math.Round(pos.Y));
             }
         }
 
 
         public void applyFallSpeed(float delta)
         {
-            if(fallSpeed > 0) {
-                pos.X += (int)(fallSpeed * (float)(Math.Round(WorldInfo.gravity.X)));
-                pos.Y += (int)(fallSpeed * (float)(Math.Round(WorldInfo.gravity.Y)));
-            }
-            else if (fallSpeed < 0)
-            {
-                for (int i = 0; i > fallSpeed; i--)
-                {
 
-                    if (collidesUp().collided)
-                    {
-                        framesSpacePressed = 30;
-                        fallSpeed = 1 + MathHelper.Clamp(collidesUp().getFallSpeed(),0,10000);
-                        //break;
-                    }
-                    else
-                    {
-                        pos.X -= (float)(WorldInfo.gravity.X);
-                        pos.Y -= (float)(WorldInfo.gravity.Y);
-                    }
-                }
+            if (!isGrounded().collided)
+            {
+                if(fallSpeed < maxFallSpeed)
+                if (framesSpacePressed >= 30)
+                    fallSpeed += fallAcceleration * 1f;
+                else
+                    fallSpeed += fallAcceleration * 0.3f;
+                framesInAir++;
+            }
+            else if(!Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                fallSpeed = 0;
+
+            }
+            if (collidesUp().collided)
+                fallSpeed = 1;
+            if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) > 0) {
+                pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
+                pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
+            }
+            else if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) < 0)
+            {
+                
+                pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
+                pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
+
             }
 
             /*

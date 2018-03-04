@@ -28,8 +28,10 @@ namespace Game1
         public override void Update()
         {
 
-            
-            
+            if (collidesWithPoint(Game1.getPlayer().leftPoints()[0]) && getRealSpeed() > 0.01f)
+                Game1.getPlayer().speed = getRealSpeed();
+            if (collidesWithPoint(Game1.getPlayer().rightPoints()[0]) && getRealSpeed() < -0.01f)
+                Game1.getPlayer().speed = getRealSpeed();
 
             base.Update();
         }

@@ -175,35 +175,37 @@ namespace Game1
                         FreeGravityBox.setAllSpeedChains();
 
                         world.checkForWalls();
-
+                        player.update(0);
                         if (!TextDialog.isInDialog)
                             world.applyChanges(GraphicsDevice);
                         
-                        player.update(0);
+                        
 
                         world.correctRightCollisions();
                         world.correctLeftCollisions();
                         world.correctDownCollisions();
 
-                        
 
 
-                        if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
 
-                        player.correctUpCollision();
-                        player.correctDownCollision();
+                        //if(Math.Abs(player.fallSpeed) >= Math.Abs(player.speed)) {
 
-                        player.correctRightCollision();
+                            player.correctUpCollision();
+                            player.correctDownCollision();
+                            
+
+                            player.correctRightCollision();
                         player.correctLeftCollision();
-                        } else
-                        {
+                        //} else
+                        /*{
                             player.correctRightCollision();
                             player.correctLeftCollision();
 
                             player.correctUpCollision();
                             player.correctDownCollision();
+                            
 
-                        }
+                        }*/
                         if (!TextDialog.isInDialog)
                         player.inputGravityChange();
 
@@ -249,7 +251,11 @@ namespace Game1
             // TODO: Add your drawing code here
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
+            world.drawBackground(spriteBatch);
+            world.drawOutlines(spriteBatch);
+            player.drawOutlines(spriteBatch);
             world.Draw(spriteBatch);
+            
             player.Draw(spriteBatch);
             
             spriteBatch.End();

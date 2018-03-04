@@ -17,6 +17,8 @@ namespace Game1
         public static readonly BlockType LAVA = new BlockType("Lava", "themes/Normal/blocks/lava", false, true, false, true, true);
         public static readonly BlockType AIR = new BlockType("Air", "themes/Normal/blocks/air", false, true, false, false, false);
         public static readonly BlockType STONEDECO = new BlockType("StoneDeco", "themes/Normal/blocks/stonedeco", false, true, true, false, false);
+        public static readonly BlockType DECO1 = new BlockType("flower", "themes/Normal/blocks/flower", false, false, false, false, false);
+
         private string texName;
         private string name;
         private bool collision;
@@ -50,8 +52,9 @@ namespace Game1
                 yield return CLEAN;
                 yield return SPIKE;
                 yield return LAVA;
-                yield return AIR;
+                //yield return AIR;
                 yield return STONEDECO;
+                yield return DECO1;
             }
         }
 
