@@ -34,12 +34,13 @@ namespace Game1
             {
                 Game1.getPlayer().die();
             }
+            angle += .1f;
             base.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            angle += .1f;
+            
             base.Draw(spriteBatch);
         }
 

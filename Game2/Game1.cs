@@ -251,7 +251,11 @@ namespace Game1
             // TODO: Add your drawing code here
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
+            world.drawBackground(spriteBatch);
+            world.drawOutlines(spriteBatch);
+            player.drawOutlines(spriteBatch);
             world.Draw(spriteBatch);
+            
             player.Draw(spriteBatch);
             
             spriteBatch.End();

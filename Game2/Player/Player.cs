@@ -55,6 +55,70 @@ namespace Game1
         {
             return pos ;
         }
+
+        public void drawOutlines(SpriteBatch spriteBatch)
+        {
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));
+            SpriteEffects effect;
+            if (flipped)
+                effect = SpriteEffects.FlipHorizontally;
+            else
+                effect = SpriteEffects.None;
+            sourceRectange = animation.getSourceRectange();
+            animation.update();
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(1f / Game1.getCam().Zoom, 0),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(0, 1f / Game1.getCam().Zoom),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(-1f / Game1.getCam().Zoom, 0),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+            spriteBatch.Draw(
+                    textureTest,
+                    position: pos + new Vector2(0, -1f / Game1.getCam().Zoom),
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1f,
+                    effects: effect,
+                    layerDepth: 1);
+
+            int flameId = 0;
+            foreach (GravityFlame flame in flames)
+            {
+
+
+
+                flame.drawOutlines(spriteBatch);
+                flameId++;
+
+            }
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
 
@@ -69,26 +133,7 @@ namespace Game1
                 effect = SpriteEffects.None;
             sourceRectange = animation.getSourceRectange();
             animation.update();
-            /*spriteBatch.Draw(
-                    textureTest,
-                    position: pos,
-                    sourceRectangle: sourceRectange,
-                    color: Color.Black,
-                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
-                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
-                    scale: 1.05f,
-                    effects: effect,
-                    layerDepth: 1);*/
-           /* spriteBatch.Draw(
-                    textureTest,
-                    position: pos,
-                    sourceRectangle: sourceRectange,
-                    color: Color.Black,
-                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
-                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
-                    scale: 0.95f,
-                    effects: effect,
-                    layerDepth: 1);*/
+            
             spriteBatch.Draw(
                     textureTest,
                     position: pos,
@@ -104,9 +149,10 @@ namespace Game1
             foreach(GravityFlame flame in flames)
             {
                 
-                flame.update(flameId);
+                
                 
                 flame.draw(spriteBatch);
+                flame.update(flameId);
                 flameId++;
 
             }

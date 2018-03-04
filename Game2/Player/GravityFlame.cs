@@ -126,9 +126,28 @@ namespace Game1
                 effect = SpriteEffects.FlipHorizontally;
             else
                 effect = SpriteEffects.None;
-            batch.Draw(textureTest, destinationRectangle: rect, color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset, scale: new Vector2(1, 1), color: Color.White, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
 
         }
+
+        public void drawOutlines(SpriteBatch batch)
+        {
+            rect.X = (int)(pos.X + offset.X);
+            rect.Y = (int)(pos.Y + offset.Y);
+            rect.Width = (int)size.X;
+            rect.Height = (int)size.Y;
+            SpriteEffects effect;
+            if (flipped)
+                effect = SpriteEffects.FlipHorizontally;
+            else
+                effect = SpriteEffects.None;
+            batch.Draw(textureTest, position: pos + offset + new Vector2(0.5f,0), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset + new Vector2(0, 0.5f), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset + new Vector2(-0.5f, 0), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset + new Vector2(0, -0.5f), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+
+        }
+
         public Vector2 getCenter()
         {
             return pos;

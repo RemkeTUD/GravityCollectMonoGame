@@ -104,6 +104,16 @@ namespace Game1
             background = content.Load<Texture2D>(texName);
         }
 
+        public void drawBackground(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(
+               background,
+               position: Game1.getCam().Pos * 0.5f - new Vector2(600, 600),
+               scale: new Vector2(2, 2),
+               effects: SpriteEffects.None,
+               layerDepth: 1);
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
 
@@ -114,12 +124,7 @@ namespace Game1
             if (Keyboard.GetState().IsKeyDown(Keys.J))
                 Game1.getCam().targetZoom = 1f;
 
-            spriteBatch.Draw(
-                background,
-                position: Game1.getCam().Pos * 0.5f - new Vector2(600,600),
-                scale: new Vector2(2,2),
-                effects: SpriteEffects.None,
-                layerDepth: 1);
+           
 
             backgroundTest.draw(spriteBatch);
 
@@ -168,6 +173,16 @@ namespace Game1
             foreach (Item item in items)
             {
                 item.drawIllumination(spriteBatch);
+            }
+        }
+
+        public void drawOutlines(SpriteBatch spriteBatch)
+        {
+            
+
+            foreach (Item item in items)
+            {
+                item.drawOutlines(spriteBatch);
             }
         }
 
