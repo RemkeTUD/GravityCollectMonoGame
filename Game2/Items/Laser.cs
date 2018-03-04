@@ -118,12 +118,13 @@ namespace Game1
         private void initParticles()
         {
             particleEmitter = new RoundParticleEmitter(ParticleType.SPARK, new Vector2(0, 0));
-            particleEmitter.pLifeTime = 100;
+            particleEmitter.pLifeTime = 60;
             particleEmitter.pLoop = false;
             particleEmitter.pPerUpdate = 1;
             particleEmitter.pSize = new Vector2(5, 5);
             particleEmitter.pVelocity = 5;
             particleEmitter.pIlluminationStrength = 1;
+            particleEmitter.pBounceFactor = 0.3f;
             particleEmitter.start();
         }
 

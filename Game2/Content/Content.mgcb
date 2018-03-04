@@ -7357,10 +7357,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-<<<<<<< HEAD
 /build:spark.png
-=======
-/build:wolf.png
 
 #begin themes/Normal/blocks/flower.png
 /importer:TextureImporter
@@ -7374,7 +7371,7 @@
 /processorParam:TextureFormat=Color
 /build:themes/Normal/blocks/flower.png
 
-#begin themes/tree.png
+#begin wolf.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -7384,9 +7381,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:themes/tree.png
+/build:wolf.png
 
-#begin tree.png
+#begin raven.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -7396,9 +7393,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:tree.png
+/build:raven.png
 
-#begin themes/Normal/items/rotateSpike.png
+#begin raven2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -7408,7 +7405,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:themes/Normal/items/rotateSpike.png
+/build:raven2.png
 
 #begin rotateSpike.png
 /importer:TextureImporter
@@ -7422,7 +7419,7 @@
 /processorParam:TextureFormat=Color
 /build:rotateSpike.png
 
-#begin raven.png
+#begin tree.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -7432,6 +7429,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:raven.png
->>>>>>> 7c45e97695febd849440304b92b2d1f0a6039523
+/build:tree.png
 

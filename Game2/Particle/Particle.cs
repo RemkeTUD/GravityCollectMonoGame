@@ -28,6 +28,7 @@ namespace Game1
             }
             animation = new Animation(particleType.Width, particleType.Height, particleType.MaxFrame, aLoop, 34);
             animation.startPlay();
+            this.lifeTime = lifeTime;
             this.pos = pos;
             this.size = size;
             this.velocity = velocity;
