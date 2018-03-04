@@ -597,9 +597,55 @@ namespace Game1
             return (boxUpLeft.X < point.X && boxUpLeft.Y < point.Y && boxDownRight.X > point.X && boxDownRight.Y > point.Y);
         }
 
+        public void decideCollisionCorrection(bool leftAndDown)
+        {
+
+            Vector2 posUp = downPoint();
+            List<Vector2> posSide;
+            int multiplier = 1;
+            if (leftAndDown)
+                posSide = leftPoints();
+            else
+            {
+                posSide = rightPoints();
+                multiplier = -1;
+            }
+            
+            
+
+            while (Game1.world.collidesWithPoint(posUp).collided
+                && Game1.world.collidesWithPoints(posSide).collided)
+            {
+                posUp += WorldInfo.gravity;
+                posSide[0] += MapTools.getMultiplierVec() * multiplier;
+                posSide[1] += MapTools.getMultiplierVec() * multiplier;
+                posSide[2] += MapTools.getMultiplierVec() * multiplier;
+                
+            }
+
+            if(!Game1.world.collidesWithPoint(posUp).collided)
+            {
+                correctDownCollision();
+            }
+            if (!Game1.world.collidesWithPoints(posSide).collided)
+            {
+                correctLeftCollision();
+            }
+            /*
+            while (isGrounded().collided) {
+                pos.X -= 0.1f * (float)(WorldInfo.gravity.X);
+                pos.Y -= 0.1f * (float)(WorldInfo.gravity.Y);
+            }
+            pos.X += 0.2f * (float)Math.Round(WorldInfo.gravity.X);
+            pos.Y += 0.2f * (float)Math.Round(WorldInfo.gravity.Y);
+
+            rect.X = (int)(Math.Round(pos.X));
+            rect.Y = (int)(Math.Round(pos.Y));*/
+        }
         public void correctDownCollision()
         {
-            while(isGrounded().collided) {
+            while (isGrounded().collided)
+            {
                 pos.X -= 0.1f * (float)(WorldInfo.gravity.X);
                 pos.Y -= 0.1f * (float)(WorldInfo.gravity.Y);
             }
