@@ -69,6 +69,26 @@ namespace Game1
                 effect = SpriteEffects.None;
             sourceRectange = animation.getSourceRectange();
             animation.update();
+            /*spriteBatch.Draw(
+                    textureTest,
+                    position: pos,
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 1.05f,
+                    effects: effect,
+                    layerDepth: 1);*/
+           /* spriteBatch.Draw(
+                    textureTest,
+                    position: pos,
+                    sourceRectangle: sourceRectange,
+                    color: Color.Black,
+                    rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f,
+                    origin: new Vector2((float)sourceRectange.Width * 0.501f, (float)sourceRectange.Height * 0.501f),
+                    scale: 0.95f,
+                    effects: effect,
+                    layerDepth: 1);*/
             spriteBatch.Draw(
                     textureTest,
                     position: pos,
@@ -79,6 +99,7 @@ namespace Game1
                     scale: 1,
                     effects: effect,
                     layerDepth: 1);
+            
             int flameId = 0;
             foreach(GravityFlame flame in flames)
             {
@@ -612,8 +633,6 @@ namespace Game1
                 fallSpeed = 0;
 
             }
-            Console.WriteLine(collisionInfoDownBeginOfFrame.getFallSpeed());
-            Console.WriteLine(speed + collisionInfoDownBeginOfFrame.getFallSpeed());
             if (collidesUp().collided)
                 fallSpeed = 1;
             if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) > 0) {

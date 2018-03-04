@@ -36,7 +36,7 @@ namespace Game1
                 framesScinePlayerStepOn++;
 
             if (framesScinePlayerStepOn == 30)
-                speed = WorldInfo.gravity * 5;
+                speed = WorldInfo.gravity * 3;
 
             base.Update();
         }

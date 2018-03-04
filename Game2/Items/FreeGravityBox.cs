@@ -27,11 +27,12 @@ namespace Game1
             if (!collidesLeftWithMap().collided && !collidesRightWithMap().collided)
             setRealSpeed(0);
 
-            if (collidesLeftWithMap().getRealSpeed() > 0)
+            if (collidesLeftWithMap().getRealSpeed() > 0.01f)
                 setRealSpeed(collidesLeftWithMap().getRealSpeed());
-            if (collidesRightWithMap().getRealSpeed() < 0)
+            if (collidesRightWithMap().getRealSpeed() < -0.01f)
                 setRealSpeed(collidesRightWithMap().getRealSpeed());
 
+            Console.WriteLine(getRealSpeed());
 
             if (collidesUpWithMap().collided && getFallSpeed() < -0.1f)
             {
