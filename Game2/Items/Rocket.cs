@@ -14,13 +14,24 @@ namespace Game1
     {
         public float angleSpeed = 0;
         public float travelSpeed;
+        private RoundParticleEmitter particleEmitter;
+        private Vector2 oldPos;
         public Rocket(ContentManager content, float x, float y, float width, float height, Vector2 movingDirection) : base(content, x, y, width, height)
         {
 
             textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/rocket");
             this.travelSpeed = 15f;
             angle = MapTools.VectorToAngle(movingDirection) ;
-
+            particleEmitter = new RoundParticleEmitter(ParticleType.SPARK, new Vector2(0, 0));
+            particleEmitter.pLifeTime = 100;
+            particleEmitter.pLoop = false;
+            particleEmitter.pPerUpdate = 100;
+            particleEmitter.pSize = new Vector2(5, 5);
+            particleEmitter.pVelocity = 10;
+            particleEmitter.pMinVelocity = 5;
+            particleEmitter.pIlluminationStrength = 1;
+            particleEmitter.pBounceFactor = 0.5f;
+            oldPos = pos;
         }
 
         public override void Update()
@@ -88,6 +99,13 @@ namespace Game1
 
             }
 
+            if(destroy == true)
+            {
+                particleEmitter.pos = oldPos;
+                particleEmitter.start();
+                particleEmitter.update();
+            }
+            oldPos = pos;
             base.Update();
         }
         public override void reset()

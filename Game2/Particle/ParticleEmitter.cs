@@ -21,6 +21,7 @@ namespace Game1
         public float pDampenFactor = 0.99f;
         public int pLifeTime = 100;
         public float pVelocity = 1;
+        public float pMinVelocity = 0;
         public bool pLoop = false;
         public int pFrameskip = -1;
 

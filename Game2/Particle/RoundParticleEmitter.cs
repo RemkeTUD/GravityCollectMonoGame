@@ -20,7 +20,8 @@ namespace Game1
                 for(int i = 0; i < pPerUpdate; i++)
                 {
                     double angle = random.NextDouble()* Math.PI * 2;
-                    Vector2 velocity = new Vector2(((float) Math.Cos(angle)) * pVelocity, ((float) Math.Sin(angle)) * pVelocity);
+                    float v = (float)random.NextDouble() * (pVelocity - pMinVelocity) + pMinVelocity;
+                    Vector2 velocity = new Vector2(((float) Math.Cos(angle)) * v, ((float) Math.Sin(angle)) * v);
                     Particle particle = new Particle(particleType, pos, pSize, velocity, pLifeTime, pLoop, pFrameskip);
                     particle.illuminationStrength = pIlluminationStrength;
                     particle.gravityFactor = pGravityFactor;
