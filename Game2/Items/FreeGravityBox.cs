@@ -24,22 +24,25 @@ namespace Game1
         public override void Update()
         {
             //r = 0; g = 0; b = 0;
-            if (!collidesLeftWithMap().collided && !collidesRightWithMap().collided)
-            setRealSpeed(0);
+            
 
             if (collidesLeftWithMap().getRealSpeed() > 0.01f)
                 setRealSpeed(collidesLeftWithMap().getRealSpeed());
-            if (collidesRightWithMap().getRealSpeed() < -0.01f)
+            else if (collidesRightWithMap().getRealSpeed() < -0.01f)
                 setRealSpeed(collidesRightWithMap().getRealSpeed());
-
+            else
+                setRealSpeed(0);
             Console.WriteLine(getRealSpeed());
 
             if (collidesUpWithMap().collided && getFallSpeed() < -0.1f)
             {
                 setFallSpeed(collidesUpWithMap().getFallSpeed() + 1);
             }
-            if (!collidesDownWithMap().collided)
+            if (!collidesDownWithMap().collided) { 
                 setFallSpeed(getFallSpeed() + 0.8f);
+                if (getFallSpeed() > 17.5)
+                    setFallSpeed(17.5f);
+            }
             else
             {
                 setFallSpeed(collidesDownWithMap().getFallSpeed());
