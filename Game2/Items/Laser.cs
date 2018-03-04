@@ -15,6 +15,7 @@ namespace Game1
         public float angleSpeed;
         public Raycast raycast;
         public CollisionInfo hitOfRaycast;
+        private RoundParticleEmitter particleEmitter;
 
         Light light = new PointLight
         {
@@ -29,6 +30,7 @@ namespace Game1
         public Laser()
         {
             textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/Laser");
+            initParticles();
         }
         public Laser(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
@@ -36,6 +38,7 @@ namespace Game1
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/laser");
             Game1.penumbra.Lights.Add(light);
             raycast = new Raycast(pos, new Vector2(0, 0), 3000);
+            initParticles();
         }
 
         public Laser(ContentManager content, float x, float y, float width, float height, float angleSpeed = 0) : base(content, x, y, width, height)
@@ -44,6 +47,7 @@ namespace Game1
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/laser");
             //Game1.penumbra.Lights.Add(light);
             raycast = new Raycast(pos, new Vector2(0,0), 3000);
+            initParticles();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -78,6 +82,10 @@ namespace Game1
             hitOfRaycast = raycast.getHit();
             if (hitOfRaycast.obj is Player)
                 Game1.getPlayer().die();
+            //           Game1.world.particles.Add(new Particle(hitOfRaycast.pos.X - raycast.dir.X * 5, hitOfRaycast.pos.Y - raycast.dir.Y * 5, 5, 5, new Vector2(((float)new Random().NextDouble() - 0.5f) * 20.0f, ((float)new Random().NextDouble() - 0.5f) * 20.0f)));
+            particleEmitter.pos.X = hitOfRaycast.pos.X - raycast.dir.X * 5;
+            particleEmitter.pos.Y = hitOfRaycast.pos.Y - raycast.dir.Y * 5;
+            particleEmitter.update();
             
             base.Update();
         }
@@ -105,6 +113,18 @@ namespace Game1
         public override bool isClickedParamMenu()
         {
             return base.isClickedParamMenu() || buttonAngleSpeedPlus.isClicked() || buttonAngleSpeedMinus.isClicked();
+        }
+
+        private void initParticles()
+        {
+            particleEmitter = new RoundParticleEmitter(ParticleType.SPARK, new Vector2(0, 0));
+            particleEmitter.pLifeTime = 100;
+            particleEmitter.pLoop = false;
+            particleEmitter.pPerUpdate = 1;
+            particleEmitter.pSize = new Vector2(5, 5);
+            particleEmitter.pVelocity = 5;
+            particleEmitter.pIlluminationStrength = 1;
+            particleEmitter.start();
         }
 
     }

@@ -43,6 +43,9 @@ namespace Game1
 
         public Vector2 playerSpawn = new Vector2(1000,1000);
 
+        [XmlIgnoreAttribute]
+        public List<Particle> particles = new List<Particle>();
+
         public bool gravityChanged = false;
         public World()
         {
@@ -143,6 +146,11 @@ namespace Game1
             {
                 item.Draw(spriteBatch);
             }
+
+            foreach(Particle particle in particles)
+            {
+                particle.draw(spriteBatch);
+            }
             
 
         }
@@ -169,6 +177,11 @@ namespace Game1
             {
                 item.drawIllumination(spriteBatch);
             }
+
+            foreach (Particle particle in particles)
+            {
+                particle.drawIllumination(spriteBatch);
+            }
         }
 
         public void applyChanges(GraphicsDevice graphicsDevice)
@@ -181,7 +194,7 @@ namespace Game1
         }
             public void update(GraphicsDevice graphicsDevice)
         {
-
+            
             for (int i = 0; i < items.Count; i++)
             {
                 items.ElementAt(i).Update();
@@ -189,7 +202,13 @@ namespace Game1
 
             gravityChanged = false;
 
-            
+            checkParticles();
+
+            foreach (Particle particle in particles)
+            {
+                particle.update();
+            }
+
         }
 
         public int fill(int x, int y, BlockType type, BlockType startType,int fills)
@@ -623,6 +642,20 @@ namespace Game1
                 item.reloadTexture(content, currentTheme);
             }
         }
+
+        private void checkParticles()
+        {
+            for(int i = 0; i < particles.Count(); i++)
+            {
+                Particle particle = particles[i];
+                if(particle.lifeTime <= 0)
+                {
+                    particles.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
     }
 
 
