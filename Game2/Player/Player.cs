@@ -66,7 +66,6 @@ namespace Game1
             else
                 effect = SpriteEffects.None;
             sourceRectange = animation.getSourceRectange();
-            animation.update();
             spriteBatch.Draw(
                     textureTest,
                     position: pos + new Vector2(1f / Game1.getCam().Zoom, 0),
