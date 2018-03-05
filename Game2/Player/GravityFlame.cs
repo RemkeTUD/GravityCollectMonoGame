@@ -141,10 +141,10 @@ namespace Game1
                 effect = SpriteEffects.FlipHorizontally;
             else
                 effect = SpriteEffects.None;
-            batch.Draw(textureTest, position: pos + offset + new Vector2(0.5f,0), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
-            batch.Draw(textureTest, position: pos + offset + new Vector2(0, 0.5f), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
-            batch.Draw(textureTest, position: pos + offset + new Vector2(-0.5f, 0), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
-            batch.Draw(textureTest, position: pos + offset + new Vector2(0, -0.5f), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset + new Vector2(1f / Game1.getCam().Zoom, 0), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset + new Vector2(0,1f / Game1.getCam().Zoom), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset + new Vector2(-1f / Game1.getCam().Zoom, 0), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
+            batch.Draw(textureTest, position: pos + offset + new Vector2(0, -1f / Game1.getCam().Zoom), scale: new Vector2(1, 1), color: Color.Black, rotation: MapTools.VectorToAngle(WorldInfo.gravity) - (float)Math.PI * 0.5f, origin: new Vector2(textureTest.Width * 0.5f, textureTest.Height * 0.5f), effects: effect);
 
         }
 
