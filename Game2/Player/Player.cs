@@ -622,8 +622,8 @@ namespace Game1
             {
                 posUp -= WorldInfo.gravity;
                 posSide[0] += new Vector2((float)(WorldInfo.gravity.Y), (float)(WorldInfo.gravity.X)) * multiplier;
-                posSide[1] += new Vector2((float)(WorldInfo.gravity.Y), (float)(WorldInfo.gravity.X)) * multiplier;
-                posSide[2] += new Vector2((float)(WorldInfo.gravity.Y), (float)(WorldInfo.gravity.X)) * multiplier;
+                posSide[1] += new Vector2((float)(WorldInfo.gravity.Y), -(float)(WorldInfo.gravity.X)) * multiplier;
+                posSide[2] += new Vector2((float)(WorldInfo.gravity.Y), -(float)(WorldInfo.gravity.X)) * multiplier;
 
             }
 
