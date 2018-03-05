@@ -25,7 +25,7 @@ namespace Game1
         {
             if(aFrameskip == -1)
             {
-                aFrameskip = (int)Math.Ceiling(lifeTime / (double)(particleType.MaxFrame - 1));
+                aFrameskip = (int)Math.Ceiling(lifeTime / (double)(particleType.MaxFrame));
             }
             animation = new Animation(particleType.Width, particleType.Height, particleType.MaxFrame, aLoop, aFrameskip);
             animation.startPlay();

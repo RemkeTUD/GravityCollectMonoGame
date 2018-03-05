@@ -28,7 +28,7 @@ namespace Game1
         public void update()
         {
 
-            if ((loop || play) && totalFrames % frameSkip == 0) {
+            if ((loop || play) && totalFrames % frameSkip == 0 && totalFrames != 0) {
                 currentFrame += 1;
                 currentFrame %= maxFrame;
                 if (currentFrame == 0)

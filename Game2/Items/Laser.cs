@@ -87,7 +87,6 @@ namespace Game1
             particleEmitter.pos.Y = hitOfRaycast.pos.Y - raycast.dir.Y * 2;
             particleEmitter.Direction = angle - Math.PI * (0.5f - Math.Sign(angleSpeed) * 0.2f) + Math.PI;
             particleEmitter.update();
-            Console.WriteLine(raycast.dir);
             base.Update();
         }
 
