@@ -15,6 +15,7 @@ namespace Game1
         public float angleSpeed = 0;
         public float travelSpeed;
         private RoundParticleEmitter particleEmitter;
+        private ConeParticleEmitter smokeEmitter;
         private Vector2 oldPos;
         public Rocket(ContentManager content, float x, float y, float width, float height, Vector2 movingDirection) : base(content, x, y, width, height)
         {
@@ -33,6 +34,19 @@ namespace Game1
             particleEmitter.pBounceFactor = 0.5f;
             particleEmitter.pDampenFactor = 0.97f;
             particleEmitter.pGravityFactor = 0.3f;
+
+            smokeEmitter = new ConeParticleEmitter(ParticleType.SPARK, new Vector2(0, 0), 0, 20);
+            smokeEmitter.pLifeTime = 100;
+            smokeEmitter.pLoop = false;
+            smokeEmitter.pPerUpdate = 1;
+            smokeEmitter.pSize = new Vector2(10, 10);
+            smokeEmitter.pVelocity = 5;
+            smokeEmitter.pMinVelocity = 3;
+            smokeEmitter.pIlluminationStrength = 1;
+            smokeEmitter.pBounceFactor = 0.0f;
+            smokeEmitter.pDampenFactor = 0.97f;
+            smokeEmitter.pGravityFactor = -0.02f;
+ //           smokeEmitter.start();
             oldPos = pos;
         }
 
@@ -100,6 +114,9 @@ namespace Game1
                 ExplosionHandler.addExplosion(light);
 
             }
+            smokeEmitter.pos = oldPos;
+            smokeEmitter.Direction = angle + Math.PI;
+            smokeEmitter.update();
 
             if(destroy == true)
             {
