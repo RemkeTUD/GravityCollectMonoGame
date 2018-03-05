@@ -15,7 +15,7 @@ namespace Game1
         public float angleSpeed;
         public Raycast raycast;
         public CollisionInfo hitOfRaycast;
-        private RoundParticleEmitter particleEmitter;
+        private ConeParticleEmitter particleEmitter;
 
         Light light = new PointLight
         {
@@ -85,8 +85,9 @@ namespace Game1
             //           Game1.world.particles.Add(new Particle(hitOfRaycast.pos.X - raycast.dir.X * 5, hitOfRaycast.pos.Y - raycast.dir.Y * 5, 5, 5, new Vector2(((float)new Random().NextDouble() - 0.5f) * 20.0f, ((float)new Random().NextDouble() - 0.5f) * 20.0f)));
             particleEmitter.pos.X = hitOfRaycast.pos.X - raycast.dir.X * 2;
             particleEmitter.pos.Y = hitOfRaycast.pos.Y - raycast.dir.Y * 2;
+            particleEmitter.Direction = angle - Math.PI * (0.5f - Math.Sign(angleSpeed) * 0.2f) + Math.PI;
             particleEmitter.update();
-            
+            Console.WriteLine(raycast.dir);
             base.Update();
         }
 
@@ -117,15 +118,17 @@ namespace Game1
 
         private void initParticles()
         {
-            particleEmitter = new RoundParticleEmitter(ParticleType.SPARK, new Vector2(0, 0));
+            particleEmitter = new ConeParticleEmitter(ParticleType.SPARK, new Vector2(0, 0), new Vector2(0, 0), 30.0f);
             particleEmitter.pLifeTime = 60;
             particleEmitter.pLoop = false;
             particleEmitter.pPerUpdate = 1;
             particleEmitter.pSize = new Vector2(5, 5);
-            particleEmitter.pVelocity = 5;
-            particleEmitter.pMinVelocity = 4;
+            particleEmitter.pVelocity = 6;
+            particleEmitter.pMinVelocity = 5;
             particleEmitter.pIlluminationStrength = 1;
-            particleEmitter.pBounceFactor = 0.3f;
+            particleEmitter.pBounceFactor = 0.5f;
+            particleEmitter.pDampenFactor = 0.95f;
+            particleEmitter.pGravityFactor = 0.3f;
             particleEmitter.start();
         }
 

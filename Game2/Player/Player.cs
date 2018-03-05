@@ -130,7 +130,7 @@ namespace Game1
             else
                 effect = SpriteEffects.None;
             sourceRectange = animation.getSourceRectange();
-            animation.update();
+
             
             spriteBatch.Draw(
                     textureTest,
@@ -150,7 +150,6 @@ namespace Game1
                 
                 
                 flame.draw(spriteBatch);
-                flame.update(flameId);
                 flameId++;
 
             }
@@ -214,7 +213,14 @@ namespace Game1
             {
                 die();
             }
-            
+            animation.update();
+            int flameId = 0;
+            foreach (GravityFlame flame in flames)
+            {
+                flame.update(flameId);
+                flameId++;
+            }
+
 
         }
 

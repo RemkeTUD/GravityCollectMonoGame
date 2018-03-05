@@ -25,12 +25,14 @@ namespace Game1
             particleEmitter = new RoundParticleEmitter(ParticleType.SPARK, new Vector2(0, 0));
             particleEmitter.pLifeTime = 100;
             particleEmitter.pLoop = false;
-            particleEmitter.pPerUpdate = 100;
+            particleEmitter.pPerUpdate = 200;
             particleEmitter.pSize = new Vector2(5, 5);
             particleEmitter.pVelocity = 10;
             particleEmitter.pMinVelocity = 5;
             particleEmitter.pIlluminationStrength = 1;
             particleEmitter.pBounceFactor = 0.5f;
+            particleEmitter.pDampenFactor = 0.97f;
+            particleEmitter.pGravityFactor = 0.3f;
             oldPos = pos;
         }
 
