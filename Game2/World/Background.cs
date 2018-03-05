@@ -5,12 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Game1
 {
+    [XmlInclude(typeof(List<BackgroundObject>))]
+    [XmlInclude(typeof(BackgroundObject))]
+    [XmlInclude(typeof(Vector2))]
     public class Background
     {
-        Dictionary<string, Tuple<Vector2, float,Texture2D>> objects = new Dictionary<string, Tuple<Vector2, float, Texture2D>>(); //Name zu /Position/Entfernung/Textur Tupel
+       public List<BackgroundObject> objects = new List<BackgroundObject>(); //Name zu /Position/Entfernung/Textur Tupel
 
         public Background()
         {
@@ -19,27 +23,17 @@ namespace Game1
         
         public void addObject(string name, Vector2 pos,float distance, string texPath)
         {
-            objects.Add(name, new Tuple<Vector2, float, Texture2D>(pos, distance, Game1.cManager.Load<Texture2D>(texPath)));
+            objects.Add(new BackgroundObject(pos, distance, texPath));
            
         }
 
-
-        Rectangle rect = new Rectangle();
+        
         public void draw(SpriteBatch batch)
         {
-            foreach(Tuple<Vector2, float, Texture2D> obj in objects.Values)
+            foreach(BackgroundObject obj in objects)
             {
+                obj.draw(batch);
                 
-                rect.X = (int)(obj.Item1.X + ((Game1.getCam().Pos.X - 1000) * 0.1f) * obj.Item2);
-                rect.Y = (int)(obj.Item1.Y + ((Game1.getCam().Pos.Y - 1000) * 0.1f) * obj.Item2);
-
-                rect.Width = obj.Item3.Width;
-                rect.Height = obj.Item3.Height;
-
-                batch.Draw(obj.Item3,
-                        destinationRectangle: rect,
-                        
-                        color: Color.White);
                 
             }
         }

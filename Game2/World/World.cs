@@ -17,6 +17,9 @@ namespace Game1
     [XmlInclude(typeof(List<Item>))]
     [XmlInclude(typeof(List<CollisionBox>))]
     [XmlInclude(typeof(Item))]
+    [XmlInclude(typeof(Background))]
+    [XmlInclude(typeof(BackgroundObject))]
+    [XmlInclude(typeof(List<BackgroundObject>))]
     public class World
     {
         public int width, height;
@@ -26,9 +29,8 @@ namespace Game1
         public List<Item> items;
         [XmlIgnoreAttribute]
         public List<CollisionBox> collisionBoxes;
-
-        [XmlIgnoreAttribute]
-        Background backgroundTest = new Background();
+        
+        public Background backgroundTest;
 
         public static string[] themeNames;
         [XmlIgnoreAttribute]
@@ -55,7 +57,7 @@ namespace Game1
         }
         public World(int width, int height, ContentManager content)
         {
-
+            backgroundTest = new Background();
             backgroundTest.addObject("sky", new Vector2(0, 0), 10, "sky");
             backgroundTest.addObject("mountain1", new Vector2(0, -500), 4, "mountains2");
             Random rand = new Random();
@@ -590,7 +592,6 @@ namespace Game1
         
         public void saveAsXML(string path)
         {
-
             using (XmlWriter writer = XmlWriter.Create(path))
             {
                 writer.WriteStartDocument();
