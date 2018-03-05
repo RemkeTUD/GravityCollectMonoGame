@@ -20,9 +20,14 @@ namespace Game1
                 for(int i = 0; i < pPerUpdate; i++)
                 {
                     double angle = random.NextDouble()* Math.PI * 2;
-                    float v = (float)random.NextDouble() * (pVelocity - pMinVelocity) + pMinVelocity;
+                    float v = pVelocity;
+                    if(pMinVelocity != -1)
+                        v = (float)random.NextDouble() * (pVelocity - pMinVelocity) + pMinVelocity;
+                    int lifeTime = pLifeTime;
+                    if (pMinLifeTime != -1)
+                        lifeTime = (int)(random.NextDouble() * (pLifeTime - pMinLifeTime) + pMinLifeTime);
                     Vector2 velocity = MapTools.AngleToVector((float)angle) * v;
-                    Particle particle = new Particle(particleType, pos, pSize, velocity, pLifeTime, pLoop, pFrameskip);
+                    Particle particle = new Particle(particleType, pos, pSize, velocity, lifeTime, pLoop, pFrameskip);
                     particle.illuminationStrength = pIlluminationStrength;
                     particle.gravityFactor = pGravityFactor;
                     particle.bounceFactor = pBounceFactor;

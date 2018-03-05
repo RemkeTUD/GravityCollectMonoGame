@@ -20,8 +20,9 @@ namespace Game1
         public float pBounceFactor = 0.5f;
         public float pDampenFactor = 1f;
         public int pLifeTime = 100;
+        public int pMinLifeTime = -1;
         public float pVelocity = 1;
-        public float pMinVelocity = 0;
+        public float pMinVelocity = -1;
         public bool pLoop = false;
         public int pFrameskip = -1;
 

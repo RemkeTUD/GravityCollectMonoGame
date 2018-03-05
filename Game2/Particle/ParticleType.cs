@@ -10,6 +10,7 @@ namespace Game1
     {
 
         public static readonly ParticleType SPARK = new ParticleType("spark", 8, 8, 4);
+        public static readonly ParticleType ENGINE = new ParticleType("engine", 16, 16, 7);
 
 
         private Texture2D texture;
@@ -30,6 +31,7 @@ namespace Game1
             get
             {
                 yield return SPARK;
+                yield return ENGINE;
   
             }
         }
