@@ -11,7 +11,6 @@ namespace Game1
         public float illuminationStrength = 0;
         Animation animation;
         private Vector2 deltaMove = new Vector2(0, 0);
-        Texture2D texture = Game1.cManager.Load<Texture2D>("spark");
         public int alpha = 255, r = 255, g = 255, b = 255;
         float angle;
         Vector2 velocity;
@@ -20,15 +19,17 @@ namespace Game1
         public float bounceFactor = 0.5f;
         public float dampenFactor = 1f;
         public int lifeTime = 100;
+        private ParticleType particleType;
 
         public Particle(ParticleType particleType, Vector2 pos, Vector2 size, Vector2 velocity, int lifeTime, bool aLoop, int aFrameskip = -1)
         {
             if(aFrameskip == -1)
             {
-                aFrameskip = (int)(lifeTime / (particleType.MaxFrame - 1));
+                aFrameskip = (int)Math.Ceiling(lifeTime / (double)(particleType.MaxFrame - 1));
             }
-            animation = new Animation(particleType.Width, particleType.Height, particleType.MaxFrame, aLoop, 34);
+            animation = new Animation(particleType.Width, particleType.Height, particleType.MaxFrame, aLoop, aFrameskip);
             animation.startPlay();
+            this.particleType = particleType;
             this.lifeTime = lifeTime;
             this.pos = pos;
             this.size = size;
@@ -73,7 +74,7 @@ namespace Game1
             Rectangle sourceRect = animation.getSourceRectange();
             
             spriteBatch.Draw(
-                texture,
+                particleType.Texture,
                 position: pos,
                 sourceRectangle: sourceRect,
                 color: new Color(r, g, b, alpha),
@@ -91,7 +92,7 @@ namespace Game1
                 Rectangle sourceRect = animation.getSourceRectange();
 
                 spriteBatch.Draw(
-                    texture,
+                    particleType.Texture,
                     position: pos,
                     sourceRectangle: sourceRect,
                     color: new Color(r * illuminationStrength, g * illuminationStrength, b * illuminationStrength, alpha),

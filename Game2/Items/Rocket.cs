@@ -25,6 +25,7 @@ namespace Game1
             angle = MapTools.VectorToAngle(movingDirection) ;
             particleEmitter = new RoundParticleEmitter(ParticleType.SPARK, new Vector2(0, 0));
             particleEmitter.pLifeTime = 100;
+            particleEmitter.pMinLifeTime = 70;
             particleEmitter.pLoop = false;
             particleEmitter.pPerUpdate = 200;
             particleEmitter.pSize = new Vector2(5, 5);
@@ -35,18 +36,19 @@ namespace Game1
             particleEmitter.pDampenFactor = 0.97f;
             particleEmitter.pGravityFactor = 0.3f;
 
-            smokeEmitter = new ConeParticleEmitter(ParticleType.SPARK, new Vector2(0, 0), 0, 20);
-            smokeEmitter.pLifeTime = 100;
+            smokeEmitter = new ConeParticleEmitter(ParticleType.ENGINE, new Vector2(0, 0), 0, 20);
+            smokeEmitter.pLifeTime = 50;
+            smokeEmitter.pMinLifeTime = 30;
             smokeEmitter.pLoop = false;
             smokeEmitter.pPerUpdate = 1;
-            smokeEmitter.pSize = new Vector2(10, 10);
+            smokeEmitter.pSize = new Vector2(20, 20);
             smokeEmitter.pVelocity = 5;
             smokeEmitter.pMinVelocity = 3;
-            smokeEmitter.pIlluminationStrength = 1;
+            smokeEmitter.pIlluminationStrength = 0;
             smokeEmitter.pBounceFactor = 0.0f;
             smokeEmitter.pDampenFactor = 0.97f;
             smokeEmitter.pGravityFactor = -0.02f;
- //           smokeEmitter.start();
+            smokeEmitter.start();
             oldPos = pos;
         }
 

@@ -33,9 +33,14 @@ namespace Game1
                 {
                     double coneRadians = (coneRadius * Math.PI) / 180.0;
                     double angle = (random.NextDouble() * coneRadians * 2) + direction - coneRadians;
-                    float v = (float)random.NextDouble() * (pVelocity - pMinVelocity) + pMinVelocity;
+                    float v = pVelocity;
+                    if (pMinVelocity != -1)
+                        v = (float)random.NextDouble() * (pVelocity - pMinVelocity) + pMinVelocity;
+                    int lifeTime = pLifeTime;
+                    if(pMinLifeTime != -1)
+                        lifeTime = (int) (random.NextDouble() * (pLifeTime - pMinLifeTime) + pMinLifeTime);
                     Vector2 velocity = MapTools.AngleToVector((float) angle) * v;
-                    Particle particle = new Particle(particleType, pos, pSize, velocity, pLifeTime, pLoop, pFrameskip);
+                    Particle particle = new Particle(particleType, pos, pSize, velocity, lifeTime, pLoop, pFrameskip);
                     particle.illuminationStrength = pIlluminationStrength;
                     particle.gravityFactor = pGravityFactor;
                     particle.bounceFactor = pBounceFactor;
