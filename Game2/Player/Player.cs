@@ -250,7 +250,7 @@ namespace Game1
         }
         public void inputMovement()
         {
-            if (state.IsKeyDown(Keys.A) && !TextDialog.isInDialog)
+            if (state.IsKeyDown(Keys.A) && !collidesLeft(false) && !TextDialog.isInDialog)
             {
                 flipped = true;
                 if (speed > -maxSpeed)
@@ -261,7 +261,7 @@ namespace Game1
                         speed -= acceleration * 0.35f;
                 }
             }
-            else if (state.IsKeyDown(Keys.D) && !TextDialog.isInDialog)
+            else if (state.IsKeyDown(Keys.D) && !collidesRight(false) && !TextDialog.isInDialog)
             {
                 flipped = false;
                 if (speed < maxSpeed)
