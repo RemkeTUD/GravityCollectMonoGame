@@ -75,7 +75,7 @@ namespace Game1
             spawnPos = new Vector2(x, y);
 
             if (font == null)
-                font = content.Load<SpriteFont>("font");
+                font = Game1.cManager.Load<SpriteFont>("font");
             
 
         }
