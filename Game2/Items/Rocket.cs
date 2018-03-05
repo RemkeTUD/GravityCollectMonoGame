@@ -27,7 +27,7 @@ namespace Game1
             particleEmitter.pLifeTime = 100;
             particleEmitter.pMinLifeTime = 70;
             particleEmitter.pLoop = false;
-            particleEmitter.pPerUpdate = 200;
+            particleEmitter.pPerUpdate = 100;
             particleEmitter.pSize = new Vector2(5, 5);
             particleEmitter.pVelocity = 10;
             particleEmitter.pMinVelocity = 5;
@@ -36,8 +36,8 @@ namespace Game1
             particleEmitter.pDampenFactor = 0.97f;
             particleEmitter.pGravityFactor = 0.3f;
 
-            smokeEmitter = new ConeParticleEmitter(ParticleType.ENGINE, new Vector2(0, 0), 0, 15);
-            smokeEmitter.pLifeTime = 60;
+            smokeEmitter = new ConeParticleEmitter(ParticleType.ENGINE, new Vector2(0, 0), 0, 10);
+            smokeEmitter.pLifeTime = 40;
             smokeEmitter.pMinLifeTime = 30;
             smokeEmitter.pLoop = false;
             smokeEmitter.pPerUpdate = 1;
