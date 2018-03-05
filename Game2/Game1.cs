@@ -72,7 +72,7 @@ namespace Game1
             // TODO: Add your initialization logic here
 
             base.Initialize();
-            world = new World(512, 512, Content);
+            world = new World(256, 256, Content);
             EditorGui.init();
             player = new Player(Content);
 
