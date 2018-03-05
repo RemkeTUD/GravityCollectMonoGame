@@ -10,6 +10,7 @@ namespace Game1
         Vector2 pos;
         public float illuminationStrength = 0;
         Animation animation;
+        private Vector2 deltaMove = new Vector2(0, 0);
         Texture2D texture = Game1.cManager.Load<Texture2D>("spark");
         public int alpha = 255, r = 255, g = 255, b = 255;
         float angle;
@@ -17,7 +18,7 @@ namespace Game1
         Vector2 size;
         public float gravityFactor = 0.5f;
         public float bounceFactor = 0.5f;
-        public float dampenFactor = 0.99f;
+        public float dampenFactor = 1f;
         public int lifeTime = 100;
 
         public Particle(ParticleType particleType, Vector2 pos, Vector2 size, Vector2 velocity, int lifeTime, bool aLoop, int aFrameskip = -1)
@@ -42,22 +43,28 @@ namespace Game1
             velocity.X += gravityFactor * (float)(Math.Round(WorldInfo.gravity.X));
             pos.X += velocity.X;
             ci = Game1.world.collidesWithPoint(pos);
+            deltaMove.X = velocity.X;
             if (ci.collided)
             {
-                pos.X -= velocity.X - ci.speed.X * 2f;
+                deltaMove.X = 0;
+                pos.X -= velocity.X - ci.speed.X;
                 velocity.X *= -bounceFactor;
                 velocity.X += ci.speed.X;
+                velocity.Y *= dampenFactor;
             }
             velocity.Y += gravityFactor * (float)(Math.Round(WorldInfo.gravity.Y));
             pos.Y += velocity.Y;
             ci = Game1.world.collidesWithPoint(pos);
+            deltaMove.Y = velocity.Y;
             if (ci.collided)
             {
-                pos.Y -= velocity.Y - ci.speed.Y * 2f;
+                deltaMove.Y = 0;
+                pos.Y -= velocity.Y - ci.speed.Y;
                 velocity.Y *= -bounceFactor;
                 velocity.Y += ci.speed.Y;
+                velocity.X *= dampenFactor;
             }
-            angle = (float)Math.Atan2(velocity.X, -velocity.Y);
+            angle = (float)Math.Atan2(deltaMove.X, -deltaMove.Y);
             lifeTime--;
         }
 

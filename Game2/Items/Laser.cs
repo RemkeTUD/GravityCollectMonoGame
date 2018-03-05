@@ -122,10 +122,12 @@ namespace Game1
             particleEmitter.pLoop = false;
             particleEmitter.pPerUpdate = 1;
             particleEmitter.pSize = new Vector2(5, 5);
-            particleEmitter.pVelocity = 5;
-            particleEmitter.pMinVelocity = 4;
+            particleEmitter.pVelocity = 6;
+            particleEmitter.pMinVelocity = 5;
             particleEmitter.pIlluminationStrength = 1;
-            particleEmitter.pBounceFactor = 0.3f;
+            particleEmitter.pBounceFactor = 0.5f;
+            particleEmitter.pDampenFactor = 0.95f;
+            particleEmitter.pGravityFactor = 0.3f;
             particleEmitter.start();
         }
 

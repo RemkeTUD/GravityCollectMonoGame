@@ -18,7 +18,7 @@ namespace Game1
         public Vector2 pSize = new Vector2(5, 5);
         public float pGravityFactor = 0.5f;
         public float pBounceFactor = 0.5f;
-        public float pDampenFactor = 0.99f;
+        public float pDampenFactor = 1f;
         public int pLifeTime = 100;
         public float pVelocity = 1;
         public float pMinVelocity = 0;
