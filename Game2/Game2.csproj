@@ -101,6 +101,7 @@
     <Compile Include="Textbox\Textbox.cs" />
     <Compile Include="Textbox\TextDialog.cs" />
     <Compile Include="World\Background.cs" />
+    <Compile Include="World\BackgroundObject.cs" />
     <Compile Include="World\Block.cs" />
     <Compile Include="World\BlockType.cs" />
     <Compile Include="World\MapTools.cs" />
