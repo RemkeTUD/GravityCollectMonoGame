@@ -56,8 +56,16 @@ namespace Game1
         public World(int width, int height, ContentManager content)
         {
 
-           // backgroundTest.addObject("mountain1", new Vector2(1000, 1000), 2, "mountains");
-           // backgroundTest.addObject("mountain2", new Vector2(1000, 750), 4, "mountains");
+            backgroundTest.addObject("sky", new Vector2(0, 0), 10, "sky");
+            backgroundTest.addObject("mountain1", new Vector2(0, -500), 4, "mountains2");
+            Random rand = new Random();
+            for(int i = 0; i < 100; i++)
+            {
+                backgroundTest.addObject("cloud" + i.ToString(), new Vector2(rand.Next(0,4000), rand.Next(0,3000)), 1 + 3*(float)rand.NextDouble(), "cloud");
+            }
+            
+            backgroundTest.addObject("mountain2", new Vector2(0, 0), 1, "mountains1");
+            // backgroundTest.addObject("mountain2", new Vector2(1000, 750), 4, "mountains");
 
             this.width = width; this.height = height;
             this.content = content;
@@ -109,12 +117,14 @@ namespace Game1
 
         public void drawBackground(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(
+
+            backgroundTest.draw(spriteBatch);
+            /*spriteBatch.Draw(
                background,
                position: Game1.getCam().Pos * 0.5f - new Vector2(600, 600),
-               scale: new Vector2(2, 2),
+               scale: new Vector2(1,1),
                effects: SpriteEffects.None,
-               layerDepth: 1);
+               layerDepth: 1);*/
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -129,7 +139,7 @@ namespace Game1
 
            
 
-            backgroundTest.draw(spriteBatch);
+            
 
             Vector2 startVec = MapTools.mapToGridCoords(Game1.getCam().Pos);
 
