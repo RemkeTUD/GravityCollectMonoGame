@@ -603,7 +603,6 @@ namespace Game1
 
         public void decideCollisionCorrection(bool leftAndDown)
         {
-            Console.WriteLine("inDecide");
             Vector2 posUp = downPoint();
             List<Vector2> posSide;
             int multiplier = 1;

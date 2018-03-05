@@ -75,9 +75,9 @@ namespace Game1
             }
 
 
+
+
             
-
-
 
 
             base.Update();
@@ -85,16 +85,19 @@ namespace Game1
 
         public void setSpeedChains()
         {
-
+            
+            if (getRealSpeed() > 0.1f)
             if (!setSpeedChainRight(getRealSpeed())) {
                 if(Game1.getPlayer().speed > 0.01)
                     Game1.getPlayer().speed = 0;
                 }
-            if(!setSpeedChainLeft(getRealSpeed()))
+            if (getRealSpeed() < -0.1f)
+                if (!setSpeedChainLeft(getRealSpeed()))
             {
                 if (Game1.getPlayer().speed < -0.01)
                     Game1.getPlayer().speed = 0;
             }
+            
         }
 
         public static void setAllSpeedChains()
@@ -132,7 +135,7 @@ namespace Game1
         {
             r = 255;
             
-                if (collidesRightWithMap().isStatic || collidesLeftWithMap().isStatic)
+                if ((collidesRightWithMap().isStatic && speed > 0.1f) || (collidesLeftWithMap().isStatic && speed <-0.1f))
                 {
                     this.setRealSpeed(0);
                     return false;
@@ -154,25 +157,36 @@ namespace Game1
 
         public bool setSpeedChainRight(float speed)
         {
-            
-            if(speed > 0.01f) {
+           
+            if (speed > 0.01f) {
                 g = 255;
+                Console.WriteLine("Test1");
+                Console.WriteLine(speed);
                 if (collidesRightWithMap().isStatic)
                 {
+                    Console.WriteLine("Test2");
+                    Console.WriteLine(this.speed);
                     this.setRealSpeed(0);
+
+                    
                     setSpeedChainUp(0);
                     return false;
                 }
+                Console.WriteLine("Test3");
+                Console.WriteLine(speed);
                 this.setRealSpeed(speed);
                 setSpeedChainUp(speed);
                 foreach (FreeGravityBox gravityBox in boxes)
                 {
-                    //if(gravityBox!=this)
+                    Console.WriteLine("Test4");
+                    Console.WriteLine(this.speed);
+                    if (gravityBox!=this)
                     if(gravityBox.collidesWithMovingPoint(rightPoint(),Vector2.Zero))
                     {
                         if(!gravityBox.setSpeedChainRight(speed))
                         {
-                            this.setRealSpeed(0);
+                                Console.WriteLine("Test5");
+                                this.setRealSpeed(0);
                             setSpeedChainUp(0);
                             return false;
                         }
@@ -181,6 +195,7 @@ namespace Game1
                     }
                 }
             }
+            Console.WriteLine(this.speed);
             return true;
         }
 
@@ -202,7 +217,7 @@ namespace Game1
 
                 foreach (FreeGravityBox gravityBox in boxes)
                 {
-                    //if (gravityBox != this)
+                    if (gravityBox != this)
                         if (gravityBox.collidesWithMovingPoint(leftPoint(), Vector2.Zero))
                     {
                         if (!gravityBox.setSpeedChainLeft(speed))

@@ -259,12 +259,12 @@ namespace Game1
 
         public Vector2 leftPoint()
         {
-            return getCenter() - (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f;
+            return getCenter() - (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f + WorldInfo.gravity;
         }
 
         public Vector2 rightPoint()
         {
-            return getCenter() + (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f;
+            return getCenter() + (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f + WorldInfo.gravity;
         }
 
         public virtual CollisionInfo collidesWithMap()
@@ -393,6 +393,8 @@ namespace Game1
 
         public virtual void drawParamMenu(SpriteBatch batch)
         {
+            if (font == null)
+                font = Game1.cManager.Load<SpriteFont>("font");
             if (widthUpButton == null)
                 widthUpButton = new Button(new Rectangle(1400, 700, 32, 32), delegate { size += new Vector2(16, 16); }, "saw");
             if (widthDownButton == null)
