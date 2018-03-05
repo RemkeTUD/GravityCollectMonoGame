@@ -88,6 +88,7 @@
     <Compile Include="Particle\Particle.cs" />
     <Compile Include="Particle\ParticleEmitter.cs" />
     <Compile Include="Particle\ParticleType.cs" />
+    <Compile Include="Particle\ConeParticleEmitter.cs" />
     <Compile Include="Particle\RoundParticleEmitter.cs" />
     <Compile Include="Player\CollisionInfo.cs" />
     <Compile Include="Player\GravityFlame.cs" />
