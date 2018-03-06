@@ -66,6 +66,7 @@ namespace Game1
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            angle = (float)Math.PI * 0.5f * (rotation + 1);
             if (!isOpen)
                 alpha = 255;
             else

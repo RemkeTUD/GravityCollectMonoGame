@@ -40,6 +40,12 @@ namespace Game1
     [XmlInclude(typeof(TextDialog))]
     [XmlInclude(typeof(Raycast))]
     [XmlInclude(typeof(CollisionInfo))]
+    [XmlInclude(typeof(Wolf))]
+    [XmlInclude(typeof(Raven))]
+    [XmlInclude(typeof(RotateSpike))]
+    [XmlInclude(typeof(Ink))]
+    [XmlInclude(typeof(Tree))]
+    [XmlInclude(typeof(DonutBlock))]
     public abstract class Item
     {
         public Vector2 speed = new Vector2(0, 0);
