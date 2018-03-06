@@ -61,7 +61,7 @@ namespace Game1
             backgroundTest.addObject("sky", new Vector2(0, 0), 10, "sky");
             backgroundTest.addObject("mountain1", new Vector2(0, -500), 4, "mountains2");
             Random rand = new Random();
-            for(int i = 0; i < 100; i++)
+            for(int i = 0; i < 20; i++)
             {
                 backgroundTest.addObject("cloud" + i.ToString(), new Vector2(rand.Next(0,4000), rand.Next(0,3000)), 1 + 3*(float)rand.NextDouble(), "cloud");
             }

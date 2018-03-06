@@ -32,9 +32,11 @@ namespace Game1
             textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/Laser");
             initParticles();
         }
+        static Random rand = new Random();
         public Laser(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
-            this.angleSpeed = 0;
+
+            this.angleSpeed = (float)rand.NextDouble() * 0.05f ;
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/laser");
             Game1.penumbra.Lights.Add(light);
             raycast = new Raycast(pos, new Vector2(0, 0), 3000);

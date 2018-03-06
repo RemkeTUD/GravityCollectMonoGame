@@ -83,6 +83,98 @@ namespace Game1
 
             return false;
         }
+        // a1 is line1 start, a2 is line1 end, b1 is line2 start, b2 is line2 end
+        static bool LineIntersectsLine(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2, out Vector2 intersection)
+        {
+            intersection = Vector2.Zero;
+
+            Vector2 b = a2 - a1;
+            Vector2 d = b2 - b1;
+            float bDotDPerp = b.X * d.Y - b.Y * d.X;
+
+            // if b dot d == 0, it means the lines are parallel so have infinite intersection points
+            if (bDotDPerp == 0)
+                return false;
+
+            Vector2 c = b1 - a1;
+            float t = (c.X * d.Y - c.Y * d.X) / bDotDPerp;
+            if (t < 0 || t > 1)
+                return false;
+
+            float u = (c.X * b.Y - c.Y * b.X) / bDotDPerp;
+            if (u < 0 || u > 1)
+                return false;
+
+            intersection = a1 + t * b;
+
+            return true;
+        }
+        public static CollisionInfo lineCollidesWithRect(Vector2 startPointLine, Vector2 endPointLine, Vector2 rectPos, float width, float height)
+        {
+            List<Vector2> collisionPoints = new List<Vector2>();
+
+            Vector2 intersectionLine1;
+            bool line1Intersected = false;
+
+            line1Intersected = LineIntersectsLine(startPointLine, endPointLine, rectPos, rectPos + new Vector2(width, 0), out intersectionLine1);
+            if (line1Intersected)
+                collisionPoints.Add(intersectionLine1);
+
+            Vector2 intersectionLine2;
+            bool line2Intersected = false;
+
+            line2Intersected = LineIntersectsLine(startPointLine, endPointLine, rectPos, rectPos + new Vector2(0, height), out intersectionLine2);
+            if (line2Intersected)
+                collisionPoints.Add(intersectionLine2);
+
+            Vector2 intersectionLine3;
+            bool line3Intersected = false;
+
+            line3Intersected = LineIntersectsLine(startPointLine, endPointLine, rectPos + new Vector2(0, height), rectPos + new Vector2(width, height), out intersectionLine3);
+            if (line3Intersected)
+                collisionPoints.Add(intersectionLine3);
+
+            Vector2 intersectionLine4;
+            bool line4Intersected = false;
+
+            line4Intersected = LineIntersectsLine(startPointLine, endPointLine, rectPos + new Vector2(width, 0), rectPos + new Vector2(width, height), out intersectionLine4);
+            if (line4Intersected)
+                collisionPoints.Add(intersectionLine4);
+
+            if(collisionPoints.Count == 1)
+            {
+                return new CollisionInfo(true, Vector2.Zero, null, collisionPoints[0]);
+            }
+
+            if (collisionPoints.Count >=2)
+            {
+                if((startPointLine - collisionPoints[0]).LengthSquared() < (startPointLine - collisionPoints[1]).LengthSquared())
+                {
+                    return new CollisionInfo(true, Vector2.Zero, null, collisionPoints[0]);
+                }
+                else
+                {
+                    return new CollisionInfo(true, Vector2.Zero, null, collisionPoints[1]);
+                }
+            }
+            return new CollisionInfo(false, Vector2.Zero);
+
+
+            float t1 = (rectPos.X - startPointLine.X) / (endPointLine.X - startPointLine.X);
+            float t2 = ((rectPos.X + width) - startPointLine.X) / (endPointLine.X - startPointLine.X);
+            float t3 = (rectPos.Y - startPointLine.Y) / (endPointLine.Y - startPointLine.Y);
+            float t4 = ((rectPos.Y + height) - startPointLine.Y) / (endPointLine.Y - startPointLine.Y);
+            Console.WriteLine("t1: " + t1);
+            Console.WriteLine("t2: " + t2);
+            Console.WriteLine("t3: " + t3);
+            Console.WriteLine("t4: " + t4);
+            if (t1 > 0 && t1 < 1 && t2 > 0 && t2 < 1 && t3 > 0 && t3 < 1 && t4 > 0 && t4 < 1) {
+                float tmin = Math.Min(t1, Math.Min(t2, Math.Min(t3, t4)));
+
+                return new CollisionInfo(true, Vector2.Zero, null, startPointLine + tmin * (endPointLine - startPointLine));
+            }
+            return new CollisionInfo(false, Vector2.Zero);
+        }
 
     }
 }
