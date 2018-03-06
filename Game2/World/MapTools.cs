@@ -160,20 +160,7 @@ namespace Game1
             return new CollisionInfo(false, Vector2.Zero);
 
 
-            float t1 = (rectPos.X - startPointLine.X) / (endPointLine.X - startPointLine.X);
-            float t2 = ((rectPos.X + width) - startPointLine.X) / (endPointLine.X - startPointLine.X);
-            float t3 = (rectPos.Y - startPointLine.Y) / (endPointLine.Y - startPointLine.Y);
-            float t4 = ((rectPos.Y + height) - startPointLine.Y) / (endPointLine.Y - startPointLine.Y);
-            Console.WriteLine("t1: " + t1);
-            Console.WriteLine("t2: " + t2);
-            Console.WriteLine("t3: " + t3);
-            Console.WriteLine("t4: " + t4);
-            if (t1 > 0 && t1 < 1 && t2 > 0 && t2 < 1 && t3 > 0 && t3 < 1 && t4 > 0 && t4 < 1) {
-                float tmin = Math.Min(t1, Math.Min(t2, Math.Min(t3, t4)));
-
-                return new CollisionInfo(true, Vector2.Zero, null, startPointLine + tmin * (endPointLine - startPointLine));
-            }
-            return new CollisionInfo(false, Vector2.Zero);
+            
         }
 
     }

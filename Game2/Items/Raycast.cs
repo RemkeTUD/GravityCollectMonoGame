@@ -27,30 +27,43 @@ namespace Game1
         public CollisionInfo getHit()
         {
             Vector2 res = new Vector2(pos.X, pos.Y);
+            List<CollisionInfo> collisionInfos = new List<CollisionInfo>();
             dir.Normalize();
             Vector2 posOnGrid = MapTools.mapToGridCoords(pos);
             Vector2 endPointOnGrid = MapTools.mapToGridCoords(pos) + dir * length / 16f;
             CollisionInfo raytraversalInfo = setLine(pos, dir, length);
             if (raytraversalInfo.collided)
             {
-                return new CollisionInfo(true, Vector2.Zero, null, raytraversalInfo.pos);
+                collisionInfos.Add( new CollisionInfo(true, Vector2.Zero, null, raytraversalInfo.pos));
             }
             Player player = Game1.getPlayer();
             if (MapTools.lineCollidesWithRect(pos, pos + dir * length, player.pos - player.size * 0.5f, player.size.X, player.size.Y).collided)
             {
                 res = MapTools.lineCollidesWithRect(pos, pos + dir * length, player.pos - player.size * 0.5f, player.size.X, player.size.Y).pos;
-                return new CollisionInfo(true, Vector2.Zero, player, res);
+                collisionInfos.Add(new CollisionInfo(true, Vector2.Zero, player, res));
             }
             foreach (CollisionBox box in Game1.world.collisionBoxes)
             {
                 if(MapTools.lineCollidesWithRect(pos, pos + dir * length, box.pos - box.size * 0.5f, box.size.X, box.size.Y).collided)
                 {
                     res = MapTools.lineCollidesWithRect(pos, pos + dir * length, box.pos - box.size * 0.5f, box.size.X, box.size.Y).pos;
-                    return new CollisionInfo(true, Vector2.Zero, box, res);
+                    collisionInfos.Add(new CollisionInfo(true, Vector2.Zero, box, res));
                 }
             }
 
+            if(collisionInfos.Count == 0)
+                return new CollisionInfo(true, Vector2.Zero, null, pos + dir * length);
 
+            while(collisionInfos.Count > 1)
+            {
+                if((pos-collisionInfos[0].pos).LengthSquared() > (pos - collisionInfos[1].pos).LengthSquared())
+                {
+                    collisionInfos.RemoveAt(0);
+                }
+                else
+                    collisionInfos.RemoveAt(1);
+            }
+            return collisionInfos[0];
 
             /*
             while (!Game1.world.collidesWithPoint(res).collided && !Game1.getPlayer().collidesWithMovingPoint(res, Vector2.Zero))
@@ -64,7 +77,7 @@ namespace Game1
 
             if (Game1.getPlayer().collidesWithMovingPoint(res, Vector2.Zero))
                 return new CollisionInfo(true, Vector2.Zero, Game1.getPlayer(), res);*/
-            return new CollisionInfo(true, Vector2.Zero, null, pos + dir * length);
+
 
         }
 
