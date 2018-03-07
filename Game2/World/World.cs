@@ -58,15 +58,15 @@ namespace Game1
         public World(int width, int height, ContentManager content)
         {
             backgroundTest = new Background();
-            backgroundTest.addObject("sky", new Vector2(0, 0), 10, "sky");
-            backgroundTest.addObject("mountain1", new Vector2(0, -500), 4, "mountains2");
+            backgroundTest.addObject("sky", new Vector2(0, 0), 10, "sky", Vector2.Zero);
+            backgroundTest.addObject("mountain1", new Vector2(0, -500), 4, "mountains2", Vector2.Zero);
             Random rand = new Random();
             for(int i = 0; i < 20; i++)
             {
-                backgroundTest.addObject("cloud" + i.ToString(), new Vector2(rand.Next(0,4000), rand.Next(0,3000)), 1 + 3*(float)rand.NextDouble(), "cloud");
+                backgroundTest.addObject("cloud" + i.ToString(), new Vector2(rand.Next(0,4000), rand.Next(0,3000)), 1 + 3*(float)rand.NextDouble(), "cloud", new Vector2((float)rand.NextDouble(), 0));
             }
             
-            backgroundTest.addObject("mountain2", new Vector2(0, 0), 1, "mountains1");
+            backgroundTest.addObject("mountain2", new Vector2(0, 0), 1, "mountains1", Vector2.Zero);
             // backgroundTest.addObject("mountain2", new Vector2(1000, 750), 4, "mountains");
 
             this.width = width; this.height = height;

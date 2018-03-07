@@ -21,9 +21,9 @@ namespace Game1
 
         }
         
-        public void addObject(string name, Vector2 pos,float distance, string texPath)
+        public void addObject(string name, Vector2 pos,float distance, string texPath, Vector2 speed)
         {
-            objects.Add(new BackgroundObject(pos, distance, texPath));
+            objects.Add(new BackgroundObject(pos, distance, texPath, speed));
            
         }
 
