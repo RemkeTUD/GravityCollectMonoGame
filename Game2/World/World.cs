@@ -58,7 +58,7 @@ namespace Game1
         public World(int width, int height, ContentManager content)
         {
             backgroundTest = new Background();
-            backgroundTest.addObject("sky", new Vector2(0, 0), 10, "sky", Vector2.Zero);
+            backgroundTest.addObject("sky", new Vector2(0, 0), 8, "sky", Vector2.Zero);
             backgroundTest.addObject("mountain1", new Vector2(0, -500), 4, "mountains2", Vector2.Zero);
             Random rand = new Random();
             for(int i = 0; i < 20; i++)
@@ -656,8 +656,8 @@ namespace Game1
             currentThemeIndex %= themeNames.Length;
 
             currentTheme = themeNames[currentThemeIndex];
-
-            reloadBackgroundTexture(Game1.cManager, currentTheme);
+            backgroundTest.reloadTextures();
+           
 
             foreach (BlockType block in BlockType.Values)
             {

@@ -18,44 +18,54 @@ namespace Game1
         public string texPath;
         public Vector2 speed;
         Texture2D tex;
+        float scale;
 
         public BackgroundObject()
         {
 
         }
-        public BackgroundObject(Vector2 pos, float distance, string texPath, Vector2 speed)
+        public BackgroundObject(Vector2 pos, float distance, string texPath, Vector2 speed, float scale = 1)
         {
             this.pos = pos;
             this.distance = distance;
             this.texPath = texPath;
             this.speed = speed;
-
+            this.scale = scale;
         }
-        Rectangle rect = new Rectangle();
+        Vector2 movedPos = new Vector2();
         public void draw(SpriteBatch batch)
         {
             if (tex == null)
-                tex = Game1.cManager.Load<Texture2D>(texPath);
-            rect.X = (int)(pos.X + ((Game1.getCam().Pos.X - 1000) * 0.1f) * distance);
-            rect.Y = (int)(pos.Y + ((Game1.getCam().Pos.Y - 1000) * 0.1f) * distance);
-
-            rect.Width = tex.Width;
-            rect.Height = tex.Height;
+                tex = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/background/" + texPath);
+            movedPos.X = (float)(pos.X + ((Game1.getCam().Pos.X - 1000) * 0.1f) * distance);
+            movedPos.Y = (float)(pos.Y + ((Game1.getCam().Pos.Y - 1000) * 0.1f) * distance);
+            
 
             pos += speed;
-            if (pos.X > Game1.world.width * 16 || pos.X < rect.Width)
-                pos.X %= Game1.world.width * 16;
-            if (pos.Y > Game1.world.height * 16 || pos.Y < rect.Height)
-                pos.Y %= Game1.world.height * 16;
+            if(speed.LengthSquared() != 0) {
+                if (pos.X > Game1.world.width * 16)
+                pos.X -= Game1.world.width * 16+tex.Width * scale;
+                if (pos.X < -tex.Width * scale)
+                pos.X += Game1.world.width * 16 + tex.Width * scale;
 
-            
+                if (pos.Y > Game1.world.height * 16)
+                    pos.Y -= Game1.world.height * 16 + tex.Height * scale;
+                if (pos.Y < -tex.Height * scale)
+                    pos.Y += Game1.world.height * 16 + tex.Height * scale;
+            }
 
-            
+
+
 
             batch.Draw(tex,
-                    destinationRectangle: rect,
-
+                    position : movedPos,
+                    scale: new Vector2(scale,scale),
                     color: Color.White);
+        }
+
+        public void reloadTexture()
+        {
+            tex = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/background/" + texPath);
         }
 
     }
