@@ -79,21 +79,21 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonLengthPlus == null)
-                buttonLengthPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { fallHeight += 16f; }, "saw");
+                buttonLengthPlus = new Button(new Rectangle(1360, 850, 16, 16), delegate { fallHeight += 16f; }, "gui/plus");
             if (buttonLengthMinus == null)
-                buttonLengthMinus = new Button(new Rectangle(1300-32, 700, 32, 32), delegate { fallHeight -= 16f; }, "saw");
+                buttonLengthMinus = new Button(new Rectangle(1336, 850, 16, 16), delegate { fallHeight -= 16f; }, "gui/minus");
             if (buttonHorizontalToggle == null)
-                buttonHorizontalToggle = new Button(new Rectangle(1200, 700, 32, 32), delegate { horizontal =!horizontal; }, "saw");
+                buttonHorizontalToggle = new Button(new Rectangle(1290, 850, 16, 16), delegate { horizontal =!horizontal; }, "gui/toggle");
 
             buttonLengthPlus.Draw(batch);
             buttonLengthPlus.Update();
             buttonLengthMinus.Draw(batch);
             buttonLengthMinus.Update();
-            batch.DrawString(font, ((int)(fallHeight /16)).ToString(), new Vector2(1300, 800), Color.Black);
+            batch.DrawString(font, ((int)(fallHeight /16)).ToString(), new Vector2(1350, 870), Color.Black);
 
             buttonHorizontalToggle.Draw(batch);
             buttonHorizontalToggle.Update();
-            batch.DrawString(font, ((horizontal)).ToString(), new Vector2(1200, 800), Color.Black);
+            batch.DrawString(font, ((horizontal)).ToString(), new Vector2(1290, 870), Color.Black);
 
             base.drawParamMenu(batch);
         }

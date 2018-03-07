@@ -413,17 +413,17 @@ namespace Game1
             if (font == null)
                 font = Game1.cManager.Load<SpriteFont>("font");
             if (widthUpButton == null)
-                widthUpButton = new Button(new Rectangle(1400, 700, 32, 32), delegate { size += new Vector2(16, 16); }, "saw");
+                widthUpButton = new Button(new Rectangle(1408, 850, 16, 16), delegate { size += new Vector2(16, 16); }, "gui/plus");
             if (widthDownButton == null)
-                widthDownButton = new Button(new Rectangle(1432, 700, 32, 32), delegate { size -= new Vector2(16, 16); }, "saw");
+                widthDownButton = new Button(new Rectangle(1440, 850, 16, 16), delegate { size -= new Vector2(16, 16); }, "gui/minus");
 
             widthUpButton.Draw(batch);
             widthDownButton.Draw(batch);
             widthUpButton.Update();
             widthDownButton.Update();
 
-            batch.DrawString(font, pos.ToString(), new Vector2(1500, 800), Color.Black);
-            batch.DrawString(font, size.ToString(), new Vector2(1400, 800), Color.Black);
+            batch.DrawString(font, pos.ToString(), new Vector2(1500, 870), Color.Black);
+            batch.DrawString(font, size.ToString(), new Vector2(1400, 870), Color.Black);
 
             
 

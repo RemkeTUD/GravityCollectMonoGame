@@ -77,7 +77,7 @@ namespace Game1
         {
 
 
-            angle += angleSpeed;
+            angle += angleSpeed * 0.001f;
 
             raycast.dir = MapTools.AngleToVector(angle-MathHelper.Pi * 0.5f);
             raycast.pos = pos;
@@ -98,13 +98,13 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonAngleSpeedPlus == null)
-                buttonAngleSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { angleSpeed += 0.001f; }, "saw");
+                buttonAngleSpeedPlus = new Button(new Rectangle(1360, 850, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
             buttonAngleSpeedPlus.Draw(batch);
             buttonAngleSpeedPlus.Update();
-            batch.DrawString(font, ((int)(angleSpeed * 1000f)).ToString(), new Vector2(1300, 800), Color.Black);
+            batch.DrawString(font, ((int)(angleSpeed )).ToString(), new Vector2(1350, 870), Color.Black);
 
             if (buttonAngleSpeedMinus == null)
-                buttonAngleSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { angleSpeed -= 0.001f; }, "saw");
+                buttonAngleSpeedMinus = new Button(new Rectangle(1336, 850, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
             buttonAngleSpeedMinus.Draw(batch);
             buttonAngleSpeedMinus.Update();
 

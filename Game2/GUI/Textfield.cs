@@ -14,7 +14,7 @@ namespace Game1
         public string text = "";
         public bool isActive = false;
         int framesLastKeyPressed = 0;
-        public Textfield(Rectangle rect) : base(rect)
+        public Textfield(Rectangle rect) : base(rect, null)
         {
             textureTest = Game1.cManager.Load<Texture2D>("textfield");
 

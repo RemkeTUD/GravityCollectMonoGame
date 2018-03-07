@@ -98,7 +98,7 @@ namespace Game1
                 speed.X = 0; speed.Y = 1;
             }
             speed.Normalize();
-            speed *= travelSpeed;
+            speed *= travelSpeed * 0.1f;
 
         }
 
@@ -120,13 +120,13 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonSpeedPlus == null)
-                buttonSpeedPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { travelSpeed += 0.1f; }, "saw");
+                buttonSpeedPlus = new Button(new Rectangle(1360, 850, 16, 16), delegate { travelSpeed += 1f; }, "gui/plus");
             buttonSpeedPlus.Draw(batch);
             buttonSpeedPlus.Update();
-            batch.DrawString(font, ((int)(travelSpeed * 10f)).ToString(), new Vector2(1300, 800), Color.Black);
+            batch.DrawString(font, ((int)(travelSpeed * 10f)).ToString(), new Vector2(1350, 870), Color.Black);
 
             if (buttonSpeedMinus == null)
-                buttonSpeedMinus = new Button(new Rectangle(1300 - 32, 700, 32, 32), delegate { travelSpeed -= 0.1f; }, "saw");
+                buttonSpeedMinus = new Button(new Rectangle(1336, 850, 16, 16), delegate { travelSpeed -= 1f; }, "gui/minus");
             buttonSpeedMinus.Draw(batch);
             buttonSpeedMinus.Update();
 

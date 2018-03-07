@@ -65,10 +65,10 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonRotationPlus == null)
-                buttonRotationPlus = new Button(new Rectangle(1300, 700, 32, 32), delegate { rotation += 1; rotation %= 4; angle = (float)Math.PI * 0.5f * (rotation + 2); }, "saw");
+                buttonRotationPlus = new Button(new Rectangle(1360, 850, 16, 16), delegate { rotation += 1; rotation %= 4; angle = (float)Math.PI * 0.5f * (rotation + 2); }, "gui/plus");
             buttonRotationPlus.Draw(batch);
             buttonRotationPlus.Update();
-            batch.DrawString(font, ((int)(rotation)).ToString(), new Vector2(1300, 800), Color.Black);
+            batch.DrawString(font, ((int)(rotation)).ToString(), new Vector2(1360, 870), Color.Black);
             
             base.drawParamMenu(batch);
         }

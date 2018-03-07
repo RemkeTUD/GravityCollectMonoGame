@@ -15,10 +15,10 @@ namespace Game1
         MouseState mState, mPrevState;
 
         BAction action;
-        public Button(Rectangle rect, BAction action, string texture) : base(rect)
+        public Button(Rectangle rect, BAction action, string texture) : base(rect, texture)
         {
             this.action = action;
-            textureTest = Game1.cManager.Load<Texture2D>(texture);
+            //textureTest = Game1.cManager.Load<Texture2D>(texture);
         }
 
         public override void Update()

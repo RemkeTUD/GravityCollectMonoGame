@@ -20,9 +20,14 @@ namespace Game1
         static MouseState state, prevState;
         static KeyboardState kstate, kprevState;
         static Vector2 lastIndexClicked = new Vector2(-1, -1);
+
+        static GUIElement bgRight;
         public static void init()
         {
             int y = 0;
+
+            bgRight = new GUIElement(new Rectangle(1600 - 330, 900 - 60, 330, 60), "gui/bgright");
+
             foreach(BlockType bType in BlockType.Values)
             {
                 guiElements.Add(new Button(new Rectangle(0, y * 40, 30, 30), bType.setCurrentBlockType, bType.TexName));
@@ -78,29 +83,31 @@ namespace Game1
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Ink), Game1.cManager, 16, 16); }, "ink"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Wolf), Game1.cManager, 48, 48); }, "wolf"));
+            
+
+            int x = 2;
+            y = 0;
+            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Wolf), Game1.cManager, 48, 48); }, "wolf"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Tree), Game1.cManager, 128, 128); }, "tree"));
+            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Tree), Game1.cManager, 128, 128); }, "tree"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(DonutBlock), Game1.cManager, 32, 32); }, "box"));
+            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(DonutBlock), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
+            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate {
                 TeleporterDestination teleporterDest = (TeleporterDestination)Game1.world.createInstanceAtMouse(typeof(TeleporterDestination), Game1.cManager, 32, 32);
                 currentDragItem = Game1.world.createInstanceAtMouse(typeof(Teleporter), Game1.cManager, 32, 32);
                 ((Teleporter)currentDragItem).dest = teleporterDest;
             }, "teleporter"));
-
-            int x = 2;
-            y = 0;
+            y++;
             guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RotateSpike), Game1.cManager, 32, 128); }, "rotateSpike"));
             y++;
             guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Raven), Game1.cManager, 32, 32); }, "raven"));
             y++;
 
-            saveText = new Textfield(new Rectangle(1600 - 266, 900 - 20, 256, 16));
+            saveText = new Textfield(new Rectangle(20, 900 - 20, 256, 16));
             guiElements.Add(saveText);
-            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "saw"));
-            guiElements.Add(new Button(new Rectangle(1600 - 290, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "box"));
+            guiElements.Add(new Button(new Rectangle(0, 900 - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "gui/save"));
+            guiElements.Add(new Button(new Rectangle(0, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "gui/load"));
 
             
 
@@ -111,7 +118,10 @@ namespace Game1
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            foreach(GUIElement elem in guiElements)
+            if (currentSelectedItem != null)
+                bgRight.Draw(spriteBatch);
+
+            foreach (GUIElement elem in guiElements)
             {
                 elem.Draw(spriteBatch);
             }
@@ -194,6 +204,7 @@ namespace Game1
                     if (item.collidesWithPoint(pos))
                     {
                         item.destroy = true;
+                            currentSelectedItem = null;
                         break;
                     }
                 }

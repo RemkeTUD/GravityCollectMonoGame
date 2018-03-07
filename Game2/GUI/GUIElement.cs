@@ -15,11 +15,13 @@ namespace Game1
         protected Texture2D textureTest;
         MouseState mState, mPrevState;
         public static SpriteFont font;
-        public GUIElement(Rectangle rect)
+        public GUIElement(Rectangle rect, string texture)
         {
             this.rect = rect;
             if (font == null)
                 font = Game1.cManager.Load<SpriteFont>("font");
+            if(texture != null)
+            textureTest = Game1.cManager.Load<Texture2D>(texture);
         }
 
         public bool isClicked()
