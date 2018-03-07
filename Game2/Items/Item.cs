@@ -234,11 +234,11 @@ namespace Game1
         }
         public virtual CollisionInfo collidesLeftWithMap()
         {
-            return Game1.world.collidesWithPoint(leftPoint());
+            return Game1.world.collidesWithPoints(leftPoints());
         }
         public virtual CollisionInfo collidesRightWithMap()
         {
-            return Game1.world.collidesWithPoint(rightPoint());
+            return Game1.world.collidesWithPoints(rightPoints());
         }
 
         public List<Vector2> downPoints()
@@ -263,14 +263,25 @@ namespace Game1
             return points;
         }
 
-        public Vector2 leftPoint()
+        public List<Vector2> leftPoints()
         {
-            return getCenter() - (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f + WorldInfo.gravity;
+            List<Vector2> points = new List<Vector2>();
+
+            points.Add(getCenter() - (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f);
+            points.Add(getCenter() - (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f + WorldInfo.gravity * size.Y * 0.4f);
+            points.Add(getCenter() - (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f - WorldInfo.gravity * size.Y * 0.4f);
+            return points;
         }
 
-        public Vector2 rightPoint()
+        public List<Vector2> rightPoints()
         {
-            return getCenter() + (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f + WorldInfo.gravity;
+            List<Vector2> points = new List<Vector2>();
+
+            points.Add(getCenter() + (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f);
+            points.Add(getCenter() + (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f + WorldInfo.gravity * size.Y * 0.4f);
+            points.Add(getCenter() + (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f - WorldInfo.gravity * size.Y * 0.4f);
+            return points;
+            //return getCenter() + (new Vector2(MapTools.getXMultiplier(), MapTools.getYMultiplier())) * size.X * 0.51f + WorldInfo.gravity;
         }
 
         public virtual CollisionInfo collidesWithMap()

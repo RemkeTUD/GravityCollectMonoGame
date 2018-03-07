@@ -178,12 +178,12 @@ namespace Game1
                         player.update(0);
                         if (!TextDialog.isInDialog)
                             world.applyChanges(GraphicsDevice);
-                        
-                        
 
+
+                        world.correctDownCollisions();
                         world.correctRightCollisions();
                         world.correctLeftCollisions();
-                        world.correctDownCollisions();
+                       
 
 
 

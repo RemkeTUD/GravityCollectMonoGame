@@ -28,9 +28,9 @@ namespace Game1
         public override void Update()
         {
 
-            if (collidesWithPoint(Game1.getPlayer().leftPoints()[0]) && getRealSpeed() > 0.01f)
+            if (collidesWithPoints(Game1.getPlayer().leftPoints()) && getRealSpeed() > 0.01f)
                 Game1.getPlayer().speed = getRealSpeed();
-            if (collidesWithPoint(Game1.getPlayer().rightPoints()[0]) && getRealSpeed() < -0.01f)
+            if (collidesWithPoints(Game1.getPlayer().rightPoints()) && getRealSpeed() < -0.01f)
                 Game1.getPlayer().speed = getRealSpeed();
 
             base.Update();
@@ -47,6 +47,16 @@ namespace Game1
             Vector2 boxUpLeft = pos - size * 0.5f;
             Vector2 boxDownRight = pos + size * 0.5f;
             return (boxUpLeft.X < point.X && boxUpLeft.Y < point.Y && boxDownRight.X > point.X && boxDownRight.Y > point.Y);
+        }
+        public virtual bool collidesWithPoints(List<Vector2> points)
+        {
+
+            Vector2 boxUpLeft = pos - size * 0.5f;
+            Vector2 boxDownRight = pos + size * 0.5f;
+            foreach(Vector2 point in points)
+                if (boxUpLeft.X < point.X && boxUpLeft.Y < point.Y && boxDownRight.X > point.X && boxDownRight.Y > point.Y)
+                    return true;
+            return false;
         }
     }
 }

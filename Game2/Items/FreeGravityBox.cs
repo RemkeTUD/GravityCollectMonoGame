@@ -50,34 +50,35 @@ namespace Game1
                     setRealSpeed(collidesDownWithMap().getRealSpeed());
                 }
 
-                foreach (Vector2 point in Game1.getPlayer().rightPoints())
-                {
-                    if (collidesWithMovingPoint(point, Vector2.Zero))
-                    {
-                        if (Game1.getPlayer().speed > 0.01f)
-                        {
-
-                            setRealSpeed(Game1.getPlayer().speed);
-                        }
-                        break;
-                    }
-                }
-
-                foreach (Vector2 point in Game1.getPlayer().leftPoints()) {
-                    if (collidesWithMovingPoint(point, Vector2.Zero))
-                    {
-                        if (Game1.getPlayer().speed < -0.01f)
-                            setRealSpeed(Game1.getPlayer().speed);
-                        break;
-                    }
-                }
+                
 
             }
 
 
+            foreach (Vector2 point in Game1.getPlayer().rightPoints())
+            {
+                if (collidesWithMovingPoint(point, Vector2.Zero))
+                {
+                    if (Game1.getPlayer().speed > 0.01f)
+                    {
+
+                        setRealSpeed(Game1.getPlayer().speed);
+                    }
+                    break;
+                }
+            }
+
+            foreach (Vector2 point in Game1.getPlayer().leftPoints())
+            {
+                if (collidesWithMovingPoint(point, Vector2.Zero))
+                {
+                    if (Game1.getPlayer().speed < -0.01f)
+                        setRealSpeed(Game1.getPlayer().speed);
+                    break;
+                }
+            }
 
 
-            
 
 
             base.Update();
@@ -166,7 +167,7 @@ namespace Game1
                 {
                     Console.WriteLine("Test2");
                     Console.WriteLine(this.speed);
-                    this.setRealSpeed(0);
+                    //this.setRealSpeed(0);
 
                     
                     setSpeedChainUp(0);
@@ -181,12 +182,12 @@ namespace Game1
                     Console.WriteLine("Test4");
                     Console.WriteLine(this.speed);
                     if (gravityBox!=this)
-                    if(gravityBox.collidesWithMovingPoint(rightPoint(),Vector2.Zero))
+                    if(gravityBox.collidesWithPoints(rightPoints()))
                     {
                         if(!gravityBox.setSpeedChainRight(speed))
                         {
                                 Console.WriteLine("Test5");
-                                this.setRealSpeed(0);
+                               // this.setRealSpeed(0);
                             setSpeedChainUp(0);
                             return false;
                         }
@@ -207,7 +208,7 @@ namespace Game1
                 g = 128;
                 if (collidesLeftWithMap().isStatic)
                 {
-                    this.setRealSpeed(0);
+                    //this.setRealSpeed(0);
                     setSpeedChainUp(0);
                     return false;
 
@@ -218,11 +219,11 @@ namespace Game1
                 foreach (FreeGravityBox gravityBox in boxes)
                 {
                     if (gravityBox != this)
-                        if (gravityBox.collidesWithMovingPoint(leftPoint(), Vector2.Zero))
+                        if (gravityBox.collidesWithPoints(leftPoints()))
                     {
                         if (!gravityBox.setSpeedChainLeft(speed))
                         {
-                            this.setRealSpeed(0);
+                            //this.setRealSpeed(0);
                             setSpeedChainUp(0);
                             return false;
                         }
@@ -236,6 +237,7 @@ namespace Game1
 
         public override void correctDownCollision()
         {
+            if(getFallSpeed() > 0.01f) {
             while (collidesDownWithMap().collided)
             {
                 pos.X -= 0.1f * (float)(WorldInfo.gravity.X);
@@ -246,11 +248,14 @@ namespace Game1
 
             rect.X = (int)Math.Round(pos.X);
             rect.Y = (int)Math.Round(pos.Y);
+            }
         }
 
         public override void correctRightCollision()
         {
-            if (collidesRightWithMap().collided)
+            if (getRealSpeed() > 0.1f)
+            {
+                if (collidesRightWithMap().collided)
             {
                 while (collidesRightWithMap().collided)
                 {
@@ -263,22 +268,26 @@ namespace Game1
                 rect.X = (int)pos.X;
                 rect.Y = (int)pos.Y;
             }
+             }
         }
 
         public override void correctLeftCollision()
         {
-            if (collidesLeftWithMap().collided)
+            if (getRealSpeed() < -0.1f)
             {
-                while (collidesLeftWithMap().collided)
+                if (collidesLeftWithMap().collided)
                 {
-                    pos.X += 0.1f * (float)(WorldInfo.gravity.Y);
-                    pos.Y -= 0.1f * (float)(WorldInfo.gravity.X);
-                }
-                pos.X -= 0.5f *(float)Math.Round(WorldInfo.gravity.Y);
-                pos.Y += 0.5f * (float)Math.Round(WorldInfo.gravity.X);
+                    while (collidesLeftWithMap().collided)
+                    {
+                        pos.X += 0.1f * (float)(WorldInfo.gravity.Y);
+                        pos.Y -= 0.1f * (float)(WorldInfo.gravity.X);
+                    }
+                    pos.X -= 0.5f * (float)Math.Round(WorldInfo.gravity.Y);
+                    pos.Y += 0.5f * (float)Math.Round(WorldInfo.gravity.X);
 
-                rect.X = (int)pos.X;
-                rect.Y = (int)pos.Y;
+                    rect.X = (int)pos.X;
+                    rect.Y = (int)pos.Y;
+                }
             }
         }
 
