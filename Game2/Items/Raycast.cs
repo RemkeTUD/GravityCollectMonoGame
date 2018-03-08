@@ -12,16 +12,18 @@ namespace Game1
         public Vector2 pos;
         public Vector2 dir;
         public float length;
+        public bool ignorePlayer;
         public Raycast()
         {
 
         }
-            public Raycast(Vector2 pos, Vector2 dir, float length = 1000f)
+            public Raycast(Vector2 pos, Vector2 dir, float length = 1000f, bool ignorePlayer = false)
         {
             this.pos = pos;
             this.dir = dir;
             this.length = length;
             this.dir.Normalize();
+            this.ignorePlayer = ignorePlayer;
         }
 
         public CollisionInfo getHit()
@@ -37,7 +39,7 @@ namespace Game1
                 collisionInfos.Add( new CollisionInfo(true, Vector2.Zero, null, raytraversalInfo.pos));
             }
             Player player = Game1.getPlayer();
-            if (MapTools.lineCollidesWithRect(pos, pos + dir * length, player.pos - player.size * 0.5f, player.size.X, player.size.Y).collided)
+            if (!ignorePlayer && MapTools.lineCollidesWithRect(pos, pos + dir * length, player.pos - player.size * 0.5f, player.size.X, player.size.Y).collided)
             {
                 res = MapTools.lineCollidesWithRect(pos, pos + dir * length, player.pos - player.size * 0.5f, player.size.X, player.size.Y).pos;
                 collisionInfos.Add(new CollisionInfo(true, Vector2.Zero, player, res));

@@ -161,32 +161,23 @@ namespace Game1
            
             if (speed > 0.01f) {
                 g = 255;
-                Console.WriteLine("Test1");
-                Console.WriteLine(speed);
                 if (collidesRightWithMap().isStatic)
                 {
-                    Console.WriteLine("Test2");
-                    Console.WriteLine(this.speed);
                     //this.setRealSpeed(0);
 
                     
                     setSpeedChainUp(0);
                     return false;
                 }
-                Console.WriteLine("Test3");
-                Console.WriteLine(speed);
                 this.setRealSpeed(speed);
                 setSpeedChainUp(speed);
                 foreach (FreeGravityBox gravityBox in boxes)
                 {
-                    Console.WriteLine("Test4");
-                    Console.WriteLine(this.speed);
                     if (gravityBox!=this)
                     if(gravityBox.collidesWithPoints(rightPoints()))
                     {
                         if(!gravityBox.setSpeedChainRight(speed))
                         {
-                                Console.WriteLine("Test5");
                                // this.setRealSpeed(0);
                             setSpeedChainUp(0);
                             return false;
@@ -196,7 +187,6 @@ namespace Game1
                     }
                 }
             }
-            Console.WriteLine(this.speed);
             return true;
         }
 

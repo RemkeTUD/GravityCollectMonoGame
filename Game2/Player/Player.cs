@@ -161,7 +161,7 @@ namespace Game1
                     pl.Draw(spriteBatch, playerPosID);
                     playerPosID--;
                 }
-
+            
         }
 
         public void drawIllumination(SpriteBatch spriteBatch)
@@ -387,7 +387,7 @@ namespace Game1
         public CollisionInfo isGrounded()
         {
             
-            Vector2 pos = MapTools.mapToGridCoords(downPoint());
+            Vector2 pos = MapTools.mapToGridCoords(downPoint() + WorldInfo.gravity * 0.1f);
             if (Game1.world.get((int)pos.X, (int)pos.Y).Type.Collision)
                 return new CollisionInfo(true, Vector2.Zero) ;
             else
@@ -462,7 +462,7 @@ namespace Game1
 
         public Boolean collidesDownWithCollisionBox(CollisionBox box)
         {
-            Vector2 playerPoint = downPoint();
+            Vector2 playerPoint = downPoint() + WorldInfo.gravity * 0.1f;
             return box.collidesWithMovingPoint(playerPoint, getMovingVector());
         }
         public Boolean collidesRightWithCollisionBox(CollisionBox box)
@@ -582,13 +582,40 @@ namespace Game1
 
         public void applySpeed()
         {
-            if ((speed + collisionInfoDownBeginOfFrame.getRealSpeed() > 0 && !collidesRight(false)) || (speed + collisionInfoDownBeginOfFrame.getRealSpeed() < 0 && !collidesLeft(false)))
+            Vector2 speedVec = new Vector2((float)((speed) * Math.Round(MapTools.getXMultiplier())), (float)((speed) * Math.Round(MapTools.getYMultiplier())));
+            if ((speed > 0 && !collidesRight(false)))
             {
-                pos.X += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getXMultiplier()));
-                pos.Y += (float)((speed + collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getYMultiplier()));
+
+                raycast = new Raycast(rightPoints()[0], MapTools.getMultiplierVec() + new Vector2(0.0000001f, 0.0000001f), 1000, true);
+                CollisionInfo hit = raycast.getHit();
+
+                if((hit.pos - rightPoints()[0]).Length() < speedVec.Length())
+                {
+                    speedVec = hit.pos + MapTools.getMultiplierVec() * 0.1f - rightPoints()[0];
+                }
+
+                pos += speedVec;
+            }
+           else  if ((speed < 0 && !collidesLeft(false)))
+            {
+                raycast = new Raycast(leftPoints()[0], -MapTools.getMultiplierVec() + new Vector2(0.0000001f, 0.0000001f), 1000, true);
+                CollisionInfo hit = raycast.getHit();
+
+                if ((hit.pos - leftPoints()[0]).Length() < speedVec.Length())
+                {
+                    speedVec = hit.pos - MapTools.getMultiplierVec() * 0.1f - leftPoints()[0];
+                }
+                pos += speedVec;
             }
             else
                 speed = 0;
+
+            if ((collisionInfoDownBeginOfFrame.getRealSpeed() > 0 && !collidesRight(false)) || (collisionInfoDownBeginOfFrame.getRealSpeed() < 0 && !collidesLeft(false)))
+            {
+                pos.X += (float)((collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getXMultiplier()));
+                pos.Y += (float)((collisionInfoDownBeginOfFrame.getRealSpeed()) * Math.Round(MapTools.getYMultiplier()));
+            }
+            
             rect.X = (int)pos.X;
             rect.Y = (int)pos.Y;
         }
@@ -714,7 +741,7 @@ namespace Game1
                 rect.Y = (int)(Math.Round(pos.Y));
             }
         }
-
+        Raycast raycast;
 
         public void applyFallSpeed(float delta)
         {
@@ -735,17 +762,37 @@ namespace Game1
             }
             if (collidesUp().collided)
                 fallSpeed = 1;
-            if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) > 0) {
-                pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
-                pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
+
+            if (isGrounded().collided && fallSpeed > 0)
+                fallSpeed = 0;
+            
+            if ((fallSpeed) > 0) {
+
+                Vector2 fallVec = new Vector2((float)((fallSpeed) * (float)(Math.Round(WorldInfo.gravity.X))), (float)((fallSpeed) * (float)(Math.Round(WorldInfo.gravity.Y))));
+
+                raycast = new Raycast(downPoint(), WorldInfo.gravity + new Vector2(0.0000001f, 0.0000001f), 1000, true);
+                CollisionInfo hit = raycast.getHit();
+
+                if ((hit.pos - downPoint()).Length() < fallVec.Length())
+                    fallVec = (hit.pos - downPoint());
+
+                pos += fallVec;
             }
-            else if ((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) < 0)
+            else if ((fallSpeed) < 0)
             {
                 
-                pos.X += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X)));
-                pos.Y += (float)((fallSpeed + collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y)));
+                pos.X += (float)((fallSpeed) * (float)(Math.Round(WorldInfo.gravity.X)));
+                pos.Y += (float)((fallSpeed) * (float)(Math.Round(WorldInfo.gravity.Y)));
 
             }
+
+            pos += new Vector2((float)((collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.X))), (float)((collisionInfoDownBeginOfFrame.getFallSpeed()) * (float)(Math.Round(WorldInfo.gravity.Y))));
+
+
+
+
+
+
 
             /*
             if(fallSpeed > 0) {
