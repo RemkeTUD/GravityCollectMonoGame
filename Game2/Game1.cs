@@ -196,9 +196,9 @@ namespace Game1
                             player.decideCollisionCorrection(true);
                         else if (player.collidesRight(true) && player.isGrounded().collided)
                             player.decideCollisionCorrection(false);
-                        else if (player.isGrounded().collided)
+                        if (player.isGrounded().collided)
                             player.correctDownCollision();
-                        else if (player.collidesRight(true))
+                        if (player.collidesRight(true))
                             player.correctRightCollision();
                         else if (player.collidesLeft(true))
                             player.correctLeftCollision();
