@@ -21,12 +21,16 @@ namespace Game1
         {
             this.fallHeight = 16;
             this.horizontal = false;
+
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/fallstone");
         }
 
         public GravityBox(ContentManager content, float x, float y, float width, float height, int fallHeight = 100, bool horizontal = false) : base(content, x, y, width, height)
         {
             this.fallHeight = fallHeight;
             this.horizontal = horizontal;
+
+            textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/fallstone");
         }
 
         public override void Draw(SpriteBatch spriteBatch)

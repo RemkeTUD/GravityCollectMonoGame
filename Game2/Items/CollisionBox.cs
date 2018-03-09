@@ -11,6 +11,7 @@ namespace Game1
 {
     public class CollisionBox : Item
     {
+       public bool active = true;
         public CollisionBox()
         {
             textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/box");
@@ -46,7 +47,7 @@ namespace Game1
             
             Vector2 boxUpLeft = pos - size * 0.5f;
             Vector2 boxDownRight = pos + size * 0.5f;
-            return (boxUpLeft.X < point.X && boxUpLeft.Y < point.Y && boxDownRight.X > point.X && boxDownRight.Y > point.Y);
+            return (active && boxUpLeft.X < point.X && boxUpLeft.Y < point.Y && boxDownRight.X > point.X && boxDownRight.Y > point.Y);
         }
         public virtual bool collidesWithPoints(List<Vector2> points)
         {

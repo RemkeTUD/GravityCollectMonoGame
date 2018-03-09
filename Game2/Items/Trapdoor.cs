@@ -12,7 +12,6 @@ namespace Game1
     public class Trapdoor : CollisionBox
     {
         public int rotation;
-        public bool isOpen = true;
         public Trapdoor()
         {
             textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/openwall");
@@ -35,30 +34,30 @@ namespace Game1
             if(rotation == 0)
             {
                 if (WorldInfo.gravity.Y > 0.5f)
-                    isOpen = false;
+                    active = false;
                 if (WorldInfo.gravity.Y < -0.5f)
-                    isOpen = true;
+                    active = true;
             }
             if (rotation == 3)
             {
                 if (WorldInfo.gravity.X > 0.5f)
-                    isOpen = false;
+                    active = false;
                 if (WorldInfo.gravity.X < -0.5f)
-                    isOpen = true;
+                    active = true;
             }
             if (rotation == 2)
             {
                 if (WorldInfo.gravity.Y > 0.5f)
-                    isOpen = true;
+                    active = true;
                 if (WorldInfo.gravity.Y < -0.5f)
-                    isOpen = false;
+                    active = false;
             }
             if (rotation == 1)
             {
                 if (WorldInfo.gravity.X > 0.5f)
-                    isOpen = true;
+                    active = true;
                 if (WorldInfo.gravity.X < -0.5f)
-                    isOpen = false;
+                    active = false;
             }
             angle = (float)Math.PI * 0.5f * (rotation + 1);
             base.Update();
@@ -67,26 +66,17 @@ namespace Game1
         public override void Draw(SpriteBatch spriteBatch)
         {
             angle = (float)Math.PI * 0.5f * (rotation + 1);
-            if (!isOpen)
+            if (active)
                 alpha = 255;
             else
                 alpha = 100;
             base.Draw(spriteBatch);
         }
 
-        public override bool collidesWithMovingPoint(Vector2 point, Vector2 direction)
-        {
-
-            if (isOpen)
-                return false;
-
-            
-
-            return base.collidesWithMovingPoint(point, direction);
-        }
-
         Button buttonRotationPlus;
-
+        public override void drawOutlines(SpriteBatch spriteBatch)
+        {
+        }
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonRotationPlus == null)

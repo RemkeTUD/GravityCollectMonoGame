@@ -266,8 +266,8 @@ namespace Game1
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
             world.drawBackground(spriteBatch);
-            world.drawOutlines(spriteBatch);
-            player.drawOutlines(spriteBatch);
+            //world.drawOutlines(spriteBatch);
+           // player.drawOutlines(spriteBatch);
             world.Draw(spriteBatch);
             
             player.Draw(spriteBatch);
