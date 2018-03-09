@@ -77,7 +77,7 @@ namespace Game1
         public override void reset()
         {
             toEndPoint = true;
-            travelSpeed = spawnSpeed;
+            //travelSpeed = spawnSpeed;
             base.reset();
 
         }

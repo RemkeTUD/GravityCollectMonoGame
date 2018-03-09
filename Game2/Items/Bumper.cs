@@ -40,7 +40,12 @@ namespace Game1
 
         public override bool CollidesWithPlayer()
         {
-            return (MapTools.distanceOfVecs(Game1.getPlayer().getCenter(), getCenter()) < size.X * 0.5f);
+            return (MapTools.distanceOfVecs(Game1.getPlayer().getCenter(), getCenter()) < size.X * 0.5f ||
+                MapTools.distanceOfVecs(Game1.getPlayer().downPoint(), getCenter()) < size.X * 0.5f) ||
+                MapTools.distanceOfVecs(Game1.getPlayer().upPoint(), getCenter()) < size.X * 0.5f ||
+                MapTools.distanceOfVecs(Game1.getPlayer().leftPoints()[0], getCenter()) < size.X * 0.5f ||
+                MapTools.distanceOfVecs(Game1.getPlayer().rightPoints()[0], getCenter()) < size.X * 0.5f
+                ;
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -28,7 +28,7 @@ namespace Game1
 
         public override void Update() { 
         
-           if(collidesWithPoint(Game1.getPlayer().downPoint()))
+           if(collidesWithPoint(Game1.getPlayer().downPoint() + WorldInfo.gravity))
             {
                 playerStepOn = true;
             }

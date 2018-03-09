@@ -221,6 +221,8 @@ namespace Game1
                     }
 
                     currentDragItem.pos = pos;
+                        if (currentDragItem is MoveableItem)
+                            ((MoveableItem)currentDragItem).endPoint = pos;
                     currentDragItem.spawnPos = currentDragItem.pos;
                 }
                 else if (!isGuiClicked() && Keyboard.GetState().IsKeyUp(Keys.P)) 
