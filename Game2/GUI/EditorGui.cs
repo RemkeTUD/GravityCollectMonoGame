@@ -24,54 +24,56 @@ namespace Game1
         static GUIElement bgRight;
         public static void init()
         {
+            int buttonSize = Game1.graphics.PreferredBackBufferHeight / 30;
+
             int y = 0;
 
-            bgRight = new GUIElement(new Rectangle(1600 - 330, 900 - 60, 330, 60), "gui/bgright");
+            bgRight = new GUIElement(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 330, Game1.graphics.PreferredBackBufferHeight - 60, 330, 60), "gui/bgright");
 
             foreach(BlockType bType in BlockType.Values)
             {
-                guiElements.Add(new Button(new Rectangle(0, y * 40, 30, 30), bType.setCurrentBlockType, bType.TexName));
+                guiElements.Add(new Button(new Rectangle(0, y * (buttonSize + 10), buttonSize, buttonSize), bType.setCurrentBlockType, bType.TexName));
                 y++;
             }
             y = 0;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Saw), Game1.cManager, 32, 32); }, "saw"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Saw), Game1.cManager, 32, 32); }, "saw"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(StaticEnemy), Game1.cManager, 32, 32); }, "Enemy"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(StaticEnemy), Game1.cManager, 32, 32); }, "Enemy"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(FreeGravityBox), Game1.cManager, 32, 32); }, "box"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(FreeGravityBox), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Laser), Game1.cManager, 32, 32); }, "laser"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Laser), Game1.cManager, 32, 32); }, "laser"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RocketSpawner), Game1.cManager, 32, 32); }, "rocketspawner"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RocketSpawner), Game1.cManager, 32, 32); }, "rocketspawner"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Trapdoor), Game1.cManager, 32, 32); }, "openwall"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Trapdoor), Game1.cManager, 32, 32); }, "openwall"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(OpenWall), Game1.cManager, 32, 32); }, "openwall"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(OpenWall), Game1.cManager, 32, 32); }, "openwall"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Moving_Box), Game1.cManager, 32, 32); }, "box"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Moving_Box), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(GravityBox), Game1.cManager, 32, 32); }, "box"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(GravityBox), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(InversedGravityBox), Game1.cManager, 32, 32); }, "box"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(InversedGravityBox), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(TractorBeam), Game1.cManager, 32, 32); }, "TractorBeam"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(TractorBeam), Game1.cManager, 32, 32); }, "TractorBeam"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Spike), Game1.cManager, 32, 32); }, "Spike"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Spike), Game1.cManager, 32, 32); }, "Spike"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Canon), Game1.cManager, 32, 32); }, "Canon"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Canon), Game1.cManager, 32, 32); }, "Canon"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate {
                 ButtonDisapear button = (ButtonDisapear)Game1.world.createInstanceAtMouse(typeof(ButtonDisapear), Game1.cManager, 32, 32);
                 currentDragItem = Game1.world.createInstanceAtMouse(typeof(BoxDisapear), Game1.cManager, 32, 32);
                 ((BoxDisapear)currentDragItem).button = button;
             }, "Button"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(OnGravityChangeBlock), Game1.cManager, 32, 32); }, "Box"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(OnGravityChangeBlock), Game1.cManager, 32, 32); }, "Box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Trampoline), Game1.cManager, 32, 32); }, "OpenWall"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Trampoline), Game1.cManager, 32, 32); }, "OpenWall"));
             y++;
 
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate {
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate {
                 currentDragItem = Game1.world.createInstanceAtMouse(typeof(Sign), Game1.cManager, 32, 32);
                 List<Textbox> boxes = new List<Textbox>();
                 boxes.Add(new Textbox("Dies ist ein Text zum ausprobieren der soeben eingefuegten Funktion. Felix suckt. Remke ist der Beste. Es macht Spass sich dumme Texte auszudenken, insbesondere wenn sie Felix beleidigen. Eisbaeren sind keine Rudeltiere, sie jagen Robben zum ueberleben und Leben in Australien."));
@@ -79,35 +81,35 @@ namespace Game1
                 ((Sign)currentDragItem).setDialog(new TextDialog(boxes));
             }, "sign"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Bumper), Game1.cManager, 48, 48); }, "Bumper"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Bumper), Game1.cManager, 48, 48); }, "Bumper"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Ink), Game1.cManager, 16, 16); }, "ink"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Ink), Game1.cManager, 16, 16); }, "ink"));
             y++;
             
 
             int x = 2;
             y = 0;
-            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Wolf), Game1.cManager, 48, 48); }, "wolf"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - x * buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Wolf), Game1.cManager, 48, 48); }, "wolf"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Tree), Game1.cManager, 128, 128); }, "tree"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - x * buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Tree), Game1.cManager, 128, 128); }, "tree"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(DonutBlock), Game1.cManager, 32, 32); }, "box"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - x * buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(DonutBlock), Game1.cManager, 32, 32); }, "box"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate {
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - x * buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate {
                 TeleporterDestination teleporterDest = (TeleporterDestination)Game1.world.createInstanceAtMouse(typeof(TeleporterDestination), Game1.cManager, 32, 32);
                 currentDragItem = Game1.world.createInstanceAtMouse(typeof(Teleporter), Game1.cManager, 32, 32);
                 ((Teleporter)currentDragItem).dest = teleporterDest;
             }, "teleporter"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RotateSpike), Game1.cManager, 32, 128); }, "rotateSpike"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - x * buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(RotateSpike), Game1.cManager, 32, 128); }, "rotateSpike"));
             y++;
-            guiElements.Add(new Button(new Rectangle(1600 - x * 30, y * 40, 30, 30), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Raven), Game1.cManager, 32, 32); }, "raven"));
+            guiElements.Add(new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - x * buttonSize, y * (buttonSize + 10), buttonSize, buttonSize), delegate { currentDragItem = Game1.world.createInstanceAtMouse(typeof(Raven), Game1.cManager, 32, 32); }, "raven"));
             y++;
 
-            saveText = new Textfield(new Rectangle(20, 900 - 20, 256, 16));
+            saveText = new Textfield(new Rectangle(20, Game1.graphics.PreferredBackBufferHeight - 20, 256, 16));
             guiElements.Add(saveText);
-            guiElements.Add(new Button(new Rectangle(0, 900 - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "gui/save"));
-            guiElements.Add(new Button(new Rectangle(0, 900 - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "gui/load"));
+            guiElements.Add(new Button(new Rectangle(0, Game1.graphics.PreferredBackBufferHeight - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "gui/save"));
+            guiElements.Add(new Button(new Rectangle(0, Game1.graphics.PreferredBackBufferHeight - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "gui/load"));
 
             
 

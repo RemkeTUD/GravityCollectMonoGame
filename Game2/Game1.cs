@@ -13,7 +13,7 @@ namespace Game1
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
+        public static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch, guiBatch;
         static Player player;
         public static World world;
@@ -21,9 +21,7 @@ namespace Game1
         RenderTarget2D rt;
 
         RenderTarget2D preBloomTarget;
-        RenderTarget2D bloomTarget;
-        BlurPass blurPass;
-        BlurPass blurPass2;
+        BlurPass blurPass, blurPass1, blurPass2;
         Mipmap bloomMipmap;
         bool bloomEnabled = true;
 
@@ -47,8 +45,8 @@ namespace Game1
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 900;
-            graphics.PreferredBackBufferWidth = 1600;
+            graphics.PreferredBackBufferHeight = 1000;
+            graphics.PreferredBackBufferWidth = 1920;
             //graphics.SynchronizeWithVerticalRetrace = true;
             //graphics.ToggleFullScreen();
 
@@ -87,11 +85,11 @@ namespace Game1
             }
 
             cam.Zoom = 1f;
-            rt = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
-            preBloomTarget = new RenderTarget2D(graphics.GraphicsDevice, 1600 * 1, 900 * 1);
-            bloomTarget = new RenderTarget2D(GraphicsDevice, 50, 28);
-            blurPass = new BlurPass(GraphicsDevice, Content, 50, 28, 3f);
-            blurPass2 = new BlurPass(GraphicsDevice, Content, 400, 225, 1.2f);
+            rt = new RenderTarget2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            preBloomTarget = new RenderTarget2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            blurPass = new BlurPass(GraphicsDevice, Content, (int)Math.Round(graphics.PreferredBackBufferWidth / 32.0f), (int)Math.Round(graphics.PreferredBackBufferHeight / 32.0f), 1.5f);
+            blurPass1 = new BlurPass(GraphicsDevice, Content, (int)Math.Round(graphics.PreferredBackBufferWidth / 16.0f), (int)Math.Round(graphics.PreferredBackBufferHeight / 16.0f), 2.5f);
+            blurPass2 = new BlurPass(GraphicsDevice, Content, (int)Math.Round(graphics.PreferredBackBufferWidth / 4.0f), (int)Math.Round(graphics.PreferredBackBufferHeight / 4.0f), 1.2f);
             graphicsDevice = graphics.GraphicsDevice;
             bloomMipmap = new Mipmap(preBloomTarget, 5, GraphicsDevice);
             penumbra.Initialize();
@@ -287,18 +285,20 @@ namespace Game1
             bloomMipmap.generate(spriteBatch);
             //            blurPass.blur(spriteBatch, bloomMipmap.getLevel(4), bloomMipmap.getLevel(4));
             blurPass2.blur(spriteBatch, bloomMipmap.getLevel(1), bloomMipmap.getLevel(1));
+            blurPass1.blur(spriteBatch, bloomMipmap.getLevel(3), bloomMipmap.getLevel(3));
             blurPass.blur(spriteBatch, bloomMipmap.getLevel(4), bloomMipmap.getLevel(4));
             /* Bloom Pass End */
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            spriteBatch.Draw(rt, new Rectangle(0, 0, 1600, 900), new Color(0.8f, 0.8f, 0.8f, 1));
+            spriteBatch.Draw(rt, new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), new Color(0.8f, 0.8f, 0.8f, 1));
             spriteBatch.End();
 
             if (bloomEnabled)
             {
                 spriteBatch.Begin(blendState: BlendState.Additive, samplerState: SamplerState.LinearClamp);
-                spriteBatch.Draw(bloomMipmap.getLevel(1), new Rectangle(0, 0, 1600, 900), Color.White);
-                spriteBatch.Draw(bloomMipmap.getLevel(4), new Rectangle(0, 0, 1600, 900), Color.White);
+                spriteBatch.Draw(bloomMipmap.getLevel(1), new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Color.White);
+                spriteBatch.Draw(bloomMipmap.getLevel(3), new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Color.White);
+                spriteBatch.Draw(bloomMipmap.getLevel(4), new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight), Color.White);
                 spriteBatch.End();
             }
 

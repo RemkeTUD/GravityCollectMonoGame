@@ -88,17 +88,17 @@ namespace Game1
 
             }
 
-            if (Pos.X < 0 + 1600 / 2 + 32)
-                _pos.X = 1600 / 2 + 32;
+            if (Pos.X < 0 + Game1.graphics.PreferredBackBufferWidth / 2 + 32)
+                _pos.X = Game1.graphics.PreferredBackBufferWidth / 2 + 32;
 
-            if (Pos.Y < 0 + 900 / 2 + 32)
-                _pos.Y = 900 / 2 + 32;
+            if (Pos.Y < 0 + Game1.graphics.PreferredBackBufferHeight / 2 + 32)
+                _pos.Y = Game1.graphics.PreferredBackBufferHeight / 2 + 32;
 
-            if (Pos.X > Game1.world.width * 16 - 1600 / 2 - 32)
-                _pos.X = Game1.world.width * 16 - 1600 / 2 - 32;
+            if (Pos.X > Game1.world.width * 16 - Game1.graphics.PreferredBackBufferWidth / 2 - 32)
+                _pos.X = Game1.world.width * 16 - Game1.graphics.PreferredBackBufferWidth / 2 - 32;
 
-            if (Pos.Y > Game1.world.height * 16 - 900 / 2-32)
-                _pos.Y = Game1.world.height * 16 - 900 / 2-32;
+            if (Pos.Y > Game1.world.height * 16 - Game1.graphics.PreferredBackBufferHeight / 2-32)
+                _pos.Y = Game1.world.height * 16 - Game1.graphics.PreferredBackBufferHeight / 2-32;
 
 
             Rotation = -MapTools.VectorToAngle(WorldInfo.gravity) + MathHelper.Pi * 0.5f;

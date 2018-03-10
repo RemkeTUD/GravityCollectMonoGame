@@ -98,13 +98,13 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonAngleSpeedPlus == null)
-                buttonAngleSpeedPlus = new Button(new Rectangle(1360, 850, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
+                buttonAngleSpeedPlus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 240, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
             buttonAngleSpeedPlus.Draw(batch);
             buttonAngleSpeedPlus.Update();
-            batch.DrawString(font, ((int)(angleSpeed )).ToString(), new Vector2(1350, 870), Color.Black);
+            batch.DrawString(font, ((int)(angleSpeed )).ToString(), new Vector2(Game1.graphics.PreferredBackBufferWidth - 250, Game1.graphics.PreferredBackBufferHeight - 30), Color.Black);
 
             if (buttonAngleSpeedMinus == null)
-                buttonAngleSpeedMinus = new Button(new Rectangle(1336, 850, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
+                buttonAngleSpeedMinus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 264, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
             buttonAngleSpeedMinus.Draw(batch);
             buttonAngleSpeedMinus.Update();
 
