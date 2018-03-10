@@ -63,6 +63,7 @@
     <Compile Include="Items\InversedGravityBox.cs" />
     <Compile Include="Items\isTraveling.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemConnection.cs" />
     <Compile Include="Items\Laser.cs" />
     <Compile Include="Items\MoveableItem.cs" />
     <Compile Include="Items\Moving Box.cs" />

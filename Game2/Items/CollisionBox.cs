@@ -12,6 +12,9 @@ namespace Game1
     public class CollisionBox : Item
     {
        public bool active = true;
+
+        public List<ItemConnection> connectedItems;
+
         public CollisionBox()
         {
             textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/box");
@@ -22,8 +25,21 @@ namespace Game1
             if (textureTest == null)
                 textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/box");
 
+            connectedItems = new List<ItemConnection>();
+
+            ItemConnection conn1 = new ItemConnection(new Vector2(-16, -17), new Laser(Game1.cManager, x, y, 32, 32));
+            connectedItems.Add(conn1);
+            conn1.item.pos = this.pos;
 
 
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+
+            base.Draw(spriteBatch);
+            foreach (ItemConnection conn in connectedItems)
+                conn.draw(spriteBatch, pos);
         }
 
         public override void Update()
@@ -34,7 +50,13 @@ namespace Game1
             if (collidesWithPoints(Game1.getPlayer().rightPoints()) && getRealSpeed() < -0.01f)
                 Game1.getPlayer().speed = getRealSpeed();
 
+            
+
             base.Update();
+
+            foreach (ItemConnection conn in connectedItems)
+                conn.update(pos);
+
         }
         public override void reset()
         {
