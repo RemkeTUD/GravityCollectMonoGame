@@ -85,8 +85,8 @@ namespace Game1
             if (hitOfRaycast.obj is Player)
                 Game1.getPlayer().die();
             //           Game1.world.particles.Add(new Particle(hitOfRaycast.pos.X - raycast.dir.X * 5, hitOfRaycast.pos.Y - raycast.dir.Y * 5, 5, 5, new Vector2(((float)new Random().NextDouble() - 0.5f) * 20.0f, ((float)new Random().NextDouble() - 0.5f) * 20.0f)));
-            particleEmitter.pos.X = hitOfRaycast.pos.X - raycast.dir.X * 2;
-            particleEmitter.pos.Y = hitOfRaycast.pos.Y - raycast.dir.Y * 2;
+            particleEmitter.pos.X = hitOfRaycast.pos.X;
+            particleEmitter.pos.Y = hitOfRaycast.pos.Y;
             particleEmitter.Direction = angle - Math.PI * (0.5f - Math.Sign(angleSpeed) * 0.2f) + Math.PI;
             particleEmitter.update();
             base.Update();
