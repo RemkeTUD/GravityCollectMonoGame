@@ -16,6 +16,7 @@ namespace Game1
         public static readonly BlockType SPIKE = new BlockType("Spike", "themes/Normal/blocks/spike", false, false, false, true, false);
         public static readonly BlockType LAVA = new BlockType("Lava", "themes/Normal/blocks/lava", false, true, false, true, true);
         public static readonly BlockType AIR = new BlockType("Air", "themes/Normal/blocks/air", false, true, false, false, false);
+        public static readonly BlockType ICE = new BlockType("Ice", "themes/Normal/blocks/ice", true, true, false, false, false);
         public static readonly BlockType STONEDECO = new BlockType("StoneDeco", "themes/Normal/blocks/stonedeco", false, true, true, false, false);
         public static readonly BlockType DECO1 = new BlockType("flower", "themes/Normal/blocks/flower", false, false, false, false, false);
 
@@ -52,7 +53,7 @@ namespace Game1
                 yield return CLEAN;
                 yield return SPIKE;
                 yield return LAVA;
-                //yield return AIR;
+                yield return ICE;
                 yield return STONEDECO;
                 yield return DECO1;
             }

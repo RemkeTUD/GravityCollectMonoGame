@@ -262,7 +262,20 @@ namespace Game1
                 if (speed > -maxSpeed)
                 {
                     if (isGrounded().collided)
-                        speed -= acceleration;
+                    {
+                        if (isGrounded().obj == BlockType.ICE)
+
+                            if (speed > 0)
+                            {
+                                speed -= acceleration * 0.01f;
+                            }
+                            else
+                            {
+                                speed -= acceleration * 0.5f;
+                            }
+                        else
+                            speed -= acceleration;
+                    }
                     else
                         speed -= acceleration * 0.35f;
                 }
@@ -273,7 +286,18 @@ namespace Game1
                 if (speed < maxSpeed)
                 {
                     if (isGrounded().collided)
-                        speed += acceleration;
+                    {
+                        if (isGrounded().obj == BlockType.ICE)
+                            if (speed < 0) {
+                                speed += acceleration * 0.01f;
+                            }
+                            else
+                            {
+                                speed += acceleration * 0.5f;
+                            }
+                        else
+                            speed += acceleration;
+                    }
                     else
                         speed += acceleration * 0.35f;
                 }
@@ -285,9 +309,15 @@ namespace Game1
                     if (speed > acceleration)
                     {
                         if (isGrounded().collided)
-                            speed -= acceleration;
+                        {
+                            if (isGrounded().obj == BlockType.ICE)
+
+                                speed -= acceleration * 0.01f;
+                            else
+                                speed -= acceleration;
+                        }
                         else
-                            speed -= acceleration * 0.25f;
+                            speed -= acceleration * 0.05f;
                     }
                     else
                         speed = 0;
@@ -297,9 +327,15 @@ namespace Game1
                     if (speed < -acceleration)
                     {
                         if (isGrounded().collided)
-                            speed += acceleration;
+                        {
+                            if (isGrounded().obj == BlockType.ICE)
+
+                                speed += acceleration * 0.01f;
+                            else
+                                speed += acceleration;
+                        }
                         else
-                            speed += acceleration * 0.25f;
+                            speed += acceleration * 0.05f;
                     }
                     else
                         speed = 0;
@@ -389,12 +425,18 @@ namespace Game1
             
             Vector2 pos = MapTools.mapToGridCoords(downPoint() + WorldInfo.gravity * 0.1f);
             if (Game1.world.get((int)pos.X, (int)pos.Y).Type.Collision)
-                return new CollisionInfo(true, Vector2.Zero) ;
+            {
+                if(Game1.world.get((int)pos.X, (int)pos.Y).Type == BlockType.ICE)
+                    return new CollisionInfo(true, Vector2.Zero,BlockType.ICE,pos);
+                return new CollisionInfo(true, Vector2.Zero);
+
+            }
             else
             {
-                foreach(CollisionBox box in Game1.world.collisionBoxes)
+                foreach (CollisionBox box in Game1.world.collisionBoxes)
                 {
-                    if (collidesDownWithCollisionBox(box)) {
+                    if (collidesDownWithCollisionBox(box))
+                    {
                         return new CollisionInfo(true, box.speed); ;
                     }
                 }
