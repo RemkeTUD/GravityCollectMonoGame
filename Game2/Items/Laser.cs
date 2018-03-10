@@ -98,23 +98,13 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonAngleSpeedPlus == null)
-<<<<<<< HEAD
-                buttonAngleSpeedPlus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 240, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
+                buttonAngleSpeedPlus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 300, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
             buttonAngleSpeedPlus.Draw(batch);
             buttonAngleSpeedPlus.Update();
-            batch.DrawString(font, ((int)(angleSpeed )).ToString(), new Vector2(Game1.graphics.PreferredBackBufferWidth - 250, Game1.graphics.PreferredBackBufferHeight - 30), Color.Black);
+            batch.DrawString(font, ((int)(angleSpeed )).ToString(), new Vector2(Game1.graphics.PreferredBackBufferWidth - 310, Game1.graphics.PreferredBackBufferHeight - 30), Color.Black);
 
             if (buttonAngleSpeedMinus == null)
-                buttonAngleSpeedMinus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 264, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
-=======
-                buttonAngleSpeedPlus = new Button(new Rectangle(1300, 850, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
-            buttonAngleSpeedPlus.Draw(batch);
-            buttonAngleSpeedPlus.Update();
-            batch.DrawString(font, ((int)(angleSpeed )).ToString(), new Vector2(1290, 870), Color.Black);
-
-            if (buttonAngleSpeedMinus == null)
-                buttonAngleSpeedMinus = new Button(new Rectangle(1280, 850, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
->>>>>>> cb78b7248243b04f442c0b1dd7a883ee2d1776f1
+                buttonAngleSpeedMinus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 320, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
             buttonAngleSpeedMinus.Draw(batch);
             buttonAngleSpeedMinus.Update();
 

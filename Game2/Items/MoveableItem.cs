@@ -87,17 +87,17 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonSpeedPlus == null)
-                buttonSpeedPlus = new Button(new Rectangle(1360, 850, 16, 16), delegate { travelSpeed += 1f; }, "gui/plus");
+                buttonSpeedPlus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 240, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { travelSpeed += 1f; }, "gui/plus");
             buttonSpeedPlus.Draw(batch);
             buttonSpeedPlus.Update();
 
 
             if (buttonSpeedMinus == null)
-                buttonSpeedMinus = new Button(new Rectangle(1336, 850, 16, 16), delegate { travelSpeed -= 1f; }, "gui/minus");
+                buttonSpeedMinus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 264, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { travelSpeed -= 1f; }, "gui/minus");
             buttonSpeedMinus.Draw(batch);
             buttonSpeedMinus.Update();
 
-            batch.DrawString(font, ((travelSpeed)).ToString(), new Vector2(1350, 870), Color.Black);
+            batch.DrawString(font, ((travelSpeed)).ToString(), new Vector2(Game1.graphics.PreferredBackBufferWidth - 250, Game1.graphics.PreferredBackBufferHeight - 30), Color.Black);
             base.drawParamMenu(batch);
         }
         public override bool isClickedParamMenu()
