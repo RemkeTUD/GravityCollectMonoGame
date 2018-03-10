@@ -46,6 +46,7 @@ namespace Game1
             }
             foreach (CollisionBox box in Game1.world.collisionBoxes)
             {
+                if(box.active)
                 if(MapTools.lineCollidesWithRect(pos, pos + dir * length, box.pos - box.size * 0.5f, box.size.X, box.size.Y).collided)
                 {
                     res = MapTools.lineCollidesWithRect(pos, pos + dir * length, box.pos - box.size * 0.5f, box.size.X, box.size.Y).pos;

@@ -10,7 +10,7 @@ using Penumbra;
 
 namespace Game1
 {
-    public class Laser : Item
+    public class Laser : MoveableItem
     {
         public float angleSpeed;
         public Raycast raycast;
@@ -32,11 +32,11 @@ namespace Game1
             textureTest = Game1.cManager.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/Laser");
             initParticles();
         }
-        static Random rand = new Random();
+        
         public Laser(ContentManager content, float x, float y, float width, float height) : base(content, x, y, width, height)
         {
 
-            this.angleSpeed = (float)rand.NextDouble() * 0.05f ;
+            this.angleSpeed = 0;
             textureTest = content.Load<Texture2D>("themes/" + Game1.world.currentTheme + "/items/laser");
             Game1.penumbra.Lights.Add(light);
             raycast = new Raycast(pos, new Vector2(0, 0), 3000);
@@ -98,6 +98,7 @@ namespace Game1
         public override void drawParamMenu(SpriteBatch batch)
         {
             if (buttonAngleSpeedPlus == null)
+<<<<<<< HEAD
                 buttonAngleSpeedPlus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 240, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
             buttonAngleSpeedPlus.Draw(batch);
             buttonAngleSpeedPlus.Update();
@@ -105,6 +106,15 @@ namespace Game1
 
             if (buttonAngleSpeedMinus == null)
                 buttonAngleSpeedMinus = new Button(new Rectangle(Game1.graphics.PreferredBackBufferWidth - 264, Game1.graphics.PreferredBackBufferHeight - 50, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
+=======
+                buttonAngleSpeedPlus = new Button(new Rectangle(1300, 850, 16, 16), delegate { angleSpeed += 1f; }, "gui/plus");
+            buttonAngleSpeedPlus.Draw(batch);
+            buttonAngleSpeedPlus.Update();
+            batch.DrawString(font, ((int)(angleSpeed )).ToString(), new Vector2(1290, 870), Color.Black);
+
+            if (buttonAngleSpeedMinus == null)
+                buttonAngleSpeedMinus = new Button(new Rectangle(1280, 850, 16, 16), delegate { angleSpeed -= 1f; }, "gui/minus");
+>>>>>>> cb78b7248243b04f442c0b1dd7a883ee2d1776f1
             buttonAngleSpeedMinus.Draw(batch);
             buttonAngleSpeedMinus.Update();
 

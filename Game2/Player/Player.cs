@@ -755,7 +755,7 @@ namespace Game1
                     fallSpeed += fallAcceleration * 0.3f;
                 framesInAir++;
             }
-            else if(!Keyboard.GetState().IsKeyDown(Keys.Space))
+            else if(!Keyboard.GetState().IsKeyDown(Keys.Space) && fallSpeed > 0)
             {
                 fallSpeed = 0;
 

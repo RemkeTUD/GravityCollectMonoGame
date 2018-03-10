@@ -12,7 +12,7 @@ namespace Game1
 {
     public class OnGravityChangeBlock : CollisionBox
     {
-        public bool active = true;
+        
         public bool activeSet = true;
         KeyboardState state, prevState;
 
@@ -25,13 +25,7 @@ namespace Game1
 
         }
 
-        public override bool collidesWithMovingPoint(Vector2 point, Vector2 direction)
-        {
-            if (active)
-                return base.collidesWithMovingPoint(point, direction);
-            else
-                return false;
-        }
+        
 
         public override void Update()
         {

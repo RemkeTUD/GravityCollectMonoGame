@@ -555,6 +555,18 @@
 /processorParam:TextureFormat=Color
 /build:gui/bgright.png
 
+#begin halfOpend.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:halfOpend.png
+
 #begin themes/acid/background/cloud.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1274,6 +1286,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/acid/items/finish_n.png
+
+#begin themes/acid/items/halfOpend.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/acid/items/halfOpend.png
 
 #begin themes/acid/items/ink.png
 /importer:TextureImporter
@@ -2559,6 +2583,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/candy/items/finish_n.png
 
+#begin themes/candy/items/halfOpend.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/candy/items/halfOpend.png
+
 #begin themes/candy/items/ink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3842,6 +3878,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/gameboy/items/finish_n.png
+
+#begin themes/gameboy/items/halfOpend.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/gameboy/items/halfOpend.png
 
 #begin themes/gameboy/items/ink.png
 /importer:TextureImporter
@@ -5138,6 +5186,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/Normal/items/finish_n.png
+
+#begin themes/Normal/items/halfOpend.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/halfOpend.png
 
 #begin themes/Normal/items/ink.png
 /importer:TextureImporter
@@ -6459,6 +6519,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/paper/items/finish_n.png
 
+#begin themes/paper/items/halfOpend.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/paper/items/halfOpend.png
+
 #begin themes/paper/items/ink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -7767,6 +7839,18 @@
 /processorParam:TextureFormat=Color
 /build:themes/underworld/items/finish_n.png
 
+#begin themes/underworld/items/halfOpend.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/underworld/items/halfOpend.png
+
 #begin themes/underworld/items/ink.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -8342,4 +8426,40 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:themes/tree.png
+
+#begin themes/Normal/items/fallStone.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/Normal/items/fallStone.png
+
+#begin themes/fallStone.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:themes/fallStone.png
+
+#begin fallStone.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:fallStone.png
 
