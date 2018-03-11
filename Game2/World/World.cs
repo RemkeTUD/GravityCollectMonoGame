@@ -133,11 +133,11 @@ namespace Game1
         {
 
             if (Keyboard.GetState().IsKeyDown(Keys.L))
-                Game1.getCam().targetZoom = 4f;
+                Game1.getCam().TargetZoom = 4f;
             if (Keyboard.GetState().IsKeyDown(Keys.K))
-                Game1.getCam().targetZoom = 2f;
+                Game1.getCam().TargetZoom = 2f;
             if (Keyboard.GetState().IsKeyDown(Keys.J))
-                Game1.getCam().targetZoom = 1f;
+                Game1.getCam().TargetZoom = 1f;
 
            
 
