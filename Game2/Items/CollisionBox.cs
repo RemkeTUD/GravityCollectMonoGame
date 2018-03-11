@@ -27,9 +27,9 @@ namespace Game1
 
             connectedItems = new List<ItemConnection>();
 
-            ItemConnection conn1 = new ItemConnection(new Vector2(-16, -17), new Laser(Game1.cManager, x, y, 32, 32));
-            connectedItems.Add(conn1);
-            conn1.item.pos = this.pos;
+            //ItemConnection conn1 = new ItemConnection(new Vector2(-16, -17), new Laser(Game1.cManager, x, y, 32, 32));
+           // connectedItems.Add(conn1);
+           // conn1.item.pos = this.pos;
 
 
         }
