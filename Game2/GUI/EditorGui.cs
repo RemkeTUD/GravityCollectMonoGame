@@ -173,9 +173,9 @@ namespace Game1
             World world = Game1.world;
 
             if (state.ScrollWheelValue > prevState.ScrollWheelValue)
-                Game1.getCam().targetZoom *= 1.2f;
+                Game1.getCam().TargetZoom *= 1.2f;
             if (state.ScrollWheelValue < prevState.ScrollWheelValue)
-                Game1.getCam().targetZoom /= 1.2f;
+                Game1.getCam().TargetZoom /= 1.2f;
             
 
 

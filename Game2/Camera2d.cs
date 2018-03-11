@@ -16,7 +16,7 @@ namespace Game1
         public Vector2 _pos; // Camera Position
         protected float _rotation; // Camera Rotation
 
-        public float targetZoom = 1;
+        protected float targetZoom = 1;
 
         public Camera2d()
         {
@@ -27,7 +27,13 @@ namespace Game1
         public float Zoom
         {
             get { return _zoom; }
-            set { _zoom = value; if (_zoom < 0.1f) _zoom = 0.1f; } // Negative zoom will flip image
+            set { _zoom = value * Game1.graphics.PreferredBackBufferWidth / 1600.0f; if (_zoom < 0.1f) _zoom = 0.1f; } // Negative zoom will flip image
+        }
+
+        public float TargetZoom
+        {
+            get { return targetZoom; }
+            set { targetZoom = value * Game1.graphics.PreferredBackBufferWidth / 1600.0f; if (targetZoom < 0.1f) targetZoom = 0.1f; } // Negative zoom will flip image
         }
 
         public float Rotation
@@ -50,19 +56,19 @@ namespace Game1
         public void update()
         {
 
-            if (Zoom < targetZoom) {
-                Zoom *= 1.1f;
-                if(Zoom > targetZoom)
+            if (_zoom < targetZoom) {
+                _zoom *= 1.1f;
+                if(_zoom > targetZoom)
                 {
-                    Zoom = targetZoom;
+                    _zoom = targetZoom;
                 }
             }
-            if (Zoom > targetZoom)
+            if (_zoom > targetZoom)
             {
-                Zoom /= 1.1f;
-                if (Zoom < targetZoom)
+                _zoom /= 1.1f;
+                if (_zoom < targetZoom)
                 {
-                    Zoom = targetZoom;
+                    _zoom = targetZoom;
                 }
             }
 
