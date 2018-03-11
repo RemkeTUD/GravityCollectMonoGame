@@ -26,13 +26,13 @@ namespace Game1
         }
         public float Zoom
         {
-            get { return _zoom; }
+            get { return _zoom * 1600.0f / Game1.graphics.PreferredBackBufferWidth; }
             set { _zoom = value * Game1.graphics.PreferredBackBufferWidth / 1600.0f; if (_zoom < 0.1f) _zoom = 0.1f; } // Negative zoom will flip image
         }
 
         public float TargetZoom
         {
-            get { return targetZoom; }
+            get { return targetZoom * 1600.0f / Game1.graphics.PreferredBackBufferWidth; }
             set { targetZoom = value * Game1.graphics.PreferredBackBufferWidth / 1600.0f; if (targetZoom < 0.1f) targetZoom = 0.1f; } // Negative zoom will flip image
         }
 
@@ -114,7 +114,7 @@ namespace Game1
             _transform =       // Thanks to o KB o for this solution
               Matrix.CreateTranslation(new Vector3(-_pos.X, -_pos.Y, 0)) *
                                          Matrix.CreateRotationZ(Rotation) *
-                                         Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
+                                         Matrix.CreateScale(new Vector3(_zoom, _zoom, 1)) *
                                          Matrix.CreateTranslation(new Vector3((float)graphicsDevice.Viewport.Width * 0.5f, (float)graphicsDevice.Viewport.Height * 0.5f, 0));
             return _transform;
         }

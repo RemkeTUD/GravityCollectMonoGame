@@ -45,8 +45,8 @@ namespace Game1
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 1000;
-            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 900;
+            graphics.PreferredBackBufferWidth = 1600;
             //graphics.SynchronizeWithVerticalRetrace = true;
             //graphics.ToggleFullScreen();
 
@@ -87,12 +87,13 @@ namespace Game1
             cam.Zoom = 1f;
             rt = new RenderTarget2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             preBloomTarget = new RenderTarget2D(graphics.GraphicsDevice, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
-            blurPass = new BlurPass(GraphicsDevice, Content, (int)Math.Round(graphics.PreferredBackBufferWidth / 32.0f), (int)Math.Round(graphics.PreferredBackBufferHeight / 32.0f), 1.5f);
-            blurPass1 = new BlurPass(GraphicsDevice, Content, (int)Math.Round(graphics.PreferredBackBufferWidth / 16.0f), (int)Math.Round(graphics.PreferredBackBufferHeight / 16.0f), 2.5f);
-            blurPass2 = new BlurPass(GraphicsDevice, Content, (int)Math.Round(graphics.PreferredBackBufferWidth / 4.0f), (int)Math.Round(graphics.PreferredBackBufferHeight / 4.0f), 1.2f);
+            bloomMipmap = new Mipmap(preBloomTarget, 5, GraphicsDevice);
+            blurPass = new BlurPass(GraphicsDevice, Content, bloomMipmap.getLevel(4).Width, bloomMipmap.getLevel(4).Height, 1.5f);
+            blurPass1 = new BlurPass(GraphicsDevice, Content, bloomMipmap.getLevel(3).Width, bloomMipmap.getLevel(3).Height, 2.5f);
+            blurPass2 = new BlurPass(GraphicsDevice, Content, bloomMipmap.getLevel(1).Width, bloomMipmap.getLevel(1).Height, 1.2f);
             graphicsDevice = graphics.GraphicsDevice;
             //graphicsDevice.Viewport = new Viewport(0, 0, 1600, 900);
-            bloomMipmap = new Mipmap(preBloomTarget, 5, GraphicsDevice);
+            
             penumbra.Initialize();
 
 

@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
+using System;
+
 namespace Game1
 {
     class Mipmap
@@ -20,8 +22,8 @@ namespace Game1
             int height = texture.Height;
             for(int i = 0; i < levelCount; i++)
             {
-                width /= 2;
-                height /= 2;
+                width = (int) Math.Round(width / 2.0);
+                height = (int)Math.Round(height / 2.0);
                 targetArray[i] = new RenderTarget2D(GraphicsDevice, width, height);
             }
         }
