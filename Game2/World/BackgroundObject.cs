@@ -18,7 +18,7 @@ namespace Game1
         public string texPath;
         public Vector2 speed;
         Texture2D tex;
-        float scale;
+        public float scale;
 
         public BackgroundObject()
         {
