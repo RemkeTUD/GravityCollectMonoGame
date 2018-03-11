@@ -108,8 +108,8 @@ namespace Game1
 
             saveText = new Textfield(new Rectangle(20, Game1.graphics.PreferredBackBufferHeight - 20, 256, 16));
             guiElements.Add(saveText);
-            guiElements.Add(new Button(new Rectangle(0, Game1.graphics.PreferredBackBufferHeight - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "gui/save"));
-            guiElements.Add(new Button(new Rectangle(0, Game1.graphics.PreferredBackBufferHeight - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "gui/load"));
+            guiElements.Add(new Button(new Rectangle(0, Game1.graphics.PreferredBackBufferHeight - 20, 16, 16), delegate { Game1.world = Game1.world.loadFromXML(EditorGui.saveText.text + ".xml"); Game1.world.updateWorldAfterLoad(); }, "gui/load"));
+            guiElements.Add(new Button(new Rectangle(0, Game1.graphics.PreferredBackBufferHeight - 40, 16, 16), delegate { Game1.world.saveAsXML(EditorGui.saveText.text + ".xml"); }, "gui/save"));
 
             
 

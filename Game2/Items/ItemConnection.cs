@@ -12,7 +12,9 @@ namespace Game1
     {
         public Vector2 offset;
         public Item item;
-
+        public ItemConnection()
+        {
+        }
         public ItemConnection(Vector2 offset, Item item)
         {
             this.offset = offset;
