@@ -414,8 +414,7 @@ namespace Game1
             this.speed = 0;
             this.fallSpeed = 0;
             this.pos = Game1.world.playerSpawn;
-            foreach (Item item in Game1.world.items)
-                item.reset();
+            Game1.world.reset();
             WorldInfo.gravity = new Vector2(0, 1);
             WorldInfo.angle = 0;
         }

@@ -357,6 +357,13 @@ namespace Game1
 
         }
 
+        public void reset()
+        {
+            foreach (Item item in items)
+                item.reset();
+            particles.Clear();
+        }
+
 
         public void cleanDestroyedItems()
         {

@@ -22,6 +22,7 @@ namespace Game1
         static Vector2 lastIndexClicked = new Vector2(-1, -1);
 
         static GUIElement bgRight;
+        static bool itemDeleted = false;
         public static void init()
         {
             int buttonSize = Game1.graphics.PreferredBackBufferHeight / 30;
@@ -176,9 +177,9 @@ namespace Game1
                 Game1.getCam().TargetZoom *= 1.2f;
             if (state.ScrollWheelValue < prevState.ScrollWheelValue)
                 Game1.getCam().TargetZoom /= 1.2f;
-            
 
 
+                
             Vector2 pos = Vector2.Transform(new Vector2(state.X - 0, state.Y - 0), Matrix.Invert(Game1.getCam().get_transformation(graphicsDevice)));
             if (state.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
@@ -188,6 +189,7 @@ namespace Game1
                     {
                         currentDragItem = item;
                         currentSelectedItem = item;
+                            itemDeleted = true;
                         break;
                     }
                 }
@@ -207,6 +209,7 @@ namespace Game1
                     {
                         item.destroy = true;
                             currentSelectedItem = null;
+                            itemDeleted = true;
                         break;
                     }
                 }
@@ -216,7 +219,7 @@ namespace Game1
                 if (currentDragItem != null && !Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                 {
 
-                    if (Keyboard.GetState().IsKeyDown(Keys.LeftAlt))
+                    if (!Keyboard.GetState().IsKeyDown(Keys.LeftAlt))
                     {
                         pos.X = pos.X - pos.X % 16;
                         pos.Y = pos.Y - pos.Y % 16;
@@ -266,7 +269,7 @@ namespace Game1
                 currentDragItem = null;
                 lastIndexClicked = new Vector2(-1, -1);
             }
-            if (state.RightButton == ButtonState.Pressed)
+            if (state.RightButton == ButtonState.Pressed && !itemDeleted)
             {
                 int xCoord = ((int)pos.X / 16);
                 int yCoord = ((int)pos.Y / 16);
@@ -278,6 +281,8 @@ namespace Game1
                     world.setNeighboursOfBlocks();
                 }
             }
+                if (state.RightButton == ButtonState.Released)
+                    itemDeleted = false;
             }
             kprevState = kstate ;
             prevState = state;
