@@ -327,7 +327,7 @@ namespace Game1
         {
             for (int x = xc-2; x < xc+2; x++)
             {
-                for (int y = yc-2; y < yc+2; y++)
+                for (int y = yc-2; y < yc+2; y++) 
                 {
                     if (blocks[x, y].Type.Name != "Air")
                     {

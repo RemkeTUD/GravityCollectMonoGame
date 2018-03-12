@@ -68,7 +68,7 @@ namespace Game1
 
             if (Game1.running)
             {
-                LineRenderer.DrawLine(spriteBatch, pos, hitOfRaycast.pos, new Color(0.5f, 0, 0, 1), 3f);
+                LineRenderer.DrawLine(spriteBatch, pos + raycast.dir * 10, hitOfRaycast.pos, new Color(0.5f, 0, 0, 1), 3f);
                 light.Position = hitOfRaycast.pos - raycast.dir * 5;
             }
             base.drawIllumination(spriteBatch);
@@ -80,7 +80,7 @@ namespace Game1
             angle += angleSpeed * 0.001f;
 
             raycast.dir = MapTools.AngleToVector(angle-MathHelper.Pi * 0.5f);
-            raycast.pos = pos;
+            raycast.pos = pos + raycast.dir * 10;
             hitOfRaycast = raycast.getHit();
             if (hitOfRaycast.obj is Player)
                 Game1.getPlayer().die();

@@ -216,7 +216,7 @@ namespace Game1
                 if (currentDragItem != null && !Keyboard.GetState().IsKeyDown(Keys.LeftControl))
                 {
 
-                    if (Keyboard.GetState().IsKeyDown(Keys.LeftAlt))
+                    if (!Keyboard.GetState().IsKeyDown(Keys.LeftAlt))
                     {
                         pos.X = pos.X - pos.X % 16;
                         pos.Y = pos.Y - pos.Y % 16;
@@ -263,7 +263,17 @@ namespace Game1
 
             }
             else {
-                currentDragItem = null;
+                    foreach (CollisionBox item in Game1.world.collisionBoxes)
+                    {
+                        if (currentDragItem != null && item != currentDragItem && item.collidesWithPoint(pos))
+                        {
+                            item.connectedItems.Add(new ItemConnection(currentDragItem.pos - item.pos, currentDragItem));
+                            Game1.world.items.Remove(currentDragItem);
+                            break;
+                        }
+                    }
+
+                    currentDragItem = null;
                 lastIndexClicked = new Vector2(-1, -1);
             }
             if (state.RightButton == ButtonState.Pressed)
