@@ -266,7 +266,17 @@ namespace Game1
 
             }
             else {
-                currentDragItem = null;
+                    foreach (CollisionBox item in Game1.world.collisionBoxes)
+                    {
+                        if (currentDragItem != null && item != currentDragItem && item.collidesWithPoint(pos))
+                        {
+                            item.connectedItems.Add(new ItemConnection(currentDragItem.pos - item.pos, currentDragItem));
+                            Game1.world.items.Remove(currentDragItem);
+                            break;
+                        }
+                    }
+
+                    currentDragItem = null;
                 lastIndexClicked = new Vector2(-1, -1);
             }
             if (state.RightButton == ButtonState.Pressed && !itemDeleted)
