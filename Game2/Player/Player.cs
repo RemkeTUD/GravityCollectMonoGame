@@ -16,7 +16,7 @@ namespace Game1
         Texture2D textureTest;
         public float speed, fallSpeed;
         public float acceleration = 0.9f, fallAcceleration = 0.4f;
-        float maxSpeed = 4.5f, maxFallSpeed = 17.5f;
+        float maxSpeed = 3.5f, maxFallSpeed = 17.5f;
 
         public Vector2 size = new Vector2(14, 32);
         public Rectangle rect = new Rectangle(1000, 1000, 16, 32);

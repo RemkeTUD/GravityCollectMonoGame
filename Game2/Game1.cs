@@ -45,10 +45,10 @@ namespace Game1
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 900;
-            graphics.PreferredBackBufferWidth = 1600;
+            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 1920;
             //graphics.SynchronizeWithVerticalRetrace = true;
-            //graphics.ToggleFullScreen();
+            graphics.ToggleFullScreen();
 
             Content.RootDirectory = "Content";
             cManager = Content;
@@ -264,7 +264,7 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
 
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: cam.get_transformation(GraphicsDevice));
+            spriteBatch.Begin(samplerState: SamplerState.PointWrap, transformMatrix: cam.get_transformation(GraphicsDevice));
             world.drawBackground(spriteBatch);
             //world.drawOutlines(spriteBatch);
            // player.drawOutlines(spriteBatch);

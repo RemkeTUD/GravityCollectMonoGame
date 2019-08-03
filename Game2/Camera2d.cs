@@ -26,14 +26,14 @@ namespace Game1
         }
         public float Zoom
         {
-            get { return _zoom * 1600.0f / Game1.graphics.PreferredBackBufferWidth; }
-            set { _zoom = value * Game1.graphics.PreferredBackBufferWidth / 1600.0f; if (_zoom < 0.1f) _zoom = 0.1f; } // Negative zoom will flip image
+            get { return _zoom * 1920f / Game1.graphics.PreferredBackBufferWidth; }
+            set { _zoom = value * Game1.graphics.PreferredBackBufferWidth / 1920f; if (_zoom < 0.1f) _zoom = 0.1f; } // Negative zoom will flip image
         }
 
         public float TargetZoom
         {
-            get { return targetZoom * 1600.0f / Game1.graphics.PreferredBackBufferWidth; }
-            set { targetZoom = value * Game1.graphics.PreferredBackBufferWidth / 1600.0f; if (targetZoom < 0.1f) targetZoom = 0.1f; } // Negative zoom will flip image
+            get { return targetZoom * 1920f / Game1.graphics.PreferredBackBufferWidth; }
+            set { targetZoom = value * Game1.graphics.PreferredBackBufferWidth / 1920f; if (targetZoom < 0.1f) targetZoom = 0.1f; } // Negative zoom will flip image
         }
 
         public float Rotation
